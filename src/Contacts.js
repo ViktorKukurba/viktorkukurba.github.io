@@ -39,7 +39,9 @@ class Contacts extends Component {
         <div className="social-networks">
         {this.state.social.map((soc, i) => {
           return (
-              <a target="_blank" key={i} style={{backgroundImage: 'url(' + soc.icon + ')'}} href={soc.link}></a>
+              <a target="_blank" key={i}
+                  style={{backgroundImage: 'url(' + soc.icon + ')'}}
+                  href={soc.link}></a>
           )
         })}
         </div>
