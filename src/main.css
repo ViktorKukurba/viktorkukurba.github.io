@@ -343,12 +343,14 @@ h3 {
 }
 
 .container > .row > section > header > h5,
+.container > .row > section > .component > header > h5,
 .container > .row > section > footer > h5 {
   color: white;
   text-align: center;
 }
 
 .container > .row > section > header > h4,
+.container > .row > section > .component > header > h4,
 .container > .row > section > footer > h4 {
   color: white;
   text-align: center;

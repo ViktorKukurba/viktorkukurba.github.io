@@ -37,7 +37,7 @@ class App extends Component {
             <hr/>
               <Experience/>
             <hr/>
-              <Portfolio/>
+              <Portfolio id="portfolio"/>
             <hr/>
               <Contacts/>
             <footer>

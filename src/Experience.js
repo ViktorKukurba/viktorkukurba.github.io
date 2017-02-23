@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import isElementOnView from './Utils'
 
 class Experience extends Component {
   constructor() {
@@ -24,7 +25,7 @@ class Experience extends Component {
   }
 
   componentDidMount() {
-    window.onscroll = function() {
+    window.addEventListener('scroll', function() {
       var bars = document.querySelectorAll('#experience .item:not(.shown)');
 
       Array.prototype.forEach.call(bars, function(bar) {
@@ -37,13 +38,7 @@ class Experience extends Component {
           barLabel.style.left = barLabel.getAttribute('data-val') + '%';
         }
       });
-    };
-
-    function isElementOnView(element) {
-      var top = element.offsetTop;
-      return top >= window.pageYOffset &&
-          element.offsetHeight + top <= window.pageYOffset + window.innerHeight;
-    }
+    });
   }
 
   componentWillUnmount() {
@@ -58,7 +53,7 @@ class Experience extends Component {
 
   render() {
     return (
-        <section id="experience">
+        <section ref={(section) => { this.container = section; }} id="experience">
           <header>
             <h4>MY KNOWLEDGE LEVEL IN SOFTWARE DEVELOPMENT</h4>
             <h5>based on web technologies AJAX, REST, SOAP, JSON</h5>

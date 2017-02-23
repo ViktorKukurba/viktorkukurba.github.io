@@ -50,7 +50,6 @@ class Contacts extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    var formData = new FormData(event.target);
     var data = this.state.sendData;
     var headers = new Headers();
     headers.append("Content-Type", "application/json");

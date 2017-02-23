@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
+import SectionComponent from './SectionComponent'
 
-class Portfolio extends Component {
+class Portfolio extends SectionComponent {
   constructor() {
     super();
     this.state = {
@@ -33,9 +34,8 @@ class Portfolio extends Component {
       }));
   }
 
-  render() {
-    return (
-        <section id="portfolio">
+  renderContent() {
+    return (<div className="portfolio component">
           <header>
             <h4>PORTFOLIO. MY LATEST WORK</h4>
           </header>
@@ -43,7 +43,7 @@ class Portfolio extends Component {
           {this.renderProjects()}
           </div>
           <div className="clear-fix"></div>
-        </section>
+        </div>
     )
   }
 }
