@@ -33,13 +33,13 @@ class App extends Component {
           <div className="row">
               <Greeting/>
             <hr/>
-              <About/>
+              <About id="about"/>
             <hr/>
-              <Experience/>
+              <Experience id="experience" />
             <hr/>
               <Portfolio id="portfolio"/>
             <hr/>
-              <Contacts/>
+              <Contacts id="contacts"/>
             <footer>
               <p>All rights received. Viktor Kukurba. 2016.</p>
             </footer>

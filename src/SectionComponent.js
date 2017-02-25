@@ -4,6 +4,7 @@ import isElementOnView from './Utils'
 class SectionComponent extends Component {
   constructor() {
     super();
+    this.state = { };
     this.timeoutVisible = 0;
   }
   componentDidMount() {
@@ -32,7 +33,7 @@ class SectionComponent extends Component {
     if (prevState.visible !== this.state.visible && this.state.visible) {
       clearTimeout(self.timeoutVisible);
       self.timeoutVisible = setTimeout(function() {
-        window['ga']('send', 'pageview', this.props.id);
+        window['ga']('send', 'pageview', self.props.id);
       },3e3);
     } else {
       clearTimeout(self.timeoutVisible);
@@ -44,7 +45,8 @@ class SectionComponent extends Component {
   };
 
   render() {
-    return (<section ref={(section) => { this.container = section; }} className={this.state.visible ? 'visible' : ''} id={this.props.id}>
+    return (<section ref={(section) => { this.container = section; }}
+        className={this.state.visible ? 'visible' : ''} id={this.props.id}>
     {this.renderContent()}
     </section>)
   }

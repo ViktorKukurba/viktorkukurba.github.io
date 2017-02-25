@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
 import isElementOnView from './Utils'
+import SectionComponent from './SectionComponent'
 
-class Experience extends Component {
+class Experience extends SectionComponent {
   constructor() {
     super();
     this.state = {
@@ -25,6 +26,7 @@ class Experience extends Component {
   }
 
   componentDidMount() {
+    super.componentDidMount.apply(this, arguments);
     window.addEventListener('scroll', function() {
       var bars = document.querySelectorAll('#experience .item:not(.shown)');
 
@@ -51,9 +53,9 @@ class Experience extends Component {
     });
   }
 
-  render() {
+  renderContent() {
     return (
-        <section ref={(section) => { this.container = section; }} id="experience">
+        <div className="experience component">
           <header>
             <h4>MY KNOWLEDGE LEVEL IN SOFTWARE DEVELOPMENT</h4>
             <h5>based on web technologies AJAX, REST, SOAP, JSON</h5>
@@ -66,7 +68,7 @@ class Experience extends Component {
             <h5>Also have expireance with Python, Java, Wordpress, PHP, MatLab, LaTex</h5>
           </footer>
           <div className="clear-fix"></div>
-        </section>
+        </div>
     )
   }
 }

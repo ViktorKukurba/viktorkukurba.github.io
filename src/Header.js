@@ -6,7 +6,6 @@ class Header extends Component {
   constructor() {
     super();
     this.state = {
-      //shape: 'triangle',
       shapes: ['sphere', 'hexagon', 'triangle']
     };
   }
@@ -26,7 +25,12 @@ class Header extends Component {
 
   selectShape(shape) {
     this.props.changeShape(shape);
-    //this.setState({shape});
+    window['ga']('send', {
+      hitType: 'event',
+      eventCategory: 'ShapeSelect',
+      eventAction: 'click',
+      eventLabel: shape
+    });
   }
 
   componentWillMount() {
@@ -40,8 +44,6 @@ class Header extends Component {
               <span key={i} onClick={this.selectShape.bind(this, shape)}
                   className={"label-element" + (this.props.shape === shape ? ' active' : '') + ' ' + shape}
                   src={"/images/icons/" + shape + ".png"}></span>
-              //<div key={i}  onClick={this.selectShape.bind(this, shape)}
-              //    className={'shape ' + shape + (this.props.shape === shape ? ' active' : '')}></div>
           )
         })}
     </div>

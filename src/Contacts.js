@@ -1,23 +1,29 @@
-import React, {Component} from 'react'
+import React from 'react'
 import 'whatwg-fetch'
+import SectionComponent from './SectionComponent'
 
-class Contacts extends Component {
+class Contacts extends SectionComponent {
   constructor() {
     super();
     this.state = {
       social: [{
+        'name': 'upwork',
         'icon': 'images/icons/upwork.jpeg',
         'link': 'https://www.upwork.com/o/profiles/users/_~01ffdcc3a73ddc8d3c/'
       }, {
+        'name': 'linkedin',
         'icon': 'images/icons/linkedin.png',
         'link': 'https://www.linkedin.com/in/viktor-kukurba-32496549'
       }, {
+        'name': 'facebook',
         'icon': 'images/icons/facebook.png',
         'link': 'https://www.facebook.com/viktor.kukurba'
       }, {
+        'name': 'github',
         'icon': 'images/icons/git_hub.png',
         'link': 'https://github.com/ViktorKukurba'
       }, {
+        'name': 'stackoverflow',
         'icon': 'images/icons/stackoverflow.png',
         'link': 'http://stackoverflow.com/users/1940821/viktor-kukurba'
       }],
@@ -34,12 +40,22 @@ class Contacts extends Component {
     };
   }
 
+  handleSocialClick(social) {
+    window['ga']('send', {
+      hitType: 'event',
+      eventCategory: 'Social',
+      eventAction: 'click',
+      eventLabel: social.name
+    });
+  }
+
   renderSocial() {
     return (
         <div className="social-networks">
         {this.state.social.map((soc, i) => {
           return (
               <a target="_blank" key={i}
+                  onClick={this.handleSocialClick.bind(this, soc)}
                   style={{backgroundImage: 'url(' + soc.icon + ')'}}
                   href={soc.link}></a>
           )
@@ -80,6 +96,12 @@ class Contacts extends Component {
             }
           });
         }, 3e3);
+        window['ga']('send', {
+          hitType: 'event',
+          eventCategory: 'Contacts',
+          eventAction: 'send',
+          eventLabel: 'email'
+        });
       } else {
         this.setState({
           alert: {
@@ -107,9 +129,8 @@ class Contacts extends Component {
     });
   }
 
-  render() {
+  renderContent() {
     return (
-        <section id="contacts">
           <div className="content row">
             <div className="contact-box">
               <div className="info col-xl-6 col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -152,7 +173,6 @@ class Contacts extends Component {
             <div className="clear-fix"></div>
           {this.renderSocial()}
           </div>
-        </section>
     )
   }
 }

@@ -6,18 +6,21 @@ class Portfolio extends SectionComponent {
     super();
     this.state = {
       projects: [{
+        name: 'vkukurba',
         info: "my personal webapplication",
         technologies: "HTML/CSS, SASS, React JS, jQuery JS, Bootstrap 4.",
         images: ['images/opt_my_web_app.png', 'images/opt_my_web_app_2.png',
           'images/opt_my_web_app_3.png'],
         link: "/"
       }, {
+        name: 'lidikart',
         info: "gallery site for artist studio LidikART",
         technologies: "Angular JS (1.x), jQuery JS, Bootstrap 3, LESS, PHP.",
         images: ['images/opt_lidik_art_app.png', 'images/opt_lidik_art_app_2.png',
           'images/opt_lidik_art_app_3.png'],
         link: "http://lidikart.com.ua/en"
       }, {
+        name: 'fredra',
         info: "info site for social organization fredra.61",
         technologies: "Angular JS (1.x), jQuery JS, Bootstrap 3, LESS, PHP.",
         images: ['images/opt_fredra_61_app.png', 'images/opt_fredra_61_app_2.png',
@@ -83,11 +86,21 @@ class PortfolioProject extends Component {
         nextDiff.indexOf(imgIndex - activeIndex) > -1 ? 'next' : '');
   }
 
+  projectClickHandler() {
+    window['ga']('send', {
+      hitType: 'event',
+      eventCategory: 'Portfolio',
+      eventAction: 'click',
+      eventLabel: this.props.name
+    });
+  }
+
   render() {
     let project = this.props.project;
     return (
         <div className="project col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12">
-          <a href={project.link} target="_blank" className="content">
+          <a href={project.link} target="_blank"
+              onClick={this.projectClickHandler.bind(this)} className="content">
             <div className="images-container">
             {this.getImages()}
             </div>

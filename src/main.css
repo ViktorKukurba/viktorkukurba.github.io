@@ -344,6 +344,7 @@ h3 {
 
 .container > .row > section > header > h5,
 .container > .row > section > .component > header > h5,
+.container > .row > section > .component > footer > h5,
 .container > .row > section > footer > h5 {
   color: white;
   text-align: center;
