@@ -28,7 +28,7 @@ class Figures extends Component {
           rotate: {
             x: 0, y: 0, z: 0, a: 0
           }}]
-    }
+    };
   }
 
   componentDidMount() {
@@ -70,5 +70,9 @@ class Figures extends Component {
         )
   }
 }
+
+Figures.defaultProps = {
+  shape: 'triangle'
+};
 
 export default Figures

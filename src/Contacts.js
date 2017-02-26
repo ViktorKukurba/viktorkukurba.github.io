@@ -40,7 +40,7 @@ class Contacts extends SectionComponent {
     };
   }
 
-  handleSocialClick(social) {
+  static handleSocialClick(social) {
     window['ga']('send', {
       hitType: 'event',
       eventCategory: 'Social',
@@ -55,7 +55,7 @@ class Contacts extends SectionComponent {
         {this.state.social.map((soc, i) => {
           return (
               <a target="_blank" key={i}
-                  onClick={this.handleSocialClick.bind(this, soc)}
+                  onClick={Contacts.handleSocialClick.bind(this, soc)}
                   style={{backgroundImage: 'url(' + soc.icon + ')'}}
                   href={soc.link}></a>
           )

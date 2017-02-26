@@ -45,6 +45,7 @@ class SectionComponent extends Component {
   };
 
   render() {
+    console.log('render', this.props.id);
     return (<section ref={(section) => { this.container = section; }}
         className={this.state.visible ? 'visible' : ''} id={this.props.id}>
     {this.renderContent()}

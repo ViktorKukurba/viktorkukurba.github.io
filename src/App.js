@@ -13,9 +13,7 @@ import Header from './Header'
 class App extends Component {
   constructor() {
     super();
-    this.state = {
-      shape:'triangle'
-    }
+    this.state = { }
   }
 
   handleShapeChange(shape) {
