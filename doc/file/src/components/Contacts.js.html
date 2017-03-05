@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">src/components/Contacts.js | API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isElementOnView">isElementOnView</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">actions</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ContactsActions">ContactsActions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-HeaderActions">HeaderActions</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/About.js~About.html">About</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/App.js~App.html">App</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/Contacts.js~Contacts.html">Contacts</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/Experience.js~Experience.html">Experience</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/Greeting.js~Greeting.html">Greeting</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/Header.js~Header.html">Header</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/SectionComponent.js~SectionComponent.html">SectionComponent</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">stores</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stores/ContactsStore.js~ContactsStore.html">ContactsStore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stores/ExperienceStore.js~ExperienceStore.html">ExperienceStore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stores/FiguresStore.js~FiguresStore.html">FiguresStore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stores/HeaderStore.js~HeaderStore.html">HeaderStore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stores/PortfolioStore.js~PortfolioStore.html">PortfolioStore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-contactsStore">contactsStore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-experienceStore">experienceStore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-figuresStore">figuresStore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-headerStore">headerStore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-portfolioStore">portfolioStore</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/components/Contacts.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import React from &apos;react&apos;
+import &apos;whatwg-fetch&apos;
+import SectionComponent from &apos;./SectionComponent&apos;
+import ContactsStore from &apos;../stores/ContactsStore&apos;
+import ContactsConstants from &apos;../constants/ContactsConstants&apos;
+import ContactsActions from &apos;../actions/ContactsActions&apos;
+import &apos;../Contacts.css&apos;
+
+/**
+ * Contacts section.
+ * @extends SectionComponent
+ * @class
+ */
+class Contacts extends SectionComponent {
+  /** Creates Contacts section. */
+  constructor() {
+    super();
+    this.state = {
+      social: ContactsStore.getSocialNetworks(),
+      sendData: {
+        name: &apos;&apos;,
+        email: &apos;&apos;,
+        subject: &apos;&apos;,
+        message: &apos;&apos;
+      },
+      alert: {
+        show: false,
+        success: true
+      }
+    };
+
+    this.submitErrorHandle = () =&gt; {
+      this.setState({
+        alert: {
+          show: true,
+          success: false,
+          message: ContactsConstants.SUBMIT_ERROR
+        }
+      });
+    };
+
+    this.submitSuccessHandler = () =&gt; {
+      this.contactForm.reset();
+      setTimeout(() =&gt; {
+        this.setState({
+          alert: {
+            show: false
+          }
+        });
+      }, 3e3);
+    };
+  }
+
+  /** Binds handlers on contacts store events. */
+  componentWillMount() {
+    ContactsStore.on(ContactsConstants.SAVED, this.submitSuccessHandler);
+    ContactsStore.on(ContactsConstants.SAVE_ERROR, this.submitErrorHandle);
+  }
+
+  /** Unbinds handlers on contacts store events. */
+  componentWillUnMount() {
+    ContactsStore.removeListener(ContactsConstants.SAVED, this.submitSuccessHandler);
+    ContactsStore.removeListener(ContactsConstants.SAVE_ERROR, this.submitErrorHandle);
+  }
+
+  /**
+   * Renders social links block.
+   * @return {string} JSX string.
+   */
+  renderSocial() {
+    return (
+        &lt;div className=&quot;social-networks&quot;&gt;
+        {this.state.social.map((soc, i) =&gt; {
+          return (&lt;a target=&quot;_blank&quot; key={i}
+                  onClick={ContactsActions.socialClick.bind(null, soc)}
+                  style={{backgroundImage: &apos;url(&apos; + soc.icon + &apos;)&apos;}}
+                  href={soc.link}&gt;&lt;/a&gt;)
+        })}
+        &lt;/div&gt;
+    )
+  }
+
+  /**
+   * Handles contact form submition.
+   * @param {Event} event Form submit event
+   */
+  handleSubmit(event) {
+    event.preventDefault();
+    ContactsActions.sendMessage(this.state.sendData);
+  }
+
+  /**
+   * Handles form input values change.
+   * @param {Event} event Form element change event.
+   */
+  handleChange(event) {
+    /** @type {Object} */ var data = this.state.sendData;
+    data[event.target.name] = event.target.value;
+    this.setState(data);
+  }
+
+
+  /**
+   * Handles alert hide.
+   * @param {Event} event Click event.
+   */
+  hideAlert(event) {
+    event.preventDefault();
+    this.setState({
+      alert: {
+        show: false
+      }
+    });
+  }
+
+  /**
+   * @override
+   * @inheritDoc
+   */
+  renderContent() {
+    return (
+          &lt;div className=&quot;content row content-box&quot;&gt;
+            &lt;div className=&quot;contact-box&quot;&gt;
+              &lt;div className=&quot;info col-xl-6 col-lg-12 col-md-12 col-sm-12 col-xs-12&quot;&gt;
+                &lt;p&gt;{ContactsConstants.CONTACT_MESSAGE}&lt;/p&gt;
+                &lt;a href={&apos;mailto:&apos; + ContactsConstants.CONTACT_EMAIL}&gt;{ContactsConstants.CONTACT_EMAIL}&lt;/a&gt;
+              &lt;/div&gt;
+              &lt;form onSubmit={this.handleSubmit.bind(this)} ref=&quot;contactForm&quot;
+                  className=&quot;col-xl-6 col-lg-12 col-md-12 col-sm-12 col-xs-12&quot;&gt;
+                &lt;div className=&quot;row form-group&quot;&gt;
+                  &lt;div className=&quot;col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12&quot;&gt;
+                    &lt;input name=&quot;name&quot; required value={this.state.sendData.name}
+                        onChange={this.handleChange.bind(this)} className=&quot;form-control form-control-sm&quot; placeholder=&quot;Name&quot;/&gt;
+                  &lt;/div&gt;
+                  &lt;div className=&quot;col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12&quot;&gt;
+                    &lt;input name=&quot;email&quot; value={this.state.sendData.email}
+                        onChange={this.handleChange.bind(this)} className=&quot;form-control form-control-sm&quot; placeholder=&quot;Email&quot;/&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div className=&quot;form-group&quot;&gt;
+                  &lt;input name=&quot;subject&quot; value={this.state.sendData.subject}
+                      onChange={this.handleChange.bind(this)}
+                      className=&quot;form-control form-control-sm&quot; placeholder=&quot;Subject&quot; /&gt;
+                &lt;/div&gt;
+                &lt;div className=&quot;form-group&quot;&gt;
+                  &lt;textarea name=&quot;message&quot; required value={this.state.sendData.message}
+                      onChange={this.handleChange.bind(this)} className=&quot;form-control form-control-sm&quot; placeholder=&quot;Message&quot;&gt;&lt;/textarea&gt;
+                &lt;/div&gt;
+                &lt;div className=&quot;form-group&quot;&gt;
+                  &lt;button className=&quot;form-control form-control-sm&quot; type=&quot;submit&quot;&gt;Send&lt;/button&gt;
+                &lt;/div&gt;
+                &lt;div className=&quot;clear-fix&quot;&gt;&lt;/div&gt;
+
+                &lt;div className={&quot;alert alert-dismissible&quot; + (this.state.alert.show ? &quot;&quot; : &quot; hidden-xs-up&quot;) +
+                (this.state.alert.success ? &quot; alert-success&quot; : &quot; alert-danger&quot;)} role=&quot;alert&quot;&gt;
+                  &lt;button type=&quot;button&quot; className=&quot;close&quot; onClick={this.hideAlert.bind(this)} aria-label=&quot;Close&quot;&gt;
+                    &lt;span aria-hidden=&quot;true&quot;&gt;&amp;times;&lt;/span&gt;
+                  &lt;/button&gt;
+                  &lt;strong&gt;{this.state.alert.success ? &quot;Success&quot; : &quot;Error&quot;}!&lt;/strong&gt; {this.state.alert.message}
+                &lt;/div&gt;
+              &lt;/form&gt;
+            &lt;/div&gt;
+            &lt;div className=&quot;clear-fix&quot;&gt;&lt;/div&gt;
+          {this.renderSocial()}
+          &lt;/div&gt;)
+  }
+}
+
+export default Contacts</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.5.2)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

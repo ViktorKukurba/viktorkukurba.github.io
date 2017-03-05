@@ -3,3 +3,135 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+html {
+  font-family: 'Montserrat', sans-serif;
+  font-family: 'Roboto', sans-serif;
+  font-family: 'Noto Sans', sans-serif;
+}
+
+body {
+  background: rgb(112, 122, 132);
+  height: 100%;
+}
+
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+hr {
+  border: rgb(51, 59, 80) solid 1px;
+  clear: both;
+  box-shadow: 0 0 10px rgba(51, 59, 80,0.5);
+}
+
+h3 {
+  color: rgb(40, 222, 65);
+}
+
+.content-box {
+  background: rgb(51, 59, 80);
+  width: 50%;
+  margin: 0 auto;
+  padding: 2em;
+  color: white;
+}
+
+
+@media only screen and (max-width: 992px) {
+  .content-box {
+    width: 80%;
+  }
+}
+
+.images-container {
+  position: relative;
+  overflow: hidden;
+  height: 200px;
+}
+
+#experience h4 {
+  color: white;
+}
+
+.dimmed {
+  background-color: rgba(111, 122,132, .6);
+  box-shadow: 0 0 22px 20px rgba(111,122,132,.6);
+}
+
+.form-element input, .form-element textarea, .form-element button {
+  box-sizing: border-box;
+  width: 100%;
+  margin: .5em;
+}
+
+.form-element textarea {
+  height: 10em;
+}
+
+.form-element input[name="name"] {
+  width: 95%;
+}
+
+.form-element.submit {
+  float: right;
+}
+
+.form-element button {
+  border: none;
+  background: rgb(40, 222, 65);
+  color: white;
+  padding: 5px;
+}
+
+/*.technologies label {*/
+/*display: inline-block;*/
+/*vertical-align: top;*/
+/*padding-right: 1em;*/
+/*text-align: right;*/
+/*}*/
+
+.technologies {
+  color: rgb(40, 222, 65);
+  display: table;
+  padding-right: 42px;
+}
+
+/*.container > section:after {*/
+/*height: 100%;*/
+/*width: 100%;*/
+/*}*/
+
+.clear-fix {
+  clear: both;
+}
+
+.container > .row > footer {
+  background: rgb(51, 59, 80);
+  padding: .1em;
+  text-align: center;
+  color: white;
+}
+
+.container > .row > footer p {
+  margin: 1em;
+}
+
+form .form-element {
+  display: inline-block;
+}
+
+/*#contacts .content .info:after,*/
+/*#contacts .content form:after {*/
+/*display: block;*/
+/*position: absolute;*/
+/*height: 100%;*/
+/*content: " ";*/
+/*background-color: #fff;*/
+/*}*/
+
+/*form .alert.alert-success{*/
+/*opacity: 1;*/
+
+/*}*/

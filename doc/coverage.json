@@ -1,0 +1,124 @@
+{
+  "coverage": "67.04%",
+  "expectCount": 88,
+  "actualCount": 59,
+  "files": {
+    "src/components/About.js": {
+      "expectCount": 4,
+      "actualCount": 4,
+      "undocumentLines": []
+    },
+    "src/components/App.js": {
+      "expectCount": 2,
+      "actualCount": 2,
+      "undocumentLines": []
+    },
+    "src/components/Contacts.js": {
+      "expectCount": 12,
+      "actualCount": 9,
+      "undocumentLines": [
+        18,
+        32,
+        42
+      ]
+    },
+    "src/actions/ContactsActions.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        4
+      ]
+    },
+    "src/stores/ContactsStore.js": {
+      "expectCount": 8,
+      "actualCount": 5,
+      "undocumentLines": [
+        6,
+        108,
+        10
+      ]
+    },
+    "src/components/Experience.js": {
+      "expectCount": 6,
+      "actualCount": 3,
+      "undocumentLines": [
+        6,
+        15,
+        10
+      ]
+    },
+    "src/stores/ExperienceStore.js": {
+      "expectCount": 5,
+      "actualCount": 4,
+      "undocumentLines": [
+        37
+      ]
+    },
+    "src/stores/FiguresStore.js": {
+      "expectCount": 9,
+      "actualCount": 5,
+      "undocumentLines": [
+        6,
+        74,
+        17,
+        10
+      ]
+    },
+    "src/components/Greeting.js": {
+      "expectCount": 5,
+      "actualCount": 3,
+      "undocumentLines": [
+        4,
+        8
+      ]
+    },
+    "src/components/Header.js": {
+      "expectCount": 9,
+      "actualCount": 6,
+      "undocumentLines": [
+        53,
+        27,
+        16
+      ]
+    },
+    "src/actions/HeaderActions.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        4
+      ]
+    },
+    "src/stores/HeaderStore.js": {
+      "expectCount": 11,
+      "actualCount": 8,
+      "undocumentLines": [
+        83,
+        100,
+        16
+      ]
+    },
+    "src/stores/PortfolioStore.js": {
+      "expectCount": 5,
+      "actualCount": 4,
+      "undocumentLines": [
+        42
+      ]
+    },
+    "src/components/SectionComponent.js": {
+      "expectCount": 9,
+      "actualCount": 6,
+      "undocumentLines": [
+        69,
+        14,
+        15
+      ]
+    },
+    "src/Utils.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        1
+      ]
+    }
+  }
+}

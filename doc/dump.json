@@ -1,0 +1,2934 @@
+[
+  {
+    "__docId__": 0,
+    "kind": "file",
+    "name": "src/App.test.js",
+    "content": "import React from 'react';\nimport ReactDOM from 'react-dom';\nimport App from './App';\n\nit('renders without crashing', () => {\n  const div = document.createElement('div');\n  ReactDOM.render(<App />, div);\n});\n",
+    "static": true,
+    "longname": "src/App.test.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 1,
+    "kind": "file",
+    "name": "src/Utils.js",
+    "content": "export default function isElementOnView(element) {\n  var top = element.offsetTop;\n\n  if (element.offsetHeight + 50 > window.innerHeight) {\n    return Math.abs(top - window.pageYOffset) <\n        element.offsetHeight + 50 - window.innerHeight;\n  }\n\n  return top >= window.pageYOffset &&\n      element.offsetHeight + top <= window.pageYOffset + window.innerHeight;\n}",
+    "static": true,
+    "longname": "src/Utils.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 2,
+    "kind": "function",
+    "name": "isElementOnView",
+    "memberof": "src/Utils.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/Utils.js~isElementOnView",
+    "access": null,
+    "export": true,
+    "importPath": "personal_web/src/Utils.js",
+    "importStyle": "isElementOnView",
+    "description": null,
+    "lineNumber": 1,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "element",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 3,
+    "kind": "file",
+    "name": "src/actions/ContactsActions.js",
+    "content": "import ContactsDispatcher from '../dispatcher/ContactsDispatcher'\nimport ContactsConstants from '../constants/ContactsConstants'\n\nvar ContactsActions = {\n  /**\n   * Fires social icon click event.\n   * @param {Object} social\n   */\n  socialClick(social) {\n    ContactsDispatcher.dispatch({\n      actionType: ContactsConstants.SOCIAL_CLICK,\n      social\n    });\n  },\n\n  /**\n   * Fires send message event.\n   * @param {Object} data\n   */\n  sendMessage(data) {\n    ContactsDispatcher.dispatch({\n      actionType: ContactsConstants.SEND_MESSAGE,\n      data\n    });\n  }\n};\n\nexport default ContactsActions;",
+    "static": true,
+    "longname": "src/actions/ContactsActions.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 4,
+    "kind": "variable",
+    "name": "ContactsActions",
+    "memberof": "src/actions/ContactsActions.js",
+    "static": true,
+    "longname": "src/actions/ContactsActions.js~ContactsActions",
+    "access": null,
+    "export": true,
+    "importPath": "personal_web/src/actions/ContactsActions.js",
+    "importStyle": "ContactsActions",
+    "description": null,
+    "lineNumber": 4,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "{\"socialClick\": function, \"sendMessage\": function}"
+      ]
+    }
+  },
+  {
+    "__docId__": 5,
+    "kind": "file",
+    "name": "src/actions/FiguresActions.js",
+    "content": "import FiguresDispatcher from '../dispatcher/FiguresDispatcher'\nimport FiguresConstants from '../constants/FiguresConstants'\n\nexport default {\n  /** Rotates random shape. */\n  rotateRandomShape() {\n    FiguresDispatcher.dispatch({\n      actionType: FiguresConstants.ROTATE_RANDOM_SHAPE\n    });\n  },\n\n  /**\n   * Rotates all shapes randomly.\n   * @param {number=1} capacity\n   */\n  rotateAllShapes(capacity = 1) {\n    FiguresDispatcher.dispatch({\n      actionType: FiguresConstants.ROTATE_ALL_SHAPES,\n      capacity\n    });\n  }\n}",
+    "static": true,
+    "longname": "src/actions/FiguresActions.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 6,
+    "kind": "file",
+    "name": "src/actions/HeaderActions.js",
+    "content": "import HeaderDispatcher from '../dispatcher/HeaderDispatcher'\nimport HeaderConstants from '../constants/HeaderConstants'\n\nvar HeaderActions = {\n  /**\n   * Fires change active shape.\n   * @param {string} shape\n   */\n  changeShape(shape) {\n    HeaderDispatcher.dispatch({\n      actionType: HeaderConstants.SHAPE_CHANGE,\n      shape\n    });\n  }\n};\n\nexport default HeaderActions;",
+    "static": true,
+    "longname": "src/actions/HeaderActions.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 7,
+    "kind": "variable",
+    "name": "HeaderActions",
+    "memberof": "src/actions/HeaderActions.js",
+    "static": true,
+    "longname": "src/actions/HeaderActions.js~HeaderActions",
+    "access": null,
+    "export": true,
+    "importPath": "personal_web/src/actions/HeaderActions.js",
+    "importStyle": "HeaderActions",
+    "description": null,
+    "lineNumber": 4,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "{\"changeShape\": function}"
+      ]
+    }
+  },
+  {
+    "__docId__": 8,
+    "kind": "file",
+    "name": "src/components/About.js",
+    "content": "import React from 'react';\nimport SectionComponent from './SectionComponent'\n\n/**\n * About section.\n * @extends SectionComponent\n * @class\n */\nclass About extends SectionComponent {\n  /** Creates about section. */\n  constructor() {\n    super();\n    /** @type {Array<string>} */\n    this.aboutStatements = ['I am web developer with Master degree in ' +\n    'Social Informatics in National University Lviv Polytechnic ' +\n    'and 6 years of Web development.',\n      'I have experience in both UI and server side development. ' +\n      'Worked with Microsoft technologies ASP.NET, ASP.NET MVC, ADO.NET, WebAPI using C#.' +\n      ' In UI development used JQuery libraries, Angular, YUI, Phonegap/cordova,' +\n      ' Grunt, Bower, Jasmine, CSS3, LESS, Bootstrap. ' +\n      'Also have some expirience with Wordpress, desktop apps based on WinForms ' +\n      'and WPF, MatLab, LaTex, C++, Java, Python.',\n      'I like to meet new people and take part in new project with interesting challenges' +\n      ' or help with extending or fixing existing.'\n    ]\n  }\n  /**\n   * @override\n   * @inheritDoc\n   */\n  renderContent() {\n    return (\n        <div className=\"info content-box\">\n        {this.aboutStatements.map((statement, i) => {\n              return (<p key={i}>{statement}</p>)\n            })}\n        </div>\n    )\n  }\n}\n\nexport default About",
+    "static": true,
+    "longname": "src/components/About.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 9,
+    "kind": "class",
+    "name": "About",
+    "memberof": "src/components/About.js",
+    "static": true,
+    "longname": "src/components/About.js~About",
+    "access": null,
+    "export": true,
+    "importPath": "personal_web/src/components/About.js",
+    "importStyle": "About",
+    "description": "About section.",
+    "lineNumber": 9,
+    "unknown": [
+      {
+        "tagName": "@class",
+        "tagValue": ""
+      }
+    ],
+    "interface": false,
+    "extends": [
+      "*"
+    ]
+  },
+  {
+    "__docId__": 10,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "src/components/About.js~About",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/components/About.js~About#constructor",
+    "access": null,
+    "description": "Creates about section.",
+    "lineNumber": 11,
+    "params": []
+  },
+  {
+    "__docId__": 11,
+    "kind": "member",
+    "name": "aboutStatements",
+    "memberof": "src/components/About.js~About",
+    "static": false,
+    "longname": "src/components/About.js~About#aboutStatements",
+    "access": null,
+    "description": null,
+    "lineNumber": 14,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Array<string>"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 12,
+    "kind": "method",
+    "name": "renderContent",
+    "memberof": "src/components/About.js~About",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/components/About.js~About#renderContent",
+    "access": null,
+    "description": "",
+    "lineNumber": 31,
+    "unknown": [
+      {
+        "tagName": "@inheritDoc",
+        "tagValue": ""
+      }
+    ],
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "override": true
+  },
+  {
+    "__docId__": 13,
+    "kind": "file",
+    "name": "src/components/App.js",
+    "content": "import React, { Component } from 'react';\nimport '../App.css';\nimport '../Header.css';\nimport Greeting from './Greeting'\nimport About from './About'\nimport Experience from './Experience'\nimport Portfolio from './Portfolio'\nimport Contacts from './Contacts'\nimport Figures from './Figures'\nimport Header from './Header'\n\n/**\n * Application class.\n * @extends Component\n * @class\n */\nclass App extends Component {\n\n  /** Renders App. */\n  render() {\n    return (\n        <div className=\"container\">\n          <div className=\"row\">\n            <Figures />\n            <Header />\n            <hr/>\n          </div>\n          <div className=\"row\">\n              <Greeting/>\n            <hr/>\n              <About id=\"about\"/>\n            <hr/>\n              <Experience id=\"experience\" />\n            <hr/>\n              <Portfolio id=\"portfolio\"/>\n            <hr/>\n              <Contacts id=\"contacts\"/>\n            <footer>\n              <p>All rights received. Viktor Kukurba. 2016.</p>\n            </footer>\n          </div>\n        </div>\n    );\n  }\n}\n\nexport default App;\n",
+    "static": true,
+    "longname": "src/components/App.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 14,
+    "kind": "class",
+    "name": "App",
+    "memberof": "src/components/App.js",
+    "static": true,
+    "longname": "src/components/App.js~App",
+    "access": null,
+    "export": true,
+    "importPath": "personal_web/src/components/App.js",
+    "importStyle": "App",
+    "description": "Application class.",
+    "lineNumber": 17,
+    "unknown": [
+      {
+        "tagName": "@class",
+        "tagValue": ""
+      }
+    ],
+    "interface": false,
+    "extends": [
+      "*"
+    ]
+  },
+  {
+    "__docId__": 15,
+    "kind": "method",
+    "name": "render",
+    "memberof": "src/components/App.js~App",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/components/App.js~App#render",
+    "access": null,
+    "description": "Renders App.",
+    "lineNumber": 20,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 16,
+    "kind": "file",
+    "name": "src/components/Contacts.js",
+    "content": "import React from 'react'\nimport 'whatwg-fetch'\nimport SectionComponent from './SectionComponent'\nimport ContactsStore from '../stores/ContactsStore'\nimport ContactsConstants from '../constants/ContactsConstants'\nimport ContactsActions from '../actions/ContactsActions'\nimport '../Contacts.css'\n\n/**\n * Contacts section.\n * @extends SectionComponent\n * @class\n */\nclass Contacts extends SectionComponent {\n  /** Creates Contacts section. */\n  constructor() {\n    super();\n    this.state = {\n      social: ContactsStore.getSocialNetworks(),\n      sendData: {\n        name: '',\n        email: '',\n        subject: '',\n        message: ''\n      },\n      alert: {\n        show: false,\n        success: true\n      }\n    };\n\n    this.submitErrorHandle = () => {\n      this.setState({\n        alert: {\n          show: true,\n          success: false,\n          message: ContactsConstants.SUBMIT_ERROR\n        }\n      });\n    };\n\n    this.submitSuccessHandler = () => {\n      this.contactForm.reset();\n      setTimeout(() => {\n        this.setState({\n          alert: {\n            show: false\n          }\n        });\n      }, 3e3);\n    };\n  }\n\n  /** Binds handlers on contacts store events. */\n  componentWillMount() {\n    ContactsStore.on(ContactsConstants.SAVED, this.submitSuccessHandler);\n    ContactsStore.on(ContactsConstants.SAVE_ERROR, this.submitErrorHandle);\n  }\n\n  /** Unbinds handlers on contacts store events. */\n  componentWillUnMount() {\n    ContactsStore.removeListener(ContactsConstants.SAVED, this.submitSuccessHandler);\n    ContactsStore.removeListener(ContactsConstants.SAVE_ERROR, this.submitErrorHandle);\n  }\n\n  /**\n   * Renders social links block.\n   * @return {string} JSX string.\n   */\n  renderSocial() {\n    return (\n        <div className=\"social-networks\">\n        {this.state.social.map((soc, i) => {\n          return (<a target=\"_blank\" key={i}\n                  onClick={ContactsActions.socialClick.bind(null, soc)}\n                  style={{backgroundImage: 'url(' + soc.icon + ')'}}\n                  href={soc.link}></a>)\n        })}\n        </div>\n    )\n  }\n\n  /**\n   * Handles contact form submition.\n   * @param {Event} event Form submit event\n   */\n  handleSubmit(event) {\n    event.preventDefault();\n    ContactsActions.sendMessage(this.state.sendData);\n  }\n\n  /**\n   * Handles form input values change.\n   * @param {Event} event Form element change event.\n   */\n  handleChange(event) {\n    /** @type {Object} */ var data = this.state.sendData;\n    data[event.target.name] = event.target.value;\n    this.setState(data);\n  }\n\n\n  /**\n   * Handles alert hide.\n   * @param {Event} event Click event.\n   */\n  hideAlert(event) {\n    event.preventDefault();\n    this.setState({\n      alert: {\n        show: false\n      }\n    });\n  }\n\n  /**\n   * @override\n   * @inheritDoc\n   */\n  renderContent() {\n    return (\n          <div className=\"content row content-box\">\n            <div className=\"contact-box\">\n              <div className=\"info col-xl-6 col-lg-12 col-md-12 col-sm-12 col-xs-12\">\n                <p>{ContactsConstants.CONTACT_MESSAGE}</p>\n                <a href={'mailto:' + ContactsConstants.CONTACT_EMAIL}>{ContactsConstants.CONTACT_EMAIL}</a>\n              </div>\n              <form onSubmit={this.handleSubmit.bind(this)} ref=\"contactForm\"\n                  className=\"col-xl-6 col-lg-12 col-md-12 col-sm-12 col-xs-12\">\n                <div className=\"row form-group\">\n                  <div className=\"col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12\">\n                    <input name=\"name\" required value={this.state.sendData.name}\n                        onChange={this.handleChange.bind(this)} className=\"form-control form-control-sm\" placeholder=\"Name\"/>\n                  </div>\n                  <div className=\"col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12\">\n                    <input name=\"email\" value={this.state.sendData.email}\n                        onChange={this.handleChange.bind(this)} className=\"form-control form-control-sm\" placeholder=\"Email\"/>\n                  </div>\n                </div>\n                <div className=\"form-group\">\n                  <input name=\"subject\" value={this.state.sendData.subject}\n                      onChange={this.handleChange.bind(this)}\n                      className=\"form-control form-control-sm\" placeholder=\"Subject\" />\n                </div>\n                <div className=\"form-group\">\n                  <textarea name=\"message\" required value={this.state.sendData.message}\n                      onChange={this.handleChange.bind(this)} className=\"form-control form-control-sm\" placeholder=\"Message\"></textarea>\n                </div>\n                <div className=\"form-group\">\n                  <button className=\"form-control form-control-sm\" type=\"submit\">Send</button>\n                </div>\n                <div className=\"clear-fix\"></div>\n\n                <div className={\"alert alert-dismissible\" + (this.state.alert.show ? \"\" : \" hidden-xs-up\") +\n                (this.state.alert.success ? \" alert-success\" : \" alert-danger\")} role=\"alert\">\n                  <button type=\"button\" className=\"close\" onClick={this.hideAlert.bind(this)} aria-label=\"Close\">\n                    <span aria-hidden=\"true\">&times;</span>\n                  </button>\n                  <strong>{this.state.alert.success ? \"Success\" : \"Error\"}!</strong> {this.state.alert.message}\n                </div>\n              </form>\n            </div>\n            <div className=\"clear-fix\"></div>\n          {this.renderSocial()}\n          </div>)\n  }\n}\n\nexport default Contacts",
+    "static": true,
+    "longname": "src/components/Contacts.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 17,
+    "kind": "class",
+    "name": "Contacts",
+    "memberof": "src/components/Contacts.js",
+    "static": true,
+    "longname": "src/components/Contacts.js~Contacts",
+    "access": null,
+    "export": true,
+    "importPath": "personal_web/src/components/Contacts.js",
+    "importStyle": "Contacts",
+    "description": "Contacts section.",
+    "lineNumber": 14,
+    "unknown": [
+      {
+        "tagName": "@class",
+        "tagValue": ""
+      }
+    ],
+    "interface": false,
+    "extends": [
+      "*"
+    ]
+  },
+  {
+    "__docId__": 18,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "src/components/Contacts.js~Contacts",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/components/Contacts.js~Contacts#constructor",
+    "access": null,
+    "description": "Creates Contacts section.",
+    "lineNumber": 16,
+    "params": []
+  },
+  {
+    "__docId__": 19,
+    "kind": "member",
+    "name": "state",
+    "memberof": "src/components/Contacts.js~Contacts",
+    "static": false,
+    "longname": "src/components/Contacts.js~Contacts#state",
+    "access": null,
+    "description": null,
+    "lineNumber": 18,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "{\"social\": *, \"sendData\": *, \"alert\": *}"
+      ]
+    }
+  },
+  {
+    "__docId__": 20,
+    "kind": "member",
+    "name": "submitErrorHandle",
+    "memberof": "src/components/Contacts.js~Contacts",
+    "static": false,
+    "longname": "src/components/Contacts.js~Contacts#submitErrorHandle",
+    "access": null,
+    "description": null,
+    "lineNumber": 32,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 21,
+    "kind": "member",
+    "name": "submitSuccessHandler",
+    "memberof": "src/components/Contacts.js~Contacts",
+    "static": false,
+    "longname": "src/components/Contacts.js~Contacts#submitSuccessHandler",
+    "access": null,
+    "description": null,
+    "lineNumber": 42,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 22,
+    "kind": "method",
+    "name": "componentWillMount",
+    "memberof": "src/components/Contacts.js~Contacts",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/components/Contacts.js~Contacts#componentWillMount",
+    "access": null,
+    "description": "Binds handlers on contacts store events.",
+    "lineNumber": 55,
+    "params": []
+  },
+  {
+    "__docId__": 23,
+    "kind": "method",
+    "name": "componentWillUnMount",
+    "memberof": "src/components/Contacts.js~Contacts",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/components/Contacts.js~Contacts#componentWillUnMount",
+    "access": null,
+    "description": "Unbinds handlers on contacts store events.",
+    "lineNumber": 61,
+    "params": []
+  },
+  {
+    "__docId__": 24,
+    "kind": "method",
+    "name": "renderSocial",
+    "memberof": "src/components/Contacts.js~Contacts",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/components/Contacts.js~Contacts#renderSocial",
+    "access": null,
+    "description": "Renders social links block.",
+    "lineNumber": 70,
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "string"
+      ],
+      "spread": false,
+      "description": "JSX string."
+    }
+  },
+  {
+    "__docId__": 25,
+    "kind": "method",
+    "name": "handleSubmit",
+    "memberof": "src/components/Contacts.js~Contacts",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/components/Contacts.js~Contacts#handleSubmit",
+    "access": null,
+    "description": "Handles contact form submition.",
+    "lineNumber": 87,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Event"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "event",
+        "description": "Form submit event"
+      }
+    ]
+  },
+  {
+    "__docId__": 26,
+    "kind": "method",
+    "name": "handleChange",
+    "memberof": "src/components/Contacts.js~Contacts",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/components/Contacts.js~Contacts#handleChange",
+    "access": null,
+    "description": "Handles form input values change.",
+    "lineNumber": 96,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Event"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "event",
+        "description": "Form element change event."
+      }
+    ]
+  },
+  {
+    "__docId__": 27,
+    "kind": "method",
+    "name": "hideAlert",
+    "memberof": "src/components/Contacts.js~Contacts",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/components/Contacts.js~Contacts#hideAlert",
+    "access": null,
+    "description": "Handles alert hide.",
+    "lineNumber": 107,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Event"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "event",
+        "description": "Click event."
+      }
+    ]
+  },
+  {
+    "__docId__": 28,
+    "kind": "method",
+    "name": "renderContent",
+    "memberof": "src/components/Contacts.js~Contacts",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/components/Contacts.js~Contacts#renderContent",
+    "access": null,
+    "description": "",
+    "lineNumber": 120,
+    "unknown": [
+      {
+        "tagName": "@inheritDoc",
+        "tagValue": ""
+      }
+    ],
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "override": true
+  },
+  {
+    "__docId__": 29,
+    "kind": "file",
+    "name": "src/components/Experience.js",
+    "content": "import React from 'react'\nimport SectionComponent from './SectionComponent'\nimport Technology from './Technology'\nimport ExperienceStore from '../stores/ExperienceStore'\n\nclass Experience extends SectionComponent {\n  /** Creates experience section. */\n  constructor() {\n    super();\n    this.state = {\n      /** @type {Array<Object>} */\n      technologies: ExperienceStore.getTechnologies()\n    };\n\n    this.TEXT = {\n      HEADER: {\n        MAIN: 'My knowledge level in software development',\n        SUB: 'based on web technologies AJAX, REST, SOAP, JSON'\n      },\n      FOOTER: 'Also have expireance with Python, Java, Wordpress, PHP, ' +\n      'MatLab, LaTex'\n    };\n  }\n\n  /**\n   * Renders technologies.\n   * @return {string} JSX string.\n   */\n  renderTechnologies() {\n    return this.state.technologies.map((info, i) => {\n      return <Technology ref={'tech-' + i} key={i} info={info}/>;\n    });\n  }\n\n  /**\n   * @overrides\n   * @inheritDoc\n   */\n  renderContent() {\n    return (\n        <div className=\"experience component\">\n          <header>\n            <h4>{this.TEXT.HEADER.MAIN}</h4>\n            <h5>{this.TEXT.HEADER.SUB}</h5>\n          </header>\n\n          <div className=\"technologies dimmed\">\n          {this.renderTechnologies()}\n          </div>\n          <footer>\n            <h5>{this.TEXT.FOOTER}</h5>\n          </footer>\n          <div className=\"clear-fix\"></div>\n        </div>\n    )\n  }\n}\n\nexport default Experience\n",
+    "static": true,
+    "longname": "src/components/Experience.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 30,
+    "kind": "class",
+    "name": "Experience",
+    "memberof": "src/components/Experience.js",
+    "static": true,
+    "longname": "src/components/Experience.js~Experience",
+    "access": null,
+    "export": true,
+    "importPath": "personal_web/src/components/Experience.js",
+    "importStyle": "Experience",
+    "description": null,
+    "lineNumber": 6,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "interface": false,
+    "extends": [
+      "src/components/SectionComponent.js~SectionComponent"
+    ]
+  },
+  {
+    "__docId__": 31,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "src/components/Experience.js~Experience",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/components/Experience.js~Experience#constructor",
+    "access": null,
+    "description": "Creates experience section.",
+    "lineNumber": 8,
+    "params": []
+  },
+  {
+    "__docId__": 32,
+    "kind": "member",
+    "name": "state",
+    "memberof": "src/components/Experience.js~Experience",
+    "static": false,
+    "longname": "src/components/Experience.js~Experience#state",
+    "access": null,
+    "description": null,
+    "lineNumber": 10,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "{\"technologies\": *}"
+      ]
+    }
+  },
+  {
+    "__docId__": 33,
+    "kind": "member",
+    "name": "TEXT",
+    "memberof": "src/components/Experience.js~Experience",
+    "static": false,
+    "longname": "src/components/Experience.js~Experience#TEXT",
+    "access": null,
+    "description": null,
+    "lineNumber": 15,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "{\"HEADER\": *, \"FOOTER\": *}"
+      ]
+    }
+  },
+  {
+    "__docId__": 34,
+    "kind": "method",
+    "name": "renderTechnologies",
+    "memberof": "src/components/Experience.js~Experience",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/components/Experience.js~Experience#renderTechnologies",
+    "access": null,
+    "description": "Renders technologies.",
+    "lineNumber": 29,
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "string"
+      ],
+      "spread": false,
+      "description": "JSX string."
+    }
+  },
+  {
+    "__docId__": 35,
+    "kind": "method",
+    "name": "renderContent",
+    "memberof": "src/components/Experience.js~Experience",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/components/Experience.js~Experience#renderContent",
+    "access": null,
+    "description": "",
+    "lineNumber": 39,
+    "unknown": [
+      {
+        "tagName": "@overrides",
+        "tagValue": ""
+      },
+      {
+        "tagName": "@inheritDoc",
+        "tagValue": ""
+      }
+    ],
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 36,
+    "kind": "file",
+    "name": "src/components/Greeting.js",
+    "content": "import React, { Component } from 'react';\nimport '../Greeting.css'\n\nclass Greeting extends Component {\n  /** Creates Greeting component. */\n  constructor() {\n    super();\n    this.state = {\n      loaded: false\n    };\n  }\n\n  /** Image load handler. */\n  onLoad(event) {\n    this.setState({\n      loaded: true\n    });\n  }\n\n  /**\n   * Renders Greeting component.\n   * @return {string} JSX string.\n   */\n  render() {\n    return (\n        <section id=\"greeting\" className=\"app-content\">\n          <div className=\"text-content\">\n            <div className=\"title\">\n              <h1>hi, I’m\n                <br/>\n              Viktor\n                <br/>\n              Kukurba</h1>\n              <h2>web developer</h2>\n            </div>\n          </div>\n          <div className=\"image-content hidden-xs-down\">\n            <img alt=\"I\" onLoad={this.onLoad.bind(this)} className={this.state.loaded ? 'loaded' : ''} src=\"images/opt-foto.jpg\"/>\n            <img alt=\"I\" onLoad={this.onLoad.bind(this)} className={this.state.loaded ? 'loaded' : ''} src=\"images/my_photo.png\"/>\n          </div>\n          <div className=\"clear-fix\"></div>\n        </section>\n    )\n  }\n}\n\nexport default Greeting",
+    "static": true,
+    "longname": "src/components/Greeting.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 37,
+    "kind": "class",
+    "name": "Greeting",
+    "memberof": "src/components/Greeting.js",
+    "static": true,
+    "longname": "src/components/Greeting.js~Greeting",
+    "access": null,
+    "export": true,
+    "importPath": "personal_web/src/components/Greeting.js",
+    "importStyle": "Greeting",
+    "description": null,
+    "lineNumber": 4,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "interface": false,
+    "extends": [
+      "react~Component"
+    ]
+  },
+  {
+    "__docId__": 38,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "src/components/Greeting.js~Greeting",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/components/Greeting.js~Greeting#constructor",
+    "access": null,
+    "description": "Creates Greeting component.",
+    "lineNumber": 6,
+    "params": []
+  },
+  {
+    "__docId__": 39,
+    "kind": "member",
+    "name": "state",
+    "memberof": "src/components/Greeting.js~Greeting",
+    "static": false,
+    "longname": "src/components/Greeting.js~Greeting#state",
+    "access": null,
+    "description": null,
+    "lineNumber": 8,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "{\"loaded\": *}"
+      ]
+    }
+  },
+  {
+    "__docId__": 40,
+    "kind": "method",
+    "name": "onLoad",
+    "memberof": "src/components/Greeting.js~Greeting",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/components/Greeting.js~Greeting#onLoad",
+    "access": null,
+    "description": "Image load handler.",
+    "lineNumber": 14,
+    "params": [
+      {
+        "name": "event",
+        "types": [
+          "*"
+        ]
+      }
+    ]
+  },
+  {
+    "__docId__": 41,
+    "kind": "method",
+    "name": "render",
+    "memberof": "src/components/Greeting.js~Greeting",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/components/Greeting.js~Greeting#render",
+    "access": null,
+    "description": "Renders Greeting component.",
+    "lineNumber": 24,
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "string"
+      ],
+      "spread": false,
+      "description": "JSX string."
+    }
+  },
+  {
+    "__docId__": 42,
+    "kind": "file",
+    "name": "src/components/Header.js",
+    "content": "import React, {Component} from 'react'\nimport {Link} from 'react-scroll'\nimport HeaderStore from '../stores/HeaderStore'\nimport HeaderActions from '../actions/HeaderActions'\n\n\n/**\n * Site header component.\n * @extends Component\n * @class\n */\nclass Header extends Component {\n  /** Creates header. */\n  constructor() {\n    super();\n    this.state = {\n      shapes: HeaderStore.getShapes(),\n      /** @type {Array<string>} */\n      links: HeaderStore.getLinks(),\n      activeShape: HeaderStore.getActiveShape()\n    };\n\n    function _onShapeChange(shape) {\n      this.setState({activeShape: shape});\n    }\n\n    this.onShapeChange = _onShapeChange.bind(this);\n  }\n\n  /**\n   * Gets site navigation JSX string.\n   * @return {string} JSX string\n   */\n  getNavItems() {\n    return this.state.links.map(function(item, i) {\n      return (\n          <li className=\"nav-item\" key={i}>\n            <Link className=\"nav-link\" to={item} spy={true} smooth={true} offset={-50} duration={500}>\n            {item}\n            </Link>\n          </li>\n      )\n    });\n  }\n\n  /**\n   * Component on mount handler.\n   */\n  componentWillMount() {\n    HeaderStore.addChangeListener(this.onShapeChange);\n  }\n\n  componentWillUnMount() {\n    HeaderStore.removeChangeListener(this.onShapeChange);\n  }\n\n  /**\n   * Gets shapes JSX string.\n   * @return {string} JSX string.\n   */\n  getShapes() {\n    return ( <div className=\"label-block\">\n    {this.state.shapes.map((shape, i) => {\n          return (\n              <span key={i}\n                  onClick={HeaderActions.changeShape.bind(null, shape)}\n                  className={\"label-element\" + (this.state.activeShape === shape ? ' active' : '') + ' ' + shape}\n                  src={\"/images/icons/\" + shape + \".png\"}></span>\n          )\n        })}\n    </div>\n    );\n  }\n\n  /**\n   * Renders component.\n   * @return {string} JSX string.\n   */\n  render() {\n    return (\n        <header>\n          <nav className=\"nav navbar-right\">\n            <button className=\"navbar-toggler hidden-md-up float-xs-right collapsed\"\n                id=\"nav-icon3\" type=\"button\" data-toggle=\"collapse\"\n                data-target=\"#navbarResponsive\" aria-controls=\"navbarResponsive\"\n                aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n              <span></span>\n              <span></span>\n              <span></span>\n              <span></span>\n            </button>\n            <div className=\"clear-fix\"></div>\n            <div className=\"collapse navbar-toggleable-sm\" id=\"navbarResponsive\">\n                {this.getShapes()}\n              <ul className=\"nav navbar-nav float-xs-right\">\n                    {this.getNavItems()}\n              </ul>\n            </div>\n          </nav>\n        </header>\n    )\n  }\n}\n\nexport default Header",
+    "static": true,
+    "longname": "src/components/Header.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 43,
+    "kind": "class",
+    "name": "Header",
+    "memberof": "src/components/Header.js",
+    "static": true,
+    "longname": "src/components/Header.js~Header",
+    "access": null,
+    "export": true,
+    "importPath": "personal_web/src/components/Header.js",
+    "importStyle": "Header",
+    "description": "Site header component.",
+    "lineNumber": 12,
+    "unknown": [
+      {
+        "tagName": "@class",
+        "tagValue": ""
+      }
+    ],
+    "interface": false,
+    "extends": [
+      "*"
+    ]
+  },
+  {
+    "__docId__": 44,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "src/components/Header.js~Header",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/components/Header.js~Header#constructor",
+    "access": null,
+    "description": "Creates header.",
+    "lineNumber": 14,
+    "params": []
+  },
+  {
+    "__docId__": 45,
+    "kind": "member",
+    "name": "state",
+    "memberof": "src/components/Header.js~Header",
+    "static": false,
+    "longname": "src/components/Header.js~Header#state",
+    "access": null,
+    "description": null,
+    "lineNumber": 16,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "{\"shapes\": *, \"links\": *, \"activeShape\": *}"
+      ]
+    }
+  },
+  {
+    "__docId__": 46,
+    "kind": "member",
+    "name": "onShapeChange",
+    "memberof": "src/components/Header.js~Header",
+    "static": false,
+    "longname": "src/components/Header.js~Header#onShapeChange",
+    "access": null,
+    "description": null,
+    "lineNumber": 27,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 47,
+    "kind": "method",
+    "name": "getNavItems",
+    "memberof": "src/components/Header.js~Header",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/components/Header.js~Header#getNavItems",
+    "access": null,
+    "description": "Gets site navigation JSX string.",
+    "lineNumber": 34,
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "string"
+      ],
+      "spread": false,
+      "description": "JSX string"
+    }
+  },
+  {
+    "__docId__": 48,
+    "kind": "method",
+    "name": "componentWillMount",
+    "memberof": "src/components/Header.js~Header",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/components/Header.js~Header#componentWillMount",
+    "access": null,
+    "description": "Component on mount handler.",
+    "lineNumber": 49,
+    "params": []
+  },
+  {
+    "__docId__": 49,
+    "kind": "method",
+    "name": "componentWillUnMount",
+    "memberof": "src/components/Header.js~Header",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/components/Header.js~Header#componentWillUnMount",
+    "access": null,
+    "description": null,
+    "lineNumber": 53,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": []
+  },
+  {
+    "__docId__": 50,
+    "kind": "method",
+    "name": "getShapes",
+    "memberof": "src/components/Header.js~Header",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/components/Header.js~Header#getShapes",
+    "access": null,
+    "description": "Gets shapes JSX string.",
+    "lineNumber": 61,
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "string"
+      ],
+      "spread": false,
+      "description": "JSX string."
+    }
+  },
+  {
+    "__docId__": 51,
+    "kind": "method",
+    "name": "render",
+    "memberof": "src/components/Header.js~Header",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/components/Header.js~Header#render",
+    "access": null,
+    "description": "Renders component.",
+    "lineNumber": 79,
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "string"
+      ],
+      "spread": false,
+      "description": "JSX string."
+    }
+  },
+  {
+    "__docId__": 52,
+    "kind": "file",
+    "name": "src/components/SectionComponent.js",
+    "content": "import React, {Component} from 'react'\nimport isElementOnView from '../Utils'\nimport '../Section.css'\n\n/**\n * Class representing page section component.\n * @extends Component\n * @class\n */\nclass SectionComponent extends Component {\n  /** Creates SectionComponent */\n  constructor() {\n    super();\n    this.state = { };\n    this.timeoutVisible = 0;\n  }\n\n  /**\n   * Adds event handlers after component creation.\n   * @this {SectionComponent}\n   */\n  componentDidMount() {\n    /** @type {SectionComponent} */ var self = this;\n    /** @type {number} */ var previousPageYOffset = window.pageYOffset;\n    /** @type {number} */var timeout;\n    window.addEventListener('scroll', function(evt) {\n      clearTimeout(timeout);\n      previousPageYOffset = window.pageYOffset;\n      timeout = setTimeout(function() {\n        if (window.pageYOffset === previousPageYOffset) {\n          if (isElementOnView(self.container)) {\n            self.setState({'visible': true});\n          } else {\n            self.setState({'visible': false});\n          }\n        } else {\n          previousPageYOffset = window.pageYOffset;\n        }\n      }, 1e2);\n    });\n  }\n\n  /** Handles components properties and state update. */\n  componentDidUpdate(prevProps, prevState) {\n    /** @type {SectionComponent} */ var self = this;\n    if (prevState.visible !== this.state.visible && this.state.visible) {\n      clearTimeout(self.timeoutVisible);\n      self.timeoutVisible = setTimeout(function() {\n        window['ga']('send', 'pageview', self.props.id);\n      },3e3);\n    } else {\n      clearTimeout(self.timeoutVisible);\n    }\n  };\n\n  /**\n   * Renders section component content.\n   * @return {string} JSX string.\n   */\n  renderContent() {\n    return (<div>Section content</div>);\n  };\n\n  /**\n   * Renders Section component.\n   * @return {string} JSX string.\n   */\n  render() {\n    return (<section ref={(section) => { this.container = section; }}\n        className={(this.state.visible ? 'visible ' : '') + 'app-section'} id={this.props.id}>\n    {this.renderContent()}\n    </section>)\n  }\n}\n\nexport default SectionComponent",
+    "static": true,
+    "longname": "src/components/SectionComponent.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 53,
+    "kind": "class",
+    "name": "SectionComponent",
+    "memberof": "src/components/SectionComponent.js",
+    "static": true,
+    "longname": "src/components/SectionComponent.js~SectionComponent",
+    "access": null,
+    "export": true,
+    "importPath": "personal_web/src/components/SectionComponent.js",
+    "importStyle": "SectionComponent",
+    "description": "Class representing page section component.",
+    "lineNumber": 10,
+    "unknown": [
+      {
+        "tagName": "@class",
+        "tagValue": ""
+      }
+    ],
+    "interface": false,
+    "extends": [
+      "*"
+    ]
+  },
+  {
+    "__docId__": 54,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "src/components/SectionComponent.js~SectionComponent",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/components/SectionComponent.js~SectionComponent#constructor",
+    "access": null,
+    "description": "Creates SectionComponent",
+    "lineNumber": 12,
+    "params": []
+  },
+  {
+    "__docId__": 55,
+    "kind": "member",
+    "name": "state",
+    "memberof": "src/components/SectionComponent.js~SectionComponent",
+    "static": false,
+    "longname": "src/components/SectionComponent.js~SectionComponent#state",
+    "access": null,
+    "description": null,
+    "lineNumber": 14,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "{}"
+      ]
+    }
+  },
+  {
+    "__docId__": 56,
+    "kind": "member",
+    "name": "timeoutVisible",
+    "memberof": "src/components/SectionComponent.js~SectionComponent",
+    "static": false,
+    "longname": "src/components/SectionComponent.js~SectionComponent#timeoutVisible",
+    "access": null,
+    "description": null,
+    "lineNumber": 15,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "number"
+      ]
+    }
+  },
+  {
+    "__docId__": 57,
+    "kind": "method",
+    "name": "componentDidMount",
+    "memberof": "src/components/SectionComponent.js~SectionComponent",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/components/SectionComponent.js~SectionComponent#componentDidMount",
+    "access": null,
+    "description": "Adds event handlers after component creation.",
+    "lineNumber": 22,
+    "unknown": [
+      {
+        "tagName": "@this",
+        "tagValue": "{SectionComponent}"
+      }
+    ],
+    "params": []
+  },
+  {
+    "__docId__": 58,
+    "kind": "method",
+    "name": "componentDidUpdate",
+    "memberof": "src/components/SectionComponent.js~SectionComponent",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/components/SectionComponent.js~SectionComponent#componentDidUpdate",
+    "access": null,
+    "description": "Handles components properties and state update.",
+    "lineNumber": 44,
+    "params": [
+      {
+        "name": "prevProps",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "prevState",
+        "types": [
+          "*"
+        ]
+      }
+    ]
+  },
+  {
+    "__docId__": 59,
+    "kind": "method",
+    "name": "renderContent",
+    "memberof": "src/components/SectionComponent.js~SectionComponent",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/components/SectionComponent.js~SectionComponent#renderContent",
+    "access": null,
+    "description": "Renders section component content.",
+    "lineNumber": 60,
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "string"
+      ],
+      "spread": false,
+      "description": "JSX string."
+    }
+  },
+  {
+    "__docId__": 60,
+    "kind": "method",
+    "name": "render",
+    "memberof": "src/components/SectionComponent.js~SectionComponent",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/components/SectionComponent.js~SectionComponent#render",
+    "access": null,
+    "description": "Renders Section component.",
+    "lineNumber": 68,
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "string"
+      ],
+      "spread": false,
+      "description": "JSX string."
+    }
+  },
+  {
+    "__docId__": 61,
+    "kind": "member",
+    "name": "container",
+    "memberof": "src/components/SectionComponent.js~SectionComponent",
+    "static": false,
+    "longname": "src/components/SectionComponent.js~SectionComponent#container",
+    "access": null,
+    "description": null,
+    "lineNumber": 69,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 62,
+    "kind": "file",
+    "name": "src/constants/ContactsConstants.js",
+    "content": "export default {\n  SAVE_ERROR: 'save-error',\n  SAVED: 'saved',\n  SOCIAL_CLICK: 'social-click',\n  SEND_MESSAGE: 'send-message',\n  SUBMIT_ERROR: 'Message was not sent. Please use other option to contact.',\n  SUBMIT_SUCCESS: 'Message successfully sent.',\n  CONTACT_MESSAGE: 'I’m open for new collaboration. ' +\n  'Communicate me on contact form, mail or using social networks',\n  CONTACT_EMAIL: 'viktor.kukurba@gmail.com'\n}",
+    "static": true,
+    "longname": "src/constants/ContactsConstants.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 63,
+    "kind": "file",
+    "name": "src/constants/FiguresConstants.js",
+    "content": "export default {\n  CHANGE_SHAPE_POSITION: 'shape-position-change',\n  ROTATE_RANDOM_SHAPE: 'rotate-random-shape',\n  ROTATE_ALL_SHAPES: 'rotate-all-shapes'\n}",
+    "static": true,
+    "longname": "src/constants/FiguresConstants.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 64,
+    "kind": "file",
+    "name": "src/constants/HeaderConstants.js",
+    "content": "export default {\n  SHAPE_CHANGE: 'SHAPE_CHANGE'\n}",
+    "static": true,
+    "longname": "src/constants/HeaderConstants.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 65,
+    "kind": "file",
+    "name": "src/dispatcher/ContactsDispatcher.js",
+    "content": "import {Dispatcher} from 'flux'\n\nvar ContactsDispatcher = new Dispatcher();\n\nexport default ContactsDispatcher;",
+    "static": true,
+    "longname": "src/dispatcher/ContactsDispatcher.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 66,
+    "kind": "file",
+    "name": "src/dispatcher/FiguresDispatcher.js",
+    "content": "import {Dispatcher} from 'flux'\n\nexport default new Dispatcher();",
+    "static": true,
+    "longname": "src/dispatcher/FiguresDispatcher.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 67,
+    "kind": "file",
+    "name": "src/dispatcher/HeaderDispatcher.js",
+    "content": "import {Dispatcher} from 'flux'\n\nvar HeaderDispatcher = new Dispatcher();\n\nexport default HeaderDispatcher;",
+    "static": true,
+    "longname": "src/dispatcher/HeaderDispatcher.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 68,
+    "kind": "file",
+    "name": "src/index.js",
+    "content": "import React from 'react';\nimport ReactDOM from 'react-dom';\nimport App from './components/App';\nimport './index.css';\n\nReactDOM.render(\n  <App />,\n  document.getElementById('root')\n);\n",
+    "static": true,
+    "longname": "src/index.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 69,
+    "kind": "file",
+    "name": "src/stores/ContactsStore.js",
+    "content": "import EventEmitter from 'events'\nimport ContactsConstants from '../constants/ContactsConstants'\nimport ContactsDispatcher from '../dispatcher/ContactsDispatcher'\n\n\nclass ContactsStore extends EventEmitter {\n  /** Creates contacts store. */\n  constructor() {\n    super();\n    this.state = {\n      social: [{\n        'name': 'upwork',\n        'icon': 'images/icons/upwork.jpeg',\n        'link': 'https://www.upwork.com/o/profiles/users/_~01ffdcc3a73ddc8d3c/'\n      }, {\n        'name': 'linkedin',\n        'icon': 'images/icons/linkedin.png',\n        'link': 'https://www.linkedin.com/in/viktor-kukurba-32496549'\n      }, {\n        'name': 'facebook',\n        'icon': 'images/icons/facebook.png',\n        'link': 'https://www.facebook.com/viktor.kukurba'\n      }, {\n        'name': 'github',\n        'icon': 'images/icons/git_hub.png',\n        'link': 'https://github.com/ViktorKukurba'\n      }, {\n        'name': 'stackoverflow',\n        'icon': 'images/icons/stackoverflow.png',\n        'link': 'http://stackoverflow.com/users/1940821/viktor-kukurba'\n      }]\n    }\n  }\n\n  /**\n   * Get social items.\n   * @return {Array<Object>}\n   */\n  getSocialNetworks() {\n    return this.state.social;\n  }\n\n  /**\n   * Handles click on social link.\n   * @param {Object} social Describes social platform.\n   * @static\n   */\n  static handleSocialClick(social) {\n    window['ga']('send', {\n      hitType: 'event',\n      eventCategory: 'Social',\n      eventAction: 'click',\n      eventLabel: social.name\n    });\n  }\n\n  /**\n   * Handles contact form submit.\n   * @param {Object} data Submit data.\n   */\n  handleFormSubmit(data) {\n    var headers = new Headers();\n    headers.append(\"Content-Type\", \"application/json\");\n    fetch('/send-email.php', {\n      method: 'POST',\n      body: JSON.stringify(data),\n      headers: headers\n    }).then((response) => {\n      if (response.ok) {\n        this.emit(ContactsConstants.SAVED);\n        window['ga']('send', {\n          hitType: 'event',\n          eventCategory: 'Contacts',\n          eventAction: 'send',\n          eventLabel: 'email'\n        });\n      } else {\n        this.emit(ContactsConstants.SAVE_ERROR);\n      }\n    });\n  }\n\n  /**\n   * Handles contacts store actions.\n   * @param {Object} payload\n   */\n  handleActions(payload) {\n    switch(payload.actionType) {\n      case ContactsConstants.SOCIAL_CLICK: {\n        ContactsStore.handleSocialClick(payload.social);\n        return true;\n      }\n\n      case ContactsConstants.SEND_MESSAGE: {\n        this.handleFormSubmit(payload.data);\n        return true;\n      }\n\n      default: return true;\n    }\n  }\n}\n\nvar contactsStore = new ContactsStore();\n\nContactsDispatcher.register(contactsStore.handleActions.bind(contactsStore));\n\nexport default contactsStore;\n",
+    "static": true,
+    "longname": "src/stores/ContactsStore.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 70,
+    "kind": "class",
+    "name": "ContactsStore",
+    "memberof": "src/stores/ContactsStore.js",
+    "static": true,
+    "longname": "src/stores/ContactsStore.js~ContactsStore",
+    "access": null,
+    "export": true,
+    "importPath": "personal_web/src/stores/ContactsStore.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 6,
+    "pseudoExport": true,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "interface": false,
+    "extends": [
+      "events~EventEmitter"
+    ]
+  },
+  {
+    "__docId__": 71,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "src/stores/ContactsStore.js~ContactsStore",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/stores/ContactsStore.js~ContactsStore#constructor",
+    "access": null,
+    "description": "Creates contacts store.",
+    "lineNumber": 8,
+    "params": []
+  },
+  {
+    "__docId__": 72,
+    "kind": "member",
+    "name": "state",
+    "memberof": "src/stores/ContactsStore.js~ContactsStore",
+    "static": false,
+    "longname": "src/stores/ContactsStore.js~ContactsStore#state",
+    "access": null,
+    "description": null,
+    "lineNumber": 10,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "{\"social\": *}"
+      ]
+    }
+  },
+  {
+    "__docId__": 73,
+    "kind": "method",
+    "name": "getSocialNetworks",
+    "memberof": "src/stores/ContactsStore.js~ContactsStore",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/stores/ContactsStore.js~ContactsStore#getSocialNetworks",
+    "access": null,
+    "description": "Get social items.",
+    "lineNumber": 39,
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Array<Object>"
+      ],
+      "spread": false,
+      "description": ""
+    }
+  },
+  {
+    "__docId__": 74,
+    "kind": "method",
+    "name": "handleSocialClick",
+    "memberof": "src/stores/ContactsStore.js~ContactsStore",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/stores/ContactsStore.js~ContactsStore.handleSocialClick",
+    "access": null,
+    "description": "Handles click on social link.",
+    "lineNumber": 48,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "social",
+        "description": "Describes social platform."
+      }
+    ]
+  },
+  {
+    "__docId__": 75,
+    "kind": "method",
+    "name": "handleFormSubmit",
+    "memberof": "src/stores/ContactsStore.js~ContactsStore",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/stores/ContactsStore.js~ContactsStore#handleFormSubmit",
+    "access": null,
+    "description": "Handles contact form submit.",
+    "lineNumber": 61,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "data",
+        "description": "Submit data."
+      }
+    ]
+  },
+  {
+    "__docId__": 76,
+    "kind": "method",
+    "name": "handleActions",
+    "memberof": "src/stores/ContactsStore.js~ContactsStore",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/stores/ContactsStore.js~ContactsStore#handleActions",
+    "access": null,
+    "description": "Handles contacts store actions.",
+    "lineNumber": 87,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "payload",
+        "description": ""
+      }
+    ],
+    "return": {
+      "types": [
+        "boolean"
+      ]
+    }
+  },
+  {
+    "__docId__": 77,
+    "kind": "variable",
+    "name": "contactsStore",
+    "memberof": "src/stores/ContactsStore.js",
+    "static": true,
+    "longname": "src/stores/ContactsStore.js~contactsStore",
+    "access": null,
+    "export": true,
+    "importPath": "personal_web/src/stores/ContactsStore.js",
+    "importStyle": "contactsStore",
+    "description": null,
+    "lineNumber": 108,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "src/stores/ContactsStore.js~ContactsStore"
+      ]
+    }
+  },
+  {
+    "__docId__": 78,
+    "kind": "file",
+    "name": "src/stores/ExperienceStore.js",
+    "content": "/**\n * Experience store.\n * @class\n */\n\nclass ExperienceStore {\n  /** Creates experience store. */\n  constructor() {\n    /** @type {Array<Object>} */\n    this.technologies = [{\n      fullName: \"Javascript\",\n      shortName: \"js\",\n      val: \"88\",\n      details: \"Jquery,YUI, Angular JS, D3, Knockout JS\"\n    }, {\n      fullName: \"HTML/CSS\",\n      shortName: \"html\",\n      val: \"85\",\n      details: \"Bootstrap, less, SASS, HTML5, CSS3\"\n    }, {\n      fullName: \"ASP.NET/C#\",\n      shortName: \"asp\",\n      val: \"70\",\n      details: \"ASP.NET MVC, LINQ, SQL\"\n    }]\n  }\n\n  /**\n   * Gets technologies.\n   * @return {Array<Object>}\n   */\n  getTechnologies() {\n    return this.technologies;\n  }\n}\n\nexport default new ExperienceStore();",
+    "static": true,
+    "longname": "src/stores/ExperienceStore.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 79,
+    "kind": "class",
+    "name": "ExperienceStore",
+    "memberof": "src/stores/ExperienceStore.js",
+    "static": true,
+    "longname": "src/stores/ExperienceStore.js~ExperienceStore",
+    "access": null,
+    "export": true,
+    "importPath": "personal_web/src/stores/ExperienceStore.js",
+    "importStyle": null,
+    "description": "Experience store.",
+    "lineNumber": 6,
+    "pseudoExport": true,
+    "unknown": [
+      {
+        "tagName": "@class",
+        "tagValue": ""
+      }
+    ],
+    "interface": false
+  },
+  {
+    "__docId__": 80,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "src/stores/ExperienceStore.js~ExperienceStore",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/stores/ExperienceStore.js~ExperienceStore#constructor",
+    "access": null,
+    "description": "Creates experience store.",
+    "lineNumber": 8,
+    "params": []
+  },
+  {
+    "__docId__": 81,
+    "kind": "member",
+    "name": "technologies",
+    "memberof": "src/stores/ExperienceStore.js~ExperienceStore",
+    "static": false,
+    "longname": "src/stores/ExperienceStore.js~ExperienceStore#technologies",
+    "access": null,
+    "description": null,
+    "lineNumber": 10,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Array<Object>"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 82,
+    "kind": "method",
+    "name": "getTechnologies",
+    "memberof": "src/stores/ExperienceStore.js~ExperienceStore",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/stores/ExperienceStore.js~ExperienceStore#getTechnologies",
+    "access": null,
+    "description": "Gets technologies.",
+    "lineNumber": 32,
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Array<Object>"
+      ],
+      "spread": false,
+      "description": ""
+    }
+  },
+  {
+    "__docId__": 83,
+    "kind": "variable",
+    "name": "experienceStore",
+    "memberof": "src/stores/ExperienceStore.js",
+    "static": true,
+    "longname": "src/stores/ExperienceStore.js~experienceStore",
+    "access": null,
+    "export": true,
+    "importPath": "personal_web/src/stores/ExperienceStore.js",
+    "importStyle": "experienceStore",
+    "description": null,
+    "lineNumber": 37,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "src/stores/ExperienceStore.js~ExperienceStore"
+      ]
+    }
+  },
+  {
+    "__docId__": 84,
+    "kind": "file",
+    "name": "src/stores/FiguresStore.js",
+    "content": "import EventsEmitter from 'events'\nimport FiguresConstants from '../constants/FiguresConstants'\nimport FiguresDispatcher from '../dispatcher/FiguresDispatcher'\n\n\nclass FiguresStore extends EventsEmitter {\n  /** Creates figures store. */\n  constructor(shapesCount = 6) {\n    super();\n    this.shapesPosition = [];\n\n    [...Array(shapesCount)].forEach(() => {\n      this.shapesPosition.push({\n        rotate: { x: 0, y: 0, z: 0, a: 0 }});\n    });\n\n    this.shapesCount = shapesCount;\n  }\n\n  /** Rotates random shape. */\n  rotateShapeRandomly(index, capacity = 1) {\n    index = index || Math.floor(Math.random() * (this.shapesCount - 1));\n    var rotation =(val = 20) => {\n      return Math.random() * val * capacity\n    };\n    this.shapesPosition[index].rotate = {\n      x: rotation(),\n      y: rotation(),\n      z: rotation(),\n      a: rotation(30)\n    };\n  }\n\n  /** Rotate all shapes. */\n  rotateAllShapes(capacity) {\n    for (var i = 0; i < this.shapesCount; i++) {\n      this.rotateShapeRandomly(i, capacity);\n    }\n  }\n\n  /**\n   * Gets shapes position.\n   * @return {Array}\n   */\n  getShapesPosition() {\n    return this.shapesPosition;\n  }\n\n  /**\n   * Handles figures actions.\n   * @param {Object} payload\n   */\n  handleActions(payload) {\n    switch (payload.actionType) {\n      case FiguresConstants.ROTATE_RANDOM_SHAPE: {\n        this.rotateShapeRandomly();\n        this.emit(FiguresConstants.CHANGE_SHAPE_POSITION);\n        return true;\n      }\n      case FiguresConstants.ROTATE_ALL_SHAPES: {\n        this.rotateAllShapes(payload.capacity);\n        this.emit(FiguresConstants.CHANGE_SHAPE_POSITION);\n        return true;\n      }\n      default: return true;\n    }\n  }\n}\n\nvar figuresStore = new FiguresStore();\n\nFiguresDispatcher.register(figuresStore.handleActions.bind(figuresStore));\n\nexport default figuresStore",
+    "static": true,
+    "longname": "src/stores/FiguresStore.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 85,
+    "kind": "class",
+    "name": "FiguresStore",
+    "memberof": "src/stores/FiguresStore.js",
+    "static": true,
+    "longname": "src/stores/FiguresStore.js~FiguresStore",
+    "access": null,
+    "export": true,
+    "importPath": "personal_web/src/stores/FiguresStore.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 6,
+    "pseudoExport": true,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "interface": false,
+    "extends": [
+      "events~EventsEmitter"
+    ]
+  },
+  {
+    "__docId__": 86,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "src/stores/FiguresStore.js~FiguresStore",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/stores/FiguresStore.js~FiguresStore#constructor",
+    "access": null,
+    "description": "Creates figures store.",
+    "lineNumber": 8,
+    "params": [
+      {
+        "name": "shapesCount",
+        "optional": true,
+        "types": [
+          "number"
+        ],
+        "defaultRaw": 6,
+        "defaultValue": "6"
+      }
+    ]
+  },
+  {
+    "__docId__": 87,
+    "kind": "member",
+    "name": "shapesPosition",
+    "memberof": "src/stores/FiguresStore.js~FiguresStore",
+    "static": false,
+    "longname": "src/stores/FiguresStore.js~FiguresStore#shapesPosition",
+    "access": null,
+    "description": null,
+    "lineNumber": 10,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*[]"
+      ]
+    }
+  },
+  {
+    "__docId__": 88,
+    "kind": "member",
+    "name": "shapesCount",
+    "memberof": "src/stores/FiguresStore.js~FiguresStore",
+    "static": false,
+    "longname": "src/stores/FiguresStore.js~FiguresStore#shapesCount",
+    "access": null,
+    "description": null,
+    "lineNumber": 17,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 89,
+    "kind": "method",
+    "name": "rotateShapeRandomly",
+    "memberof": "src/stores/FiguresStore.js~FiguresStore",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/stores/FiguresStore.js~FiguresStore#rotateShapeRandomly",
+    "access": null,
+    "description": "Rotates random shape.",
+    "lineNumber": 21,
+    "params": [
+      {
+        "name": "index",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "capacity",
+        "optional": true,
+        "types": [
+          "number"
+        ],
+        "defaultRaw": 1,
+        "defaultValue": "1"
+      }
+    ]
+  },
+  {
+    "__docId__": 90,
+    "kind": "method",
+    "name": "rotateAllShapes",
+    "memberof": "src/stores/FiguresStore.js~FiguresStore",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/stores/FiguresStore.js~FiguresStore#rotateAllShapes",
+    "access": null,
+    "description": "Rotate all shapes.",
+    "lineNumber": 35,
+    "params": [
+      {
+        "name": "capacity",
+        "types": [
+          "*"
+        ]
+      }
+    ]
+  },
+  {
+    "__docId__": 91,
+    "kind": "method",
+    "name": "getShapesPosition",
+    "memberof": "src/stores/FiguresStore.js~FiguresStore",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/stores/FiguresStore.js~FiguresStore#getShapesPosition",
+    "access": null,
+    "description": "Gets shapes position.",
+    "lineNumber": 45,
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Array"
+      ],
+      "spread": false,
+      "description": ""
+    }
+  },
+  {
+    "__docId__": 92,
+    "kind": "method",
+    "name": "handleActions",
+    "memberof": "src/stores/FiguresStore.js~FiguresStore",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/stores/FiguresStore.js~FiguresStore#handleActions",
+    "access": null,
+    "description": "Handles figures actions.",
+    "lineNumber": 53,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "payload",
+        "description": ""
+      }
+    ],
+    "return": {
+      "types": [
+        "boolean"
+      ]
+    }
+  },
+  {
+    "__docId__": 93,
+    "kind": "variable",
+    "name": "figuresStore",
+    "memberof": "src/stores/FiguresStore.js",
+    "static": true,
+    "longname": "src/stores/FiguresStore.js~figuresStore",
+    "access": null,
+    "export": true,
+    "importPath": "personal_web/src/stores/FiguresStore.js",
+    "importStyle": "figuresStore",
+    "description": null,
+    "lineNumber": 74,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "src/stores/FiguresStore.js~FiguresStore"
+      ]
+    }
+  },
+  {
+    "__docId__": 94,
+    "kind": "file",
+    "name": "src/stores/HeaderStore.js",
+    "content": "import HeaderDispatcher from '../dispatcher/HeaderDispatcher'\nimport HeaderConstants from '../constants/HeaderConstants'\nimport EventEmitter from 'events'\n\nvar CHANGE_EVENT = HeaderConstants.SHAPE_CHANGE;\n\n/**\n * HeaderStore\n * @extends EventEmitter\n * @class\n */\nclass HeaderStore extends EventEmitter {\n  /** Creates header store. */\n  constructor() {\n    super();\n    this.state = {\n      shapes: ['sphere', 'hexagon', 'triangle'],\n      links: ['about', 'experience', 'portfolio', 'contacts']\n    };\n\n    this.state.activeShape = this.state.shapes[\n        Math.floor(Math.random() * this.state.shapes.length)];\n  }\n\n  /**\n   * Gets shapes.\n   * @return {Array<string>}\n   */\n  getShapes() {\n    return this.state.shapes;\n  }\n\n  /**\n   * Gets site navigation links.\n   * @return {Array<string>}\n   */\n  getLinks() {\n    return this.state.links;\n  }\n\n  /**\n   * Gets active shape.\n   * @return {string}\n   */\n  getActiveShape() {\n    return this.state.activeShape;\n  }\n\n  /**\n   * Changes selected shape.\n   * @param {string} shape Selected shape.\n   */\n  changeShape(shape) {\n    if (this.state.shapes.indexOf(shape) > -1\n        && shape !== this.state.activeShape) {\n      this.state.activeShape = shape;\n      this.emit(CHANGE_EVENT, shape);\n      window['ga']('send', {\n        hitType: 'event',\n        eventCategory: 'ShapeSelect',\n        eventAction: 'click',\n        eventLabel: shape\n      });\n    }\n  }\n\n  /**\n   * Adds change shape listener.\n   * @param {Function} callback\n   */\n  addChangeListener(callback) {\n    this.on(CHANGE_EVENT, callback)\n  }\n\n  /**\n   * Removes change shape listener.\n   * @param {Function} callback\n   */\n  removeChangeListener(callback) {\n    this.removeListener(CHANGE_EVENT, callback)\n  }\n\n  handleActions(payload) {\n    switch (payload.actionType) {\n      case HeaderConstants.SHAPE_CHANGE: {\n        this.changeShape(payload.shape);\n        break;\n      }\n      default:\n        return true;\n    }\n    return true;\n  }\n}\n\nvar headerStore = new HeaderStore();\n\nHeaderDispatcher.register(headerStore.handleActions.bind(headerStore));\n\nexport default headerStore;",
+    "static": true,
+    "longname": "src/stores/HeaderStore.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 95,
+    "kind": "variable",
+    "name": "CHANGE_EVENT",
+    "memberof": "src/stores/HeaderStore.js",
+    "static": true,
+    "longname": "src/stores/HeaderStore.js~CHANGE_EVENT",
+    "access": null,
+    "export": false,
+    "importPath": "personal_web/src/stores/HeaderStore.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 96,
+    "kind": "class",
+    "name": "HeaderStore",
+    "memberof": "src/stores/HeaderStore.js",
+    "static": true,
+    "longname": "src/stores/HeaderStore.js~HeaderStore",
+    "access": null,
+    "export": true,
+    "importPath": "personal_web/src/stores/HeaderStore.js",
+    "importStyle": null,
+    "description": "HeaderStore",
+    "lineNumber": 12,
+    "pseudoExport": true,
+    "unknown": [
+      {
+        "tagName": "@class",
+        "tagValue": ""
+      }
+    ],
+    "interface": false,
+    "extends": [
+      "*"
+    ]
+  },
+  {
+    "__docId__": 97,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "src/stores/HeaderStore.js~HeaderStore",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/stores/HeaderStore.js~HeaderStore#constructor",
+    "access": null,
+    "description": "Creates header store.",
+    "lineNumber": 14,
+    "params": []
+  },
+  {
+    "__docId__": 98,
+    "kind": "member",
+    "name": "state",
+    "memberof": "src/stores/HeaderStore.js~HeaderStore",
+    "static": false,
+    "longname": "src/stores/HeaderStore.js~HeaderStore#state",
+    "access": null,
+    "description": null,
+    "lineNumber": 16,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "{\"shapes\": *, \"links\": *}"
+      ]
+    }
+  },
+  {
+    "__docId__": 99,
+    "kind": "method",
+    "name": "getShapes",
+    "memberof": "src/stores/HeaderStore.js~HeaderStore",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/stores/HeaderStore.js~HeaderStore#getShapes",
+    "access": null,
+    "description": "Gets shapes.",
+    "lineNumber": 29,
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Array<string>"
+      ],
+      "spread": false,
+      "description": ""
+    }
+  },
+  {
+    "__docId__": 100,
+    "kind": "method",
+    "name": "getLinks",
+    "memberof": "src/stores/HeaderStore.js~HeaderStore",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/stores/HeaderStore.js~HeaderStore#getLinks",
+    "access": null,
+    "description": "Gets site navigation links.",
+    "lineNumber": 37,
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Array<string>"
+      ],
+      "spread": false,
+      "description": ""
+    }
+  },
+  {
+    "__docId__": 101,
+    "kind": "method",
+    "name": "getActiveShape",
+    "memberof": "src/stores/HeaderStore.js~HeaderStore",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/stores/HeaderStore.js~HeaderStore#getActiveShape",
+    "access": null,
+    "description": "Gets active shape.",
+    "lineNumber": 45,
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "string"
+      ],
+      "spread": false,
+      "description": ""
+    }
+  },
+  {
+    "__docId__": 102,
+    "kind": "method",
+    "name": "changeShape",
+    "memberof": "src/stores/HeaderStore.js~HeaderStore",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/stores/HeaderStore.js~HeaderStore#changeShape",
+    "access": null,
+    "description": "Changes selected shape.",
+    "lineNumber": 53,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "shape",
+        "description": "Selected shape."
+      }
+    ]
+  },
+  {
+    "__docId__": 103,
+    "kind": "method",
+    "name": "addChangeListener",
+    "memberof": "src/stores/HeaderStore.js~HeaderStore",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/stores/HeaderStore.js~HeaderStore#addChangeListener",
+    "access": null,
+    "description": "Adds change shape listener.",
+    "lineNumber": 71,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Function"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "callback",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "__docId__": 104,
+    "kind": "method",
+    "name": "removeChangeListener",
+    "memberof": "src/stores/HeaderStore.js~HeaderStore",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/stores/HeaderStore.js~HeaderStore#removeChangeListener",
+    "access": null,
+    "description": "Removes change shape listener.",
+    "lineNumber": 79,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Function"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "callback",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "__docId__": 105,
+    "kind": "method",
+    "name": "handleActions",
+    "memberof": "src/stores/HeaderStore.js~HeaderStore",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/stores/HeaderStore.js~HeaderStore#handleActions",
+    "access": null,
+    "description": null,
+    "lineNumber": 83,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "payload",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "boolean"
+      ]
+    }
+  },
+  {
+    "__docId__": 106,
+    "kind": "variable",
+    "name": "headerStore",
+    "memberof": "src/stores/HeaderStore.js",
+    "static": true,
+    "longname": "src/stores/HeaderStore.js~headerStore",
+    "access": null,
+    "export": true,
+    "importPath": "personal_web/src/stores/HeaderStore.js",
+    "importStyle": "headerStore",
+    "description": null,
+    "lineNumber": 100,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "src/stores/HeaderStore.js~HeaderStore"
+      ]
+    }
+  },
+  {
+    "__docId__": 107,
+    "kind": "file",
+    "name": "src/stores/PortfolioStore.js",
+    "content": "/**\n * Portfolio store.\n * @class\n */\nclass PortfolioStore {\n  /** Creates portfolio store. */\n  constructor() {\n    /** @type {Array<Object>} */\n    this.projects = [{\n      name: 'vkukurba',\n      info: \"my personal webapplication\",\n      technologies: \"HTML/CSS, SASS, React JS, jQuery JS, Bootstrap 4.\",\n      images: ['images/opt_my_web_app.png', 'images/opt_my_web_app_2.png',\n        'images/opt_my_web_app_3.png'],\n      link: \"/\"\n    }, {\n      name: 'lidikart',\n      info: \"gallery site for artist studio LidikART\",\n      technologies: \"Angular JS (1.x), jQuery JS, Bootstrap 3, LESS, PHP.\",\n      images: ['images/opt_lidik_art_app.png', 'images/opt_lidik_art_app_2.png',\n        'images/opt_lidik_art_app_3.png'],\n      link: \"http://lidikart.com.ua/en\"\n    }, {\n      name: 'fredra',\n      info: \"info site for social organization fredra.61\",\n      technologies: \"Angular JS (1.x), jQuery JS, Bootstrap 3, LESS, PHP.\",\n      images: ['images/opt_fredra_61_app.png', 'images/opt_fredra_61_app_2.png',\n        'images/opt_fredra_61_app_3.png'],\n      link: \"http://fredra.org/en\"\n    }];\n  }\n\n  /**\n   * Gets portfolio projects.\n   * @return {Array<Object>}\n   */\n  getPortfolioProjects() {\n    return this.projects;\n  }\n}\n\nexport default new PortfolioStore()",
+    "static": true,
+    "longname": "src/stores/PortfolioStore.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 108,
+    "kind": "class",
+    "name": "PortfolioStore",
+    "memberof": "src/stores/PortfolioStore.js",
+    "static": true,
+    "longname": "src/stores/PortfolioStore.js~PortfolioStore",
+    "access": null,
+    "export": true,
+    "importPath": "personal_web/src/stores/PortfolioStore.js",
+    "importStyle": null,
+    "description": "Portfolio store.",
+    "lineNumber": 5,
+    "pseudoExport": true,
+    "unknown": [
+      {
+        "tagName": "@class",
+        "tagValue": ""
+      }
+    ],
+    "interface": false
+  },
+  {
+    "__docId__": 109,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "src/stores/PortfolioStore.js~PortfolioStore",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/stores/PortfolioStore.js~PortfolioStore#constructor",
+    "access": null,
+    "description": "Creates portfolio store.",
+    "lineNumber": 7,
+    "params": []
+  },
+  {
+    "__docId__": 110,
+    "kind": "member",
+    "name": "projects",
+    "memberof": "src/stores/PortfolioStore.js~PortfolioStore",
+    "static": false,
+    "longname": "src/stores/PortfolioStore.js~PortfolioStore#projects",
+    "access": null,
+    "description": null,
+    "lineNumber": 9,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Array<Object>"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 111,
+    "kind": "method",
+    "name": "getPortfolioProjects",
+    "memberof": "src/stores/PortfolioStore.js~PortfolioStore",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/stores/PortfolioStore.js~PortfolioStore#getPortfolioProjects",
+    "access": null,
+    "description": "Gets portfolio projects.",
+    "lineNumber": 37,
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Array<Object>"
+      ],
+      "spread": false,
+      "description": ""
+    }
+  },
+  {
+    "__docId__": 112,
+    "kind": "variable",
+    "name": "portfolioStore",
+    "memberof": "src/stores/PortfolioStore.js",
+    "static": true,
+    "longname": "src/stores/PortfolioStore.js~portfolioStore",
+    "access": null,
+    "export": true,
+    "importPath": "personal_web/src/stores/PortfolioStore.js",
+    "importStyle": "portfolioStore",
+    "description": null,
+    "lineNumber": 42,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "src/stores/PortfolioStore.js~PortfolioStore"
+      ]
+    }
+  },
+  {
+    "__docId__": 114,
+    "kind": "external",
+    "name": "Infinity",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Infinity",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 115,
+    "kind": "external",
+    "name": "NaN",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~NaN",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 116,
+    "kind": "external",
+    "name": "undefined",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~undefined",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 117,
+    "kind": "external",
+    "name": "null",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~null",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 118,
+    "kind": "external",
+    "name": "Object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Object",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 119,
+    "kind": "external",
+    "name": "object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~object",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 120,
+    "kind": "external",
+    "name": "Function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Function",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 121,
+    "kind": "external",
+    "name": "function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~function",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 122,
+    "kind": "external",
+    "name": "Boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Boolean",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 123,
+    "kind": "external",
+    "name": "boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~boolean",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 124,
+    "kind": "external",
+    "name": "Symbol",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Symbol",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 125,
+    "kind": "external",
+    "name": "Error",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Error",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 126,
+    "kind": "external",
+    "name": "EvalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/EvalError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~EvalError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 127,
+    "kind": "external",
+    "name": "InternalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/InternalError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~InternalError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 128,
+    "kind": "external",
+    "name": "RangeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~RangeError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 129,
+    "kind": "external",
+    "name": "ReferenceError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~ReferenceError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 130,
+    "kind": "external",
+    "name": "SyntaxError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~SyntaxError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 131,
+    "kind": "external",
+    "name": "TypeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~TypeError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 132,
+    "kind": "external",
+    "name": "URIError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/URIError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~URIError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 133,
+    "kind": "external",
+    "name": "Number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Number",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 134,
+    "kind": "external",
+    "name": "number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~number",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 135,
+    "kind": "external",
+    "name": "Date",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Date",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 136,
+    "kind": "external",
+    "name": "String",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~String",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 137,
+    "kind": "external",
+    "name": "string",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~string",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 138,
+    "kind": "external",
+    "name": "RegExp",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~RegExp",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 139,
+    "kind": "external",
+    "name": "Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 140,
+    "kind": "external",
+    "name": "Int8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int8Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Int8Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 141,
+    "kind": "external",
+    "name": "Uint8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint8Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 142,
+    "kind": "external",
+    "name": "Uint8ClampedArray",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint8ClampedArray",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 143,
+    "kind": "external",
+    "name": "Int16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int16Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Int16Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 144,
+    "kind": "external",
+    "name": "Uint16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint16Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint16Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 145,
+    "kind": "external",
+    "name": "Int32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Int32Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 146,
+    "kind": "external",
+    "name": "Uint32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint32Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 147,
+    "kind": "external",
+    "name": "Float32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Float32Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 148,
+    "kind": "external",
+    "name": "Float64Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float64Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Float64Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 149,
+    "kind": "external",
+    "name": "Map",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Map",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 150,
+    "kind": "external",
+    "name": "Set",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Set",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 151,
+    "kind": "external",
+    "name": "WeakMap",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~WeakMap",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 152,
+    "kind": "external",
+    "name": "WeakSet",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~WeakSet",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 153,
+    "kind": "external",
+    "name": "ArrayBuffer",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~ArrayBuffer",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 154,
+    "kind": "external",
+    "name": "DataView",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~DataView",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 155,
+    "kind": "external",
+    "name": "JSON",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~JSON",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 156,
+    "kind": "external",
+    "name": "Promise",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Promise",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 157,
+    "kind": "external",
+    "name": "Generator",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Generator",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 158,
+    "kind": "external",
+    "name": "GeneratorFunction",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/GeneratorFunction",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~GeneratorFunction",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 159,
+    "kind": "external",
+    "name": "Reflect",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Reflect",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 160,
+    "kind": "external",
+    "name": "Proxy",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Proxy",
+    "access": null,
+    "description": "",
+    "lineNumber": 193,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 162,
+    "kind": "external",
+    "name": "CanvasRenderingContext2D",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/WebAPIExternal.js~CanvasRenderingContext2D",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 163,
+    "kind": "external",
+    "name": "DocumentFragment",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/WebAPIExternal.js~DocumentFragment",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 164,
+    "kind": "external",
+    "name": "Element",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/Element",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/WebAPIExternal.js~Element",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 165,
+    "kind": "external",
+    "name": "Event",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/Event",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/WebAPIExternal.js~Event",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 166,
+    "kind": "external",
+    "name": "Node",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/Node",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/WebAPIExternal.js~Node",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 167,
+    "kind": "external",
+    "name": "NodeList",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/NodeList",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/WebAPIExternal.js~NodeList",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 168,
+    "kind": "external",
+    "name": "XMLHttpRequest",
+    "externalLink": "https://developer.mozilla.org/en/docs/Web/API/XMLHttpRequest",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/WebAPIExternal.js~XMLHttpRequest",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 169,
+    "kind": "external",
+    "name": "AudioContext",
+    "externalLink": "https://developer.mozilla.org/en/docs/Web/API/AudioContext",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/WebAPIExternal.js~AudioContext",
+    "access": null,
+    "description": "",
+    "lineNumber": 34,
+    "builtinExternal": true
+  }
+]

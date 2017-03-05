@@ -1,0 +1,52 @@
+.technology .bar {
+  height: 18px;
+  display: inline-block;
+  padding: 0;
+}
+
+.bar-value {
+  background: rgb(40, 222, 65);
+  height: inherit;
+  transition: width 1s;
+  width: 0;
+}
+
+.bar-label {
+  left: 0;
+  transition: left 1s;
+}
+
+.technology.item > .title {
+  text-align: right;
+  display: table-cell;
+}
+
+.technology.item > .title label {
+  padding-right: 1em;
+  vertical-align: text-bottom;
+  margin-bottom: 0;
+}
+
+.technology .bar + span {
+  vertical-align: text-bottom;
+  /*padding: 0;*/
+  line-height: initial;
+  position: absolute;
+  padding: 0 5px;
+}
+
+.technology.item {
+  padding-bottom: 2em;
+  display: table-row;
+}
+
+.technology.item .details {
+  color: white;
+}
+
+.technology .bar-wrapper {
+  width: 100%;
+  display: table-cell;
+  padding: 1em 0;
+  position: relative;
+}
