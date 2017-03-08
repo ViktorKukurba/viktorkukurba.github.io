@@ -7,5 +7,8 @@ export default {
   SUBMIT_SUCCESS: 'Message successfully sent.',
   CONTACT_MESSAGE: 'I’m open for new collaboration. ' +
   'Communicate me on contact form, mail or using social networks',
-  CONTACT_EMAIL: 'viktor.kukurba@gmail.com'
+  CONTACT_EMAIL: 'viktor.kukurba@gmail.com',
+  SEND_SUCCESS: 'send-success',
+  SEND_ERROR: 'send-error',
+  CLOSE_MESSAGE: 'close-form-message'
 }

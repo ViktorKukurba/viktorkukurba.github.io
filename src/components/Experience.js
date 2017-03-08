@@ -1,7 +1,8 @@
 import React from 'react'
 import SectionComponent from './SectionComponent'
 import Technology from './Technology'
-import ExperienceStore from '../stores/ExperienceStore'
+
+import store from '../reducers/index'
 
 class Experience extends SectionComponent {
   /** Creates experience section. */
@@ -9,7 +10,7 @@ class Experience extends SectionComponent {
     super();
     this.state = {
       /** @type {Array<Object>} */
-      technologies: ExperienceStore.getTechnologies()
+      technologies: store.getState().experience.technologies
     };
 
     this.TEXT = {

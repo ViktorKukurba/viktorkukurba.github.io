@@ -1,4 +1,3 @@
-import ContactsDispatcher from '../dispatcher/ContactsDispatcher'
 import ContactsConstants from '../constants/ContactsConstants'
 
 var ContactsActions = {
@@ -7,21 +6,32 @@ var ContactsActions = {
    * @param {Object} social
    */
   socialClick(social) {
-    ContactsDispatcher.dispatch({
-      actionType: ContactsConstants.SOCIAL_CLICK,
+    return {
+      type: ContactsConstants.SOCIAL_CLICK,
       social
-    });
+    }
   },
 
   /**
-   * Fires send message event.
-   * @param {Object} data
+   * Send contact form action.
+   * @return {Object}
    */
-  sendMessage(data) {
-    ContactsDispatcher.dispatch({
-      actionType: ContactsConstants.SEND_MESSAGE,
-      data
-    });
+  sendMessage() {
+    return {
+      type: ContactsConstants.SEND_MESSAGE
+    }
+  },
+
+  sendSuccess() {
+    return {
+      type: ContactsConstants.SEND_SUCCESS
+    }
+  },
+
+  sendError() {
+    return {
+      type: ContactsConstants.SEND_ERROR
+    }
   }
 };
 

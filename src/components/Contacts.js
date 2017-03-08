@@ -1,9 +1,10 @@
 import React from 'react'
 import 'whatwg-fetch'
 import SectionComponent from './SectionComponent'
-import ContactsStore from '../stores/ContactsStore'
 import ContactsConstants from '../constants/ContactsConstants'
 import ContactsActions from '../actions/ContactsActions'
+import store from '../reducers/index'
+
 import '../Contacts.css'
 
 /**
@@ -15,52 +16,44 @@ class Contacts extends SectionComponent {
   /** Creates Contacts section. */
   constructor() {
     super();
+    var state = store.getState().contacts;
     this.state = {
-      social: ContactsStore.getSocialNetworks(),
+      social: state.social,
+      alert: state.form.alert,
+      sending: state.form.sending,
       sendData: {
         name: '',
         email: '',
         subject: '',
         message: ''
-      },
-      alert: {
-        show: false,
-        success: true
       }
-    };
-
-    this.submitErrorHandle = () => {
-      this.setState({
-        alert: {
-          show: true,
-          success: false,
-          message: ContactsConstants.SUBMIT_ERROR
-        }
-      });
-    };
-
-    this.submitSuccessHandler = () => {
-      this.contactForm.reset();
-      setTimeout(() => {
-        this.setState({
-          alert: {
-            show: false
-          }
-        });
-      }, 3e3);
     };
   }
 
   /** Binds handlers on contacts store events. */
   componentWillMount() {
-    ContactsStore.on(ContactsConstants.SAVED, this.submitSuccessHandler);
-    ContactsStore.on(ContactsConstants.SAVE_ERROR, this.submitErrorHandle);
+    this.unsubscribeStore = store.subscribe(() => {
+      this.setState(store.getState().contacts.form);
+    });
   }
 
   /** Unbinds handlers on contacts store events. */
   componentWillUnMount() {
-    ContactsStore.removeListener(ContactsConstants.SAVED, this.submitSuccessHandler);
-    ContactsStore.removeListener(ContactsConstants.SAVE_ERROR, this.submitErrorHandle);
+    this.unsubscribeStore();
+  }
+
+  /**
+   * Handles click on social link.
+   * @param {Object} social Describes social platform.
+   * @static
+   */
+  static handleSocialClick(social) {
+    window['ga']('send', {
+      hitType: 'event',
+      eventCategory: 'Social',
+      eventAction: 'click',
+      eventLabel: social.name
+    });
   }
 
   /**
@@ -72,7 +65,7 @@ class Contacts extends SectionComponent {
         <div className="social-networks">
         {this.state.social.map((soc, i) => {
           return (<a target="_blank" key={i}
-                  onClick={ContactsActions.socialClick.bind(null, soc)}
+                  onClick={() => Contacts.handleSocialClick(soc)}
                   style={{backgroundImage: 'url(' + soc.icon + ')'}}
                   href={soc.link}></a>)
         })}
@@ -86,7 +79,33 @@ class Contacts extends SectionComponent {
    */
   handleSubmit(event) {
     event.preventDefault();
-    ContactsActions.sendMessage(this.state.sendData);
+    store.dispatch((dispatch) => {
+      var headers = new Headers();
+      headers.append("Content-Type", "application/json");
+      store.dispatch(ContactsActions.sendMessage());
+      fetch('/send-email.php', {
+        method: 'POST',
+        body: JSON.stringify(this.state.sendData),
+        headers: headers
+      }).then((response) => {
+        if (response.ok) {
+          dispatch(ContactsActions.sendSuccess());
+          setTimeout(() => {
+            dispatch({
+              type: ContactsConstants.CLOSE_MESSAGE
+            });
+          }, 3e3);
+          window['ga']('send', {
+            hitType: 'event',
+            eventCategory: 'Contacts',
+            eventAction: 'send',
+            eventLabel: 'email'
+          });
+        } else {
+          dispatch(ContactsActions.sendError());
+        }
+      });
+    });
   }
 
   /**
@@ -97,20 +116,6 @@ class Contacts extends SectionComponent {
     /** @type {Object} */ var data = this.state.sendData;
     data[event.target.name] = event.target.value;
     this.setState(data);
-  }
-
-
-  /**
-   * Handles alert hide.
-   * @param {Event} event Click event.
-   */
-  hideAlert(event) {
-    event.preventDefault();
-    this.setState({
-      alert: {
-        show: false
-      }
-    });
   }
 
   /**
@@ -147,17 +152,20 @@ class Contacts extends SectionComponent {
                       onChange={this.handleChange.bind(this)} className="form-control form-control-sm" placeholder="Message"></textarea>
                 </div>
                 <div className="form-group">
-                  <button className="form-control form-control-sm" type="submit">Send</button>
+                  <button className="form-control form-control-sm" type="submit">{this.state.sending ? 'Sending' : 'Send'}</button>
                 </div>
                 <div className="clear-fix"></div>
-
-                <div className={"alert alert-dismissible" + (this.state.alert.show ? "" : " hidden-xs-up") +
-                (this.state.alert.success ? " alert-success" : " alert-danger")} role="alert">
-                  <button type="button" className="close" onClick={this.hideAlert.bind(this)} aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                  <strong>{this.state.alert.success ? "Success" : "Error"}!</strong> {this.state.alert.message}
-                </div>
+                  <div className={(this.state.alert.show ? "" : " hidden ") + "alert-wrapper"}>
+                    <div className={"alert alert-dismissible" +
+                    (this.state.alert.success ? " alert-success" : " alert-danger")} role="alert">
+                      <button type="button" className="close" onClick={()=>{store.dispatch({
+                        type: ContactsConstants.CLOSE_MESSAGE
+                      })}} aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                      <strong>{this.state.alert.success ? "Success" : "Error"}!</strong> {this.state.alert.message}
+                    </div>
+                  </div>
               </form>
             </div>
             <div className="clear-fix"></div>

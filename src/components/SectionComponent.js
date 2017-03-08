@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 import isElementOnView from '../Utils'
+import store from '../reducers/index'
+import SectionActions from '../actions/SectionActions'
 import '../Section.css'
 
 /**
@@ -20,18 +22,24 @@ class SectionComponent extends Component {
    * @this {SectionComponent}
    */
   componentDidMount() {
-    /** @type {SectionComponent} */ var self = this;
     /** @type {number} */ var previousPageYOffset = window.pageYOffset;
     /** @type {number} */var timeout;
-    window.addEventListener('scroll', function(evt) {
+
+    store.subscribe(() => {
+      this.setState({
+        'visible': store.getState().sections.active.indexOf(this.props.id) !== -1
+      });
+    });
+
+    window.addEventListener('scroll', () => {
       clearTimeout(timeout);
       previousPageYOffset = window.pageYOffset;
-      timeout = setTimeout(function() {
+      timeout = setTimeout(() => {
         if (window.pageYOffset === previousPageYOffset) {
-          if (isElementOnView(self.container)) {
-            self.setState({'visible': true});
+          if (isElementOnView(this.container)) {
+            store.dispatch(SectionActions.visibleSection(this.props.id));
           } else {
-            self.setState({'visible': false});
+            store.dispatch(SectionActions.hiddenSection(this.props.id));
           }
         } else {
           previousPageYOffset = window.pageYOffset;
@@ -42,14 +50,13 @@ class SectionComponent extends Component {
 
   /** Handles components properties and state update. */
   componentDidUpdate(prevProps, prevState) {
-    /** @type {SectionComponent} */ var self = this;
     if (prevState.visible !== this.state.visible && this.state.visible) {
-      clearTimeout(self.timeoutVisible);
-      self.timeoutVisible = setTimeout(function() {
-        window['ga']('send', 'pageview', self.props.id);
+      clearTimeout(this.timeoutVisible);
+      this.timeoutVisible = setTimeout(() => {
+        window['ga']('send', 'pageview', this.props.id);
       },3e3);
     } else {
-      clearTimeout(self.timeoutVisible);
+      clearTimeout(this.timeoutVisible);
     }
   };
 

@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import SectionComponent from './SectionComponent'
-import PortfolioStore from '../stores/PortfolioStore'
+import store from '../reducers/index'
 import '../Portfolio.css'
 
 
@@ -14,7 +14,7 @@ class Portfolio extends SectionComponent {
   constructor() {
     super();
     this.state = {
-      projects: PortfolioStore.getPortfolioProjects()
+      projects: store.getState().portfolio.projects
     };
   }
 
@@ -68,7 +68,7 @@ class PortfolioProject extends Component {
     index: React.PropTypes.number
   };
 
-  static TEST = {
+  static WAIT_CONSTANTS = {
     WAIT_TIME: 2e3,
     SLIDE_TIME: 6e3
   };
@@ -82,13 +82,13 @@ class PortfolioProject extends Component {
       setInterval(() => {
         activeIndex = activeIndex === max ? 0 : (activeIndex + 1);
         self.setState({activeIndex: activeIndex});
-      }, PortfolioProject.TEST.SLIDE_TIME);
-    }, this.props.index * PortfolioProject.TEST.WAIT_TIME);
+      }, PortfolioProject.WAIT_CONSTANTS.SLIDE_TIME);
+    }, this.props.index * PortfolioProject.WAIT_CONSTANTS.WAIT_TIME);
   }
 
   /**
    * Gets images.
-   * @return {string} JSX string.
+   * @return {Array} JSX array.
    */
   getImages() {
     return this.props.project.images.map((value, i) => {

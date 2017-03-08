@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
 import {Link} from 'react-scroll'
-import HeaderStore from '../stores/HeaderStore'
-import HeaderActions from '../actions/HeaderActions'
+import ShapesActions from '../actions/ShapesActions'
+
+import store from '../reducers/index'
 
 
 /**
@@ -13,11 +14,12 @@ class Header extends Component {
   /** Creates header. */
   constructor() {
     super();
+    var storeData = store.getState();
     this.state = {
-      shapes: HeaderStore.getShapes(),
+      shapes: storeData.shapes.types,
       /** @type {Array<string>} */
-      links: HeaderStore.getLinks(),
-      activeShape: HeaderStore.getActiveShape()
+      links: storeData.header,
+      activeShape: storeData.shapes.active
     };
 
     function _onShapeChange(shape) {
@@ -47,11 +49,17 @@ class Header extends Component {
    * Component on mount handler.
    */
   componentWillMount() {
-    HeaderStore.addChangeListener(this.onShapeChange);
+    this.unsubscribeStore = store.subscribe(()=> {
+      let state = store.getState();
+      this.setState({activeShape: state.shapes.active});
+    });
   }
 
+  /**
+   * Component on unmount handler.
+   */
   componentWillUnMount() {
-    HeaderStore.removeChangeListener(this.onShapeChange);
+    this.unsubscribeStore();
   }
 
   /**
@@ -63,7 +71,7 @@ class Header extends Component {
     {this.state.shapes.map((shape, i) => {
           return (
               <span key={i}
-                  onClick={HeaderActions.changeShape.bind(null, shape)}
+                  onClick={() => store.dispatch(ShapesActions.changeShape(shape))}
                   className={"label-element" + (this.state.activeShape === shape ? ' active' : '') + ' ' + shape}
                   src={"/images/icons/" + shape + ".png"}></span>
           )

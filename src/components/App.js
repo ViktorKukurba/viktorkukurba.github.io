@@ -6,7 +6,7 @@ import About from './About'
 import Experience from './Experience'
 import Portfolio from './Portfolio'
 import Contacts from './Contacts'
-import Figures from './Figures'
+import Shapes from './Shapes'
 import Header from './Header'
 
 /**
@@ -21,7 +21,7 @@ class App extends Component {
     return (
         <div className="container">
           <div className="row">
-            <Figures />
+            <Shapes />
             <Header />
             <hr/>
           </div>
