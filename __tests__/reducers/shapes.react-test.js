@@ -8,7 +8,7 @@ describe('Test shapes reducer', () => {
       shape: 'box'
     });
 
-    expect(shapesState).toBeDefined();
+    verifyPositions(shapesState, 1, false);
     expect(shapesState.active).toBeDefined();
     expect(shapesState.active).toEqual('box');
 
@@ -24,14 +24,53 @@ describe('Test shapes reducer', () => {
     let shapesState = shapes(undefined, {
       type: ShapesConstants.ROTATE_RANDOM_SHAPE
     });
+    verifyPositions(shapesState, 1);
+  });
+
+  it('rotate all shapes randomly', () => {
+    let count = 3;
+    let shapesState = shapes({
+      count
+    }, {
+      type: ShapesConstants.ROTATE_ALL_SHAPES
+    });
+    verifyPositions(shapesState, count);
+  });
+
+  it('default shapes', () => {
+    let count = 2;
+    let shapesState = shapes({
+      count
+    }, {
+      type:undefined
+    });
+
+    verifyPositions(shapesState, count, false);
+
+  });
+
+  /**
+   * Verifies shapes positions.
+   * @param {Object} shapesState
+   * @param {number} count
+   * @param {boolean} random
+   */
+  function verifyPositions(shapesState, count, random = true) {
     expect(shapesState).toBeTruthy();
     expect(shapesState.positions).toBeDefined();
     expect(shapesState.positions).toBeInstanceOf(Array);
-    expect(shapesState.positions.length).toEqual(1);
-    expect(shapesState.positions[0].rotate).toBeDefined();
-    ['x', 'y', 'z', 'a'].forEach((prop) => {
-      expect(shapesState.positions[0].rotate[prop]).toBeGreaterThan(0)
-    })
+    expect(shapesState.positions.length).toEqual(count);
 
-  });
+    shapesState.positions.forEach((position) => {
+      expect(position.rotate).toBeDefined();
+      ['x', 'y', 'z', 'a'].forEach((prop) => {
+        if (random) {
+          expect(position.rotate[prop]).toBeGreaterThan(0);
+        } else {
+          expect(position.rotate[prop]).toBe(0);
+        }
+
+      })
+    });
+  }
 });

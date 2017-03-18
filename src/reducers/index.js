@@ -21,9 +21,6 @@ const initialState = {
   shapes: {
     types: ['sphere', 'hexagon', 'triangle'],
     active: 'triangle',
-    positions: [...Array(6)].map(() => {
-      return {rotate: { x: 0, y: 0, z: 0, a: 0 }};
-    }),
     count: 6
   },
   header: ['about', 'experience', 'portfolio', 'contacts'],

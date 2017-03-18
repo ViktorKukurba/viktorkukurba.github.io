@@ -1,5 +1,5 @@
 {
-  "plugins": ["transform-runtime"],
+  "plugins": ["transform-runtime", "syntax-class-properties", "transform-class-properties"],
   "presets": [
     [
       "es2015",
@@ -16,7 +16,7 @@
       ]
     },
     "test": {
-      "presets": ["es2015", "react"]
+      "presets": ["es2015", "react", "babel-preset-react", "babel-preset-stage-0"]
     }
-  }
+  },
 }

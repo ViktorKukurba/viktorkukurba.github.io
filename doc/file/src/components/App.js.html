@@ -35,6 +35,7 @@
   <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isElementOnView">isElementOnView</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">actions</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ContactsActions">ContactsActions</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-HeaderActions">HeaderActions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SectionActions">SectionActions</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/About.js~About.html">About</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/App.js~App.html">App</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/Contacts.js~Contacts.html">Contacts</a></span></span></li>
@@ -42,6 +43,13 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/Greeting.js~Greeting.html">Greeting</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/Header.js~Header.html">Header</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/SectionComponent.js~SectionComponent.html">SectionComponent</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">reducers</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-contacts">contacts</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-experience">experience</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-header">header</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-portfolio">portfolio</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sections">sections</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-shapes">shapes</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-store">store</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">stores</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stores/ContactsStore.js~ContactsStore.html">ContactsStore</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stores/ExperienceStore.js~ExperienceStore.html">ExperienceStore</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stores/FiguresStore.js~FiguresStore.html">FiguresStore</a></span></span></li>
@@ -65,7 +73,7 @@ import About from &apos;./About&apos;
 import Experience from &apos;./Experience&apos;
 import Portfolio from &apos;./Portfolio&apos;
 import Contacts from &apos;./Contacts&apos;
-import Figures from &apos;./Figures&apos;
+import Shapes from &apos;./Shapes&apos;
 import Header from &apos;./Header&apos;
 
 /**
@@ -80,7 +88,7 @@ class App extends Component {
     return (
         &lt;div className=&quot;container&quot;&gt;
           &lt;div className=&quot;row&quot;&gt;
-            &lt;Figures /&gt;
+            &lt;Shapes /&gt;
             &lt;Header /&gt;
             &lt;hr/&gt;
           &lt;/div&gt;

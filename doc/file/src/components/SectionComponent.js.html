@@ -35,6 +35,7 @@
   <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isElementOnView">isElementOnView</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">actions</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ContactsActions">ContactsActions</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-HeaderActions">HeaderActions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SectionActions">SectionActions</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/About.js~About.html">About</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/App.js~App.html">App</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/Contacts.js~Contacts.html">Contacts</a></span></span></li>
@@ -42,6 +43,13 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/Greeting.js~Greeting.html">Greeting</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/Header.js~Header.html">Header</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/SectionComponent.js~SectionComponent.html">SectionComponent</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">reducers</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-contacts">contacts</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-experience">experience</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-header">header</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-portfolio">portfolio</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sections">sections</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-shapes">shapes</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-store">store</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">stores</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stores/ContactsStore.js~ContactsStore.html">ContactsStore</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stores/ExperienceStore.js~ExperienceStore.html">ExperienceStore</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stores/FiguresStore.js~FiguresStore.html">FiguresStore</a></span></span></li>
@@ -59,6 +67,8 @@
 <div class="content" data-ice="content"><h1 data-ice="title">src/components/SectionComponent.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import React, {Component} from &apos;react&apos;
 import isElementOnView from &apos;../Utils&apos;
+import store from &apos;../reducers/index&apos;
+import SectionActions from &apos;../actions/SectionActions&apos;
 import &apos;../Section.css&apos;
 
 /**
@@ -79,18 +89,24 @@ class SectionComponent extends Component {
    * @this {SectionComponent}
    */
   componentDidMount() {
-    /** @type {SectionComponent} */ var self = this;
     /** @type {number} */ var previousPageYOffset = window.pageYOffset;
     /** @type {number} */var timeout;
-    window.addEventListener(&apos;scroll&apos;, function(evt) {
+
+    store.subscribe(() =&gt; {
+      this.setState({
+        &apos;visible&apos;: store.getState().sections.active.indexOf(this.props.id) !== -1
+      });
+    });
+
+    window.addEventListener(&apos;scroll&apos;, () =&gt; {
       clearTimeout(timeout);
       previousPageYOffset = window.pageYOffset;
-      timeout = setTimeout(function() {
+      timeout = setTimeout(() =&gt; {
         if (window.pageYOffset === previousPageYOffset) {
-          if (isElementOnView(self.container)) {
-            self.setState({&apos;visible&apos;: true});
+          if (isElementOnView(this.container)) {
+            store.dispatch(SectionActions.visibleSection(this.props.id));
           } else {
-            self.setState({&apos;visible&apos;: false});
+            store.dispatch(SectionActions.hiddenSection(this.props.id));
           }
         } else {
           previousPageYOffset = window.pageYOffset;
@@ -101,14 +117,13 @@ class SectionComponent extends Component {
 
   /** Handles components properties and state update. */
   componentDidUpdate(prevProps, prevState) {
-    /** @type {SectionComponent} */ var self = this;
     if (prevState.visible !== this.state.visible &amp;&amp; this.state.visible) {
-      clearTimeout(self.timeoutVisible);
-      self.timeoutVisible = setTimeout(function() {
-        window[&apos;ga&apos;](&apos;send&apos;, &apos;pageview&apos;, self.props.id);
+      clearTimeout(this.timeoutVisible);
+      this.timeoutVisible = setTimeout(() =&gt; {
+        window[&apos;ga&apos;](&apos;send&apos;, &apos;pageview&apos;, this.props.id);
       },3e3);
     } else {
-      clearTimeout(self.timeoutVisible);
+      clearTimeout(this.timeoutVisible);
     }
   };
 

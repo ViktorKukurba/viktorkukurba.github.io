@@ -1,7 +1,10 @@
 import ShapesConstants from '../constants/ShapesConstants'
 
 
-const shapes = (state = {positions: [{}], count: 1}, action ) => {
+const shapes = (state = {count: 1}, action ) => {
+  state.positions = state.positions || [...Array(state.count)].map(() => {
+    return {rotate: {x: 0, y: 0, z: 0, a: 0}};
+  });
   switch(action.type) {
     case ShapesConstants.SHAPE_CHANGE:
       window['ga'] && window['ga']('send', {

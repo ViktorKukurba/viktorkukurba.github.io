@@ -78,16 +78,34 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "personal_web/src/actions/sectionactions.js~sectionactions",
+    "variable/index.html#static-variable-SectionActions",
+    "<span>SectionActions</span> <span class=\"search-result-import-path\">personal_web/src/actions/SectionActions.js</span>",
+    "variable"
+  ],
+  [
     "personal_web/src/components/sectioncomponent.js~sectioncomponent",
     "class/src/components/SectionComponent.js~SectionComponent.html",
     "<span>SectionComponent</span> <span class=\"search-result-import-path\">personal_web/src/components/SectionComponent.js</span>",
     "class"
   ],
   [
+    "personal_web/src/reducers/contacts.js~contacts",
+    "function/index.html#static-function-contacts",
+    "<span>contacts</span> <span class=\"search-result-import-path\">personal_web/src/reducers/contacts.js</span>",
+    "function"
+  ],
+  [
     "personal_web/src/stores/contactsstore.js~contactsstore",
     "variable/index.html#static-variable-contactsStore",
     "<span>contactsStore</span> <span class=\"search-result-import-path\">personal_web/src/stores/ContactsStore.js</span>",
     "variable"
+  ],
+  [
+    "personal_web/src/reducers/experience.js~experience",
+    "function/index.html#static-function-experience",
+    "<span>experience</span> <span class=\"search-result-import-path\">personal_web/src/reducers/experience.js</span>",
+    "function"
   ],
   [
     "personal_web/src/stores/experiencestore.js~experiencestore",
@@ -102,6 +120,12 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "personal_web/src/reducers/header.js~header",
+    "function/index.html#static-function-header",
+    "<span>header</span> <span class=\"search-result-import-path\">personal_web/src/reducers/header.js</span>",
+    "function"
+  ],
+  [
     "personal_web/src/stores/headerstore.js~headerstore",
     "variable/index.html#static-variable-headerStore",
     "<span>headerStore</span> <span class=\"search-result-import-path\">personal_web/src/stores/HeaderStore.js</span>",
@@ -114,9 +138,33 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "personal_web/src/reducers/portfolio.js~portfolio",
+    "function/index.html#static-function-portfolio",
+    "<span>portfolio</span> <span class=\"search-result-import-path\">personal_web/src/reducers/portfolio.js</span>",
+    "function"
+  ],
+  [
     "personal_web/src/stores/portfoliostore.js~portfoliostore",
     "variable/index.html#static-variable-portfolioStore",
     "<span>portfolioStore</span> <span class=\"search-result-import-path\">personal_web/src/stores/PortfolioStore.js</span>",
+    "variable"
+  ],
+  [
+    "personal_web/src/reducers/sections.js~sections",
+    "function/index.html#static-function-sections",
+    "<span>sections</span> <span class=\"search-result-import-path\">personal_web/src/reducers/sections.js</span>",
+    "function"
+  ],
+  [
+    "personal_web/src/reducers/shapes.js~shapes",
+    "function/index.html#static-function-shapes",
+    "<span>shapes</span> <span class=\"search-result-import-path\">personal_web/src/reducers/shapes.js</span>",
+    "function"
+  ],
+  [
+    "personal_web/src/reducers/index.js~store",
+    "variable/index.html#static-variable-store",
+    "<span>store</span> <span class=\"search-result-import-path\">personal_web/src/reducers/index.js</span>",
     "variable"
   ],
   [
@@ -468,15 +516,21 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/actions/figuresactions.js",
-    "file/src/actions/FiguresActions.js.html",
-    "src/actions/FiguresActions.js",
-    "file"
-  ],
-  [
     "src/actions/headeractions.js",
     "file/src/actions/HeaderActions.js.html",
     "src/actions/HeaderActions.js",
+    "file"
+  ],
+  [
+    "src/actions/sectionactions.js",
+    "file/src/actions/SectionActions.js.html",
+    "src/actions/SectionActions.js",
+    "file"
+  ],
+  [
+    "src/actions/shapesactions.js",
+    "file/src/actions/ShapesActions.js.html",
+    "src/actions/ShapesActions.js",
     "file"
   ],
   [
@@ -552,12 +606,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/components/contacts.js~contacts#hidealert",
-    "class/src/components/Contacts.js~Contacts.html#instance-method-hideAlert",
-    "src/components/Contacts.js~Contacts#hideAlert",
-    "method"
-  ],
-  [
     "src/components/contacts.js~contacts#rendercontent",
     "class/src/components/Contacts.js~Contacts.html#instance-method-renderContent",
     "src/components/Contacts.js~Contacts#renderContent",
@@ -576,16 +624,16 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
-    "src/components/contacts.js~contacts#submiterrorhandle",
-    "class/src/components/Contacts.js~Contacts.html#instance-member-submitErrorHandle",
-    "src/components/Contacts.js~Contacts#submitErrorHandle",
+    "src/components/contacts.js~contacts#unsubscribestore",
+    "class/src/components/Contacts.js~Contacts.html#instance-member-unsubscribeStore",
+    "src/components/Contacts.js~Contacts#unsubscribeStore",
     "member"
   ],
   [
-    "src/components/contacts.js~contacts#submitsuccesshandler",
-    "class/src/components/Contacts.js~Contacts.html#instance-member-submitSuccessHandler",
-    "src/components/Contacts.js~Contacts#submitSuccessHandler",
-    "member"
+    "src/components/contacts.js~contacts.handlesocialclick",
+    "class/src/components/Contacts.js~Contacts.html#static-method-handleSocialClick",
+    "src/components/Contacts.js~Contacts.handleSocialClick",
+    "method"
   ],
   [
     "src/components/experience.js",
@@ -708,6 +756,12 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
+    "src/components/header.js~header#unsubscribestore",
+    "class/src/components/Header.js~Header.html#instance-member-unsubscribeStore",
+    "src/components/Header.js~Header#unsubscribeStore",
+    "member"
+  ],
+  [
     "src/components/sectioncomponent.js",
     "file/src/components/SectionComponent.js.html",
     "src/components/SectionComponent.js",
@@ -768,15 +822,27 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/constants/figuresconstants.js",
-    "file/src/constants/FiguresConstants.js.html",
-    "src/constants/FiguresConstants.js",
+    "src/constants/experienceconstants.js",
+    "file/src/constants/ExperienceConstants.js.html",
+    "src/constants/ExperienceConstants.js",
     "file"
   ],
   [
     "src/constants/headerconstants.js",
     "file/src/constants/HeaderConstants.js.html",
     "src/constants/HeaderConstants.js",
+    "file"
+  ],
+  [
+    "src/constants/sectionconstants.js",
+    "file/src/constants/SectionConstants.js.html",
+    "src/constants/SectionConstants.js",
+    "file"
+  ],
+  [
+    "src/constants/shapesconstants.js",
+    "file/src/constants/ShapesConstants.js.html",
+    "src/constants/ShapesConstants.js",
     "file"
   ],
   [
@@ -801,6 +867,54 @@ window.esdocSearchIndex = [
     "src/index.js",
     "file/src/index.js.html",
     "src/index.js",
+    "file"
+  ],
+  [
+    "src/reducers/contacts.js",
+    "file/src/reducers/contacts.js.html",
+    "src/reducers/contacts.js",
+    "file"
+  ],
+  [
+    "src/reducers/experience.js",
+    "file/src/reducers/experience.js.html",
+    "src/reducers/experience.js",
+    "file"
+  ],
+  [
+    "src/reducers/header.js",
+    "file/src/reducers/header.js.html",
+    "src/reducers/header.js",
+    "file"
+  ],
+  [
+    "src/reducers/index.js",
+    "file/src/reducers/index.js.html",
+    "src/reducers/index.js",
+    "file"
+  ],
+  [
+    "src/reducers/portfolio.js",
+    "file/src/reducers/portfolio.js.html",
+    "src/reducers/portfolio.js",
+    "file"
+  ],
+  [
+    "src/reducers/sections.js",
+    "file/src/reducers/sections.js.html",
+    "src/reducers/sections.js",
+    "file"
+  ],
+  [
+    "src/reducers/shapes.js",
+    "file/src/reducers/shapes.js.html",
+    "src/reducers/shapes.js",
+    "file"
+  ],
+  [
+    "src/stores/appstore.js",
+    "file/src/stores/AppStore.js.html",
+    "src/stores/AppStore.js",
     "file"
   ],
   [

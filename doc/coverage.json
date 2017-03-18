@@ -1,7 +1,7 @@
 {
-  "coverage": "67.04%",
-  "expectCount": 88,
-  "actualCount": 59,
+  "coverage": "62.5%",
+  "expectCount": 96,
+  "actualCount": 60,
   "files": {
     "src/components/About.js": {
       "expectCount": 4,
@@ -14,19 +14,18 @@
       "undocumentLines": []
     },
     "src/components/Contacts.js": {
-      "expectCount": 12,
+      "expectCount": 11,
       "actualCount": 9,
       "undocumentLines": [
-        18,
-        32,
-        42
+        20,
+        35
       ]
     },
     "src/actions/ContactsActions.js": {
       "expectCount": 1,
       "actualCount": 0,
       "undocumentLines": [
-        4
+        3
       ]
     },
     "src/stores/ContactsStore.js": {
@@ -42,9 +41,9 @@
       "expectCount": 6,
       "actualCount": 3,
       "undocumentLines": [
-        6,
-        15,
-        10
+        7,
+        16,
+        11
       ]
     },
     "src/stores/ExperienceStore.js": {
@@ -73,12 +72,12 @@
       ]
     },
     "src/components/Header.js": {
-      "expectCount": 9,
-      "actualCount": 6,
+      "expectCount": 10,
+      "actualCount": 7,
       "undocumentLines": [
-        53,
-        27,
-        16
+        29,
+        18,
+        52
       ]
     },
     "src/actions/HeaderActions.js": {
@@ -104,13 +103,41 @@
         42
       ]
     },
+    "src/actions/SectionActions.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        3
+      ]
+    },
     "src/components/SectionComponent.js": {
       "expectCount": 9,
       "actualCount": 6,
       "undocumentLines": [
-        69,
-        14,
-        15
+        76,
+        16,
+        17
+      ]
+    },
+    "src/reducers/contacts.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        3
+      ]
+    },
+    "src/reducers/experience.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        3
+      ]
+    },
+    "src/reducers/header.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        1
       ]
     },
     "src/Utils.js": {
@@ -118,6 +145,34 @@
       "actualCount": 0,
       "undocumentLines": [
         1
+      ]
+    },
+    "src/reducers/portfolio.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        1
+      ]
+    },
+    "src/reducers/sections.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        3
+      ]
+    },
+    "src/reducers/shapes.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        4
+      ]
+    },
+    "src/reducers/index.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        106
       ]
     }
   }
