@@ -49,6 +49,7 @@
 #greeting .image-content img:nth-child(2) {
   position: absolute;
   left: 0;
+  margin-left: 6px;
   width: 100%;
   height: 100%;
 }

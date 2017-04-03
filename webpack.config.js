@@ -4,8 +4,16 @@ const webpack = require('webpack');
 // env
 const buildDirectory = './dist/';
 
+var HtmlWebpackExcludeAssetsPlugin = require('html-webpack-exclude-assets-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
+  template: './public/index.html',
+  filename: 'index.html',
+  inject: 'body'
+});
+
 module.exports = {
-  entry: './src/lib/main.jsx',
+  entry: './src/index.js',
   resolve: {
     extensions: ['', '.js', '.jsx'],
   },
@@ -26,7 +34,13 @@ module.exports = {
       query: {
         presets: ['react', 'es2015', 'stage-0'],
       },
-    }],
+    }, {
+      test: /\.css$/,
+      loader:'style!css!'
+    },{
+      test: /\.jpe?g$|\.gif$|\.png$/i,
+      loader: "file-loader?emitFile=false" }
+    ],
   },
-  plugins: [],
+  plugins: [HtmlWebpackPluginConfig, new HtmlWebpackExcludeAssetsPlugin(),],
 };

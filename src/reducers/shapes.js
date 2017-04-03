@@ -49,7 +49,7 @@ function rotateShapeRandomly(index, capacity = 1, state) {
     x: rotation(),
     y: rotation(),
     z: rotation(),
-    a: rotation()
+    a: rotation(10)
   };
 
   return item;
