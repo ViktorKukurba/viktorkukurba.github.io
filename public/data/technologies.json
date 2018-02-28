@@ -1,0 +1,16 @@
+[{
+  "fullName": "Javascript",
+  "name": "js",
+  "val": "88",
+  "details": "Jquery, YUI, Angular 1.x & 2+, D3, KnockoutJS, VueJS, ReactJS"
+}, {
+  "fullName": "HTML/CSS",
+  "name": "html",
+  "val": "85",
+  "details": "Bootstrap, less, SASS, HTML5, CSS3"
+}, {
+  "fullName": "ASP.NET/C#",
+  "name": "asp",
+  "val": "70",
+  "details": "ASP.NET MVC, LINQ, SQL"
+}]

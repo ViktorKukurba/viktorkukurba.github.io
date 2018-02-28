@@ -1,0 +1,65 @@
+{
+  "name": "personal_web",
+  "homepage": "https://viktorkukurba.github.io",
+  "version": "0.0.3",
+  "private": true,
+  "devDependencies": {
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "eslint": "^4.13.0",
+    "eslint-config-react-app": "^2.0.1",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^1.1.9",
+    "google-spreadsheet": "^2.0.4",
+    "html-webpack-exclude-assets-plugin": "*",
+    "html-webpack-plugin": "^2.30.1",
+    "jest": "^21.2.1",
+    "jest-css-modules": "*",
+    "ncp": "^2.0.0",
+    "prop-types": "^15.6.0",
+    "react-addons-test-utils": "^15.6.2",
+    "react-scripts": "^1.1.1",
+    "react-scroll": "^1.7.3",
+    "upwork-api": "^1.2.4"
+  },
+  "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.2",
+    "babel-preset-react": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "flux": "^3.1.3",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.7",
+    "react-scripts": "1.1.1",
+    "redux": "^3.7.2",
+    "redux-thunk": "*",
+    "whatwg-fetch": "^2.0.1",
+    "webpack": "^3.11.0",
+    "webpack-dev-server": "^2.11.1"
+  },
+  "jest": {
+    "transform": {
+      ".*": "<rootDir>/node_modules/jest-css-modules"
+    }
+  },
+  "scripts": {
+    "start_dep": "react-scripts start",
+    "start_2": "webpack-dev-server src/index.js",
+    "start": "node server.js",
+    "start:dev": "webpack-dev-server",
+    "build": "react-scripts build",
+    "build_wp": "webpack --progress && node scripts/copy_public.js",
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "test": "jest --coverage",
+    "doc": "esdoc",
+    "postinstall": "webpack --progress && node scripts/copy_public.js"
+  },
+  "engines": {
+    "node": "9.3.0",
+    "npm": "5.6.0"
+  }
+}
