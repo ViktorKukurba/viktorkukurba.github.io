@@ -1,6 +1,8 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import SectionComponent from './SectionComponent'
 import Technology from './Technology'
+import ExperienceActions from '../actions/ExperienceActions'
 
 import store from '../reducers/index'
 
@@ -8,10 +10,10 @@ class Experience extends SectionComponent {
   /** Creates experience section. */
   constructor() {
     super();
-    this.state = {
-      /** @type {Array<Object>} */
-      technologies: store.getState().experience.technologies
-    };
+    // this.state = {
+    //   /** @type {Array<Object>} */
+    //   technologies: store.getState().experience.technologies
+    // };
 
     this.TEXT = {
       HEADER: {
@@ -23,12 +25,16 @@ class Experience extends SectionComponent {
     };
   }
 
+  componentWillMount() {
+    store.dispatch(ExperienceActions.fetchTechnologies())
+  }
+
   /**
    * Renders technologies.
    * @return {string} JSX string.
    */
   renderTechnologies() {
-    return this.state.technologies.map((info, i) => {
+    return this.props.technologies.map((info, i) => {
       return <Technology ref={'tech-' + i} key={i} info={info}/>;
     });
   }
@@ -57,4 +63,12 @@ class Experience extends SectionComponent {
   }
 }
 
-export default Experience
+const mapStateToProps = state => {
+  return {
+    technologies: state.experience.technologies
+  }
+}
+
+export default connect(
+    mapStateToProps
+)(Experience)

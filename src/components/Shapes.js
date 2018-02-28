@@ -39,9 +39,9 @@ class Shapes extends Component {
    * @property {Object!}
    * @property {string} defaultProps.shape
    */
-  static defaultProps = {
-    shape: 'triangle'
-  };
+  // static defaultProps = {
+  //   shape: 'triangle'
+  // };
 
   /**
    * Gets transform string value from shape rotation.

@@ -15,7 +15,7 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 module.exports = {
   entry: './src/index.js',
   resolve: {
-    extensions: ['', '.js', '.jsx'],
+    extensions: ['.js', '.jsx'],
   },
   output: {
     path: path.resolve(buildDirectory),
@@ -30,16 +30,32 @@ module.exports = {
     loaders: [{
       test: /\.jsx?$/,
       exclude: /(node_modules|bower_components)/,
-      loader: 'babel',
+      loader: 'babel-loader',
       query: {
-        presets: ['react', 'es2015', 'stage-0'],
+        plugins: ["transform-class-properties"],
+        presets: ["react",
+          [ "env", {
+            "targets": {
+              browsers: '> 1%'
+            }
+          }]]
       },
     }, {
       test: /\.css$/,
-      loader:'style!css!'
+      loader:'style-loader!css-loader'
     },{
-      test: /\.jpe?g$|\.gif$|\.png$/i,
-      loader: "file-loader?emitFile=false" }
+      test: /\.(png|jpg|gif)$/,
+      use: [
+        {
+          loader: 'file-loader',
+          options: {
+            name: '[hash]-vk.[ext]',
+            outputPath: 'assets/images/',
+            publicPath: 'assets/images/'
+          }
+        }
+      ]
+    }
     ],
   },
   plugins: [HtmlWebpackPluginConfig, new HtmlWebpackExcludeAssetsPlugin(),],

@@ -148,15 +148,15 @@
 }
 
 .label-block span.sphere {
-  background-image: url("../public/images/icons/sphere_g.png");
+  background-image: url("assets/images/icons/sphere_g.png");
 }
 
 .label-block span.triangle {
-  background-image: url("../public/images/icons/triangle_g.png");
+  background-image: url("assets/images/icons/triangle_g.png");
 }
 
 .label-block span.hexagon {
-  background-image: url("../public/images/icons/hexagon_g.png");
+  background-image: url("assets/images/icons/hexagon_g.png");
 }
 
 

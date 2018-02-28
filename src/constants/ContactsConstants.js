@@ -10,5 +10,6 @@ export default {
   CONTACT_EMAIL: 'viktor.kukurba@gmail.com',
   SEND_SUCCESS: 'send-success',
   SEND_ERROR: 'send-error',
-  CLOSE_MESSAGE: 'close-form-message'
+  CLOSE_MESSAGE: 'close-form-message',
+  RETRIEVE_SOCIAL: 'retrieve-social-info'
 }

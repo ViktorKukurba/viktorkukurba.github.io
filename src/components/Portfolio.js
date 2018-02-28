@@ -1,4 +1,8 @@
 import React, {Component} from 'react'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types';
+
+import PortfolioActions from '../actions/PortfolioActions'
 import SectionComponent from './SectionComponent'
 import store from '../reducers/index'
 import '../Portfolio.css'
@@ -10,12 +14,8 @@ import '../Portfolio.css'
  * @class
  */
 class Portfolio extends SectionComponent {
-  /** Creates portfolio section. */
-  constructor() {
-    super();
-    this.state = {
-      projects: store.getState().portfolio.projects
-    };
+  componentWillMount() {
+    store.dispatch(PortfolioActions.fetchProjects())
   }
 
   /**
@@ -23,7 +23,7 @@ class Portfolio extends SectionComponent {
    * @return {Array} JSX string.
    */
   renderProjects() {
-    return (this.state.projects.map((project,i) => {
+    return (this.props.projects.map((project,i) => {
         return (<PortfolioProject key={i} index={i} project={project}/>)
       }));
   }
@@ -61,11 +61,11 @@ class PortfolioProject extends Component {
   }
 
   static propTypes = {
-    project: React.PropTypes.shape({
-      images: React.PropTypes.array
+    project: PropTypes.shape({
+      images: PropTypes.array
     }),
-    name: React.PropTypes.string,
-    index: React.PropTypes.number
+    name: PropTypes.string,
+    index: PropTypes.number
   };
 
   static WAIT_CONSTANTS = {
@@ -147,4 +147,10 @@ class PortfolioProject extends Component {
   }
 }
 
-export default Portfolio
+const mapStateToProps = state => {
+  return {
+    projects: state.portfolio.projects
+  }
+}
+
+export default connect(mapStateToProps)(Portfolio)

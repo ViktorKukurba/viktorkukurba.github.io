@@ -1,4 +1,6 @@
 import React, {Component} from 'react'
+import PropTypes from 'prop-types';
+
 import isElementOnView from '../Utils'
 import ExperienceConstants from '../constants/ExperienceConstants'
 import store from '../reducers/index'
@@ -23,7 +25,7 @@ class Technology extends Component {
   }
 
   static propTypes = {
-    info: React.PropTypes.object.isRequired
+    info: PropTypes.object.isRequired
   };
 
   /** Binds scroll event listener. */

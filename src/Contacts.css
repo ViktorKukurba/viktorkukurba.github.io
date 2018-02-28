@@ -44,23 +44,23 @@
 }
 
 .social-networks a.fb-icon {
-  background-image: url("../../images/icons/facebook.png");
+  background-image: url("assets/images/icons/facebook.png");
 }
 
 .social-networks a.li-icon {
-  background-image: url("../../images/icons/linkedin.png");
+  background-image: url("assets/images/icons/linkedin.png");
 }
 
 .social-networks a.uw-icon {
-  background-image: url("../../images/icons/upwork.jpeg");
+  background-image: url("assets/images/icons/upwork.jpg");
 }
 
 .social-networks a.st-icon {
-  background-image: url("../../images/icons/stackoverflow.png");
+  background-image: url("assets/images/icons/stackoverflow.png");
 }
 
 .social-networks a.gh-icon {
-  background-image: url("../../images/icons/git_hub.png");
+  background-image: url("assets/images/icons/git_hub.png");
 }
 
 .alert-wrapper {

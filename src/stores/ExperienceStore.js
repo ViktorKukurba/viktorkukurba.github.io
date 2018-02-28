@@ -6,6 +6,7 @@
 class ExperienceStore {
   /** Creates experience store. */
   constructor() {
+    console.log('ExperienceStore')
     /** @type {Array<Object>} */
     this.technologies = [{
       fullName: "Javascript",

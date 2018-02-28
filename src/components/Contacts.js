@@ -1,5 +1,7 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import 'whatwg-fetch'
+
 import SectionComponent from './SectionComponent'
 import ContactsConstants from '../constants/ContactsConstants'
 import ContactsActions from '../actions/ContactsActions'
@@ -16,22 +18,25 @@ class Contacts extends SectionComponent {
   /** Creates Contacts section. */
   constructor() {
     super();
-    var state = store.getState().contacts;
     this.state = {
-      social: state.social,
-      alert: state.form.alert,
-      sending: state.form.sending,
+      alert: {
+        show: false,
+        success: true,
+        message: ''
+      },
+      sending: false,
       sendData: {
         name: '',
         email: '',
         subject: '',
         message: ''
       }
-    };
+    }
   }
 
   /** Binds handlers on contacts store events. */
   componentWillMount() {
+    store.dispatch(ContactsActions.fetchSocialContacts())
     this.unsubscribeStore = store.subscribe(() => {
       this.setState(store.getState().contacts.form);
     });
@@ -63,7 +68,7 @@ class Contacts extends SectionComponent {
   renderSocial() {
     return (
         <div className="social-networks">
-        {this.state.social.map((soc, i) => {
+        {this.props.contacts.social.map((soc, i) => {
           return (<a target="_blank" key={i}
                   onClick={() => Contacts.handleSocialClick(soc)}
                   style={{backgroundImage: 'url(' + soc.icon + ')'}}
@@ -79,33 +84,37 @@ class Contacts extends SectionComponent {
    */
   handleSubmit(event) {
     event.preventDefault();
-    store.dispatch((dispatch) => {
-      var headers = new Headers();
-      headers.append("Content-Type", "application/json");
-      store.dispatch(ContactsActions.sendMessage());
-      fetch('/send-email.php', {
-        method: 'POST',
-        body: JSON.stringify(this.state.sendData),
-        headers: headers
-      }).then((response) => {
-        if (response.ok) {
-          dispatch(ContactsActions.sendSuccess());
-          setTimeout(() => {
-            dispatch({
-              type: ContactsConstants.CLOSE_MESSAGE
-            });
-          }, 3e3);
-          window['ga']('send', {
-            hitType: 'event',
-            eventCategory: 'Contacts',
-            eventAction: 'send',
-            eventLabel: 'email'
-          });
-        } else {
-          dispatch(ContactsActions.sendError());
+    var headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    this.setState({sending: true})
+    fetch('/send-email.php', {
+      method: 'POST',
+      body: JSON.stringify(this.state.sendData),
+      headers: headers
+    }).then(response => {
+      if (response.ok) {
+        this.showSuccess()
+        window['ga']('send', {
+          hitType: 'event',
+          eventCategory: 'Contacts',
+          eventAction: 'send',
+          eventLabel: 'email'
+        });
+      } else {
+        if (!response.ok) {
+          throw Error(response.statusText);
         }
-      });
-    });
+      }
+    }).catch(error => {
+      this.setState({
+        alert: {
+          show: true,
+          success: false,
+          message: ContactsConstants.SUBMIT_ERROR
+        },
+        sending: false
+      })
+    })
   }
 
   /**
@@ -116,6 +125,29 @@ class Contacts extends SectionComponent {
     /** @type {Object} */ var data = this.state.sendData;
     data[event.target.name] = event.target.value;
     this.setState(data);
+  }
+
+  /**
+   * Closes send status message.
+   */
+  closeMessage() {
+    var alert = this.state.alert
+    this.setState({alert: {...alert, show: false}})
+  }
+
+  showSuccess() {
+    var alert = this.state.alert
+    this.setState({
+      alert: {
+        ...alert,
+        show: true,
+        message: ContactsConstants.SUBMIT_SUCCESS
+      }, sending: false
+    })
+
+    setTimeout(() => {
+      this.closeMessage()
+    }, 3e3);
   }
 
   /**
@@ -158,9 +190,7 @@ class Contacts extends SectionComponent {
                   <div className={(this.state.alert.show ? "" : " hidden ") + "alert-wrapper"}>
                     <div className={"alert alert-dismissible" +
                     (this.state.alert.success ? " alert-success" : " alert-danger")} role="alert">
-                      <button type="button" className="close" onClick={()=>{store.dispatch({
-                        type: ContactsConstants.CLOSE_MESSAGE
-                      })}} aria-label="Close">
+                      <button type="button" className="close" onClick={this.closeMessage.bind(this)} aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
                       <strong>{this.state.alert.success ? "Success" : "Error"}!</strong> {this.state.alert.message}
@@ -174,4 +204,12 @@ class Contacts extends SectionComponent {
   }
 }
 
-export default Contacts
+const mapStateToProps = state => {
+  return {
+    contacts: state.contacts
+  }
+}
+
+export default connect(
+    mapStateToProps
+)(Contacts)

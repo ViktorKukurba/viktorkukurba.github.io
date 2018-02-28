@@ -13,26 +13,19 @@ var ContactsActions = {
   },
 
   /**
-   * Send contact form action.
-   * @return {Object}
+   * Fetch social contacts.
+   * @return {Function} dispatch function.
    */
-  sendMessage() {
-    return {
-      type: ContactsConstants.SEND_MESSAGE
-    }
+  fetchSocialContacts() {
+    return (dispatch) => fetch('data/social.json').then(response => {
+      response.json().then(social => {
+        dispatch({
+          type: ContactsConstants.RETRIEVE_SOCIAL,
+          social
+        })
+      })
+    })
   },
-
-  sendSuccess() {
-    return {
-      type: ContactsConstants.SEND_SUCCESS
-    }
-  },
-
-  sendError() {
-    return {
-      type: ContactsConstants.SEND_ERROR
-    }
-  }
 };
 
 export default ContactsActions;

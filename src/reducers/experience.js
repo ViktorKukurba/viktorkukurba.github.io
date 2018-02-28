@@ -11,6 +11,10 @@ const experience = (state = {technologies: []}, action) => {
         return item;
       })
     });
+
+    case ExperienceConstants.RETRIEVE_TECHNOLOGIES:
+      return {...state, technologies: action.technologies}
+
     default: return state;
   }
 };
