@@ -1,6 +1,6 @@
 #contacts .content .info {
   display: inline-block;
-  position: static;
+  position: relative;
 }
 
 #contacts .content .info a {

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import SectionComponent from './SectionComponent'
 import Technology from './Technology'
@@ -6,14 +6,10 @@ import ExperienceActions from '../actions/ExperienceActions'
 
 import store from '../reducers/index'
 
-class Experience extends SectionComponent {
+class Experience extends Component {
   /** Creates experience section. */
   constructor() {
     super();
-    // this.state = {
-    //   /** @type {Array<Object>} */
-    //   technologies: store.getState().experience.technologies
-    // };
 
     this.TEXT = {
       HEADER: {
@@ -43,32 +39,28 @@ class Experience extends SectionComponent {
    * @overrides
    * @inheritDoc
    */
-  renderContent() {
+  render() {
     return (
-        <div className="experience component">
-          <header>
-            <h4>{this.TEXT.HEADER.MAIN}</h4>
-            <h5>{this.TEXT.HEADER.SUB}</h5>
-          </header>
+        <SectionComponent id="experience">
+          <div className="experience component">
+            <header>
+              <h4>{this.TEXT.HEADER.MAIN}</h4>
+              <h5>{this.TEXT.HEADER.SUB}</h5>
+            </header>
 
-          <div className="technologies dimmed">
-          {this.renderTechnologies()}
+            <div className="technologies dimmed">
+            {this.renderTechnologies()}
+            </div>
+            <footer>
+              <h5>{this.TEXT.FOOTER}</h5>
+            </footer>
+            <div className="clear-fix"></div>
           </div>
-          <footer>
-            <h5>{this.TEXT.FOOTER}</h5>
-          </footer>
-          <div className="clear-fix"></div>
-        </div>
+        </SectionComponent>
     )
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    technologies: state.experience.technologies
-  }
-}
-
-export default connect(
-    mapStateToProps
-)(Experience)
+export default connect(state => ({
+  technologies: state.experience.technologies
+}))(Experience)

@@ -11,6 +11,7 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   filename: 'index.html',
   inject: 'body'
 });
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
@@ -26,8 +27,13 @@ module.exports = {
     'react/lib/ExecutionEnvironment': true,
     'react/lib/ReactContext': true,
   },
+  devtool: 'inline-source-map',
+  devServer: {
+    contentBase: './dist',
+    hot: true
+  },
   module: {
-    loaders: [{
+    rules: [{
       test: /\.jsx?$/,
       exclude: /(node_modules|bower_components)/,
       loader: 'babel-loader',
@@ -43,6 +49,9 @@ module.exports = {
     }, {
       test: /\.css$/,
       loader:'style-loader!css-loader'
+    }, {
+      test: /\.sass$/,
+      loader: 'style-loader!css-loader!sass-loader'
     },{
       test: /\.(png|jpg|gif)$/,
       use: [
@@ -55,8 +64,7 @@ module.exports = {
           }
         }
       ]
-    }
-    ],
+    }],
   },
-  plugins: [HtmlWebpackPluginConfig, new HtmlWebpackExcludeAssetsPlugin(),],
+  plugins: [HtmlWebpackPluginConfig, new HtmlWebpackExcludeAssetsPlugin(), new CleanWebpackPlugin()],
 };

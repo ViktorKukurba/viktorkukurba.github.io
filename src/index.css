@@ -24,6 +24,8 @@ hr {
   border: rgb(51, 59, 80) solid 1px;
   clear: both;
   box-shadow: 0 0 10px rgba(51, 59, 80,0.5);
+  width: 100%;
+  margin: .5rem 0;
 }
 
 h3 {
@@ -112,6 +114,7 @@ h3 {
   padding: .1em;
   text-align: center;
   color: white;
+  width: 100%;
 }
 
 .container > .row > footer p {

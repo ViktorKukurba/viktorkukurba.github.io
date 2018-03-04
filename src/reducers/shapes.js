@@ -13,25 +13,25 @@ const shapes = (state = {count: 1}, action ) => {
         eventAction: 'click',
         eventLabel: action.shape
       });
-      return Object.assign({}, state, {
-        active: action.shape
-      });
+      return {...state, active: action.shape};
 
     case ShapesConstants.ROTATE_RANDOM_SHAPE:
       let payload = action.payload || {};
       let index = payload.index ||
           Math.floor(Math.random() * state.count);
 
-      return Object.assign({}, state, {
+      return {
+        ...state,
         positions: [...state.positions.slice(0, index),
           rotateShapeRandomly(index, payload.capacity, state),
           ...state.positions.slice(index + 1, state.positions.length)]
-      });
+      };
 
     case ShapesConstants.ROTATE_ALL_SHAPES:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         positions: rotateAllShapes(action.capacity, state)
-      });
+      };
 
     default: return state;
   }
@@ -39,7 +39,7 @@ const shapes = (state = {count: 1}, action ) => {
 
 /** Rotates random shape. */
 function rotateShapeRandomly(index, capacity = 1, state) {
-  var rotation =(val = 20) => {
+  var rotation = (val = 20) => {
     return Math.random() * val * capacity
   };
 

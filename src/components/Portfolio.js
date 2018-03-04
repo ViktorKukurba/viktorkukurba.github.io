@@ -2,18 +2,39 @@ import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types';
 
+import OwlCarousel from 'react-owl-carousel';
+
 import PortfolioActions from '../actions/PortfolioActions'
 import SectionComponent from './SectionComponent'
 import store from '../reducers/index'
-import '../Portfolio.css'
+import '../Portfolio.sass'
+import 'owl.carousel/dist/assets/owl.carousel.min.css'
 
+const CAROUSEL_OPTIONS = {
+  responsive: {
+    0: {
+      items: 1
+    },
+    600: {
+      items: 2
+    },
+    1000: {
+      items: 3
+    }
+  },
+  navText: ['<i class="left"/>', '<i class="right"/>'],
+  margin: 9,
+  nav: true,
+  loop: true,
+  autoplay: true
+}
 
 /**
  * Portfolio section component.
  * @extends {SectionComponent}
  * @class
  */
-class Portfolio extends SectionComponent {
+class Portfolio extends Component {
   componentWillMount() {
     store.dispatch(PortfolioActions.fetchProjects())
   }
@@ -23,7 +44,7 @@ class Portfolio extends SectionComponent {
    * @return {Array} JSX string.
    */
   renderProjects() {
-    return (this.props.projects.map((project,i) => {
+    return this.props.projects.length && (this.props.projects.map((project,i) => {
         return (<PortfolioProject key={i} index={i} project={project}/>)
       }));
   }
@@ -32,17 +53,18 @@ class Portfolio extends SectionComponent {
    * Renders portfolio projects content.
    * @return {string} JSX string.
    */
-  renderContent() {
-    return (<div className="portfolio component">
-          <header>
-            <h4>PORTFOLIO. MY LATEST WORK</h4>
-          </header>
-          <div className="projects dimmed">
-          {this.renderProjects()}
-          </div>
-          <div className="clear-fix"></div>
+  render() {
+    return (<SectionComponent id="portfolio">
+      <div className="portfolio component">
+        <header><h4>PORTFOLIO. MY LATEST WORKS</h4></header>
+        <div className="projects dimmed">
+          <OwlCarousel {...CAROUSEL_OPTIONS} className="owl-theme">
+            {this.renderProjects()}
+          </OwlCarousel>
         </div>
-    )
+        <div className="clear-fix"></div>
+      </div>
+    </SectionComponent>)
   }
 }
 
@@ -128,8 +150,9 @@ class PortfolioProject extends Component {
    */
   render() {
     let project = this.props.project;
+    // console.log('project', project)
     return (
-        <div className="project col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12">
+        <div className="project">
           <a href={project.link} target="_blank"
               onClick={this.projectClickHandler.bind(this)} className="content">
             <div className="images-container">
@@ -147,10 +170,6 @@ class PortfolioProject extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    projects: state.portfolio.projects
-  }
-}
-
-export default connect(mapStateToProps)(Portfolio)
+export default connect(state => ({
+  projects: state.portfolio.projects
+}))(Portfolio)

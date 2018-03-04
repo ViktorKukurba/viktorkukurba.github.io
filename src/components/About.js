@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { Component } from 'react';
 import SectionComponent from './SectionComponent'
+import PropTypes from 'prop-types'
 
 /**
  * About section.
  * @extends SectionComponent
  * @class
  */
-class About extends SectionComponent {
+class About extends Component {
   /** Creates about section. */
   constructor() {
     super();
@@ -28,15 +29,19 @@ class About extends SectionComponent {
    * @override
    * @inheritDoc
    */
-  renderContent() {
-    return (
-        <div className="info content-box">
+  render() {
+    return (<SectionComponent id="about">
+      <div className="info content-box">
         {this.aboutStatements.map((statement, i) => {
-              return (<p key={i}>{statement}</p>)
-            })}
-        </div>
-    )
+          return (<p key={i}>{statement}</p>)
+        })}
+      </div>
+    </SectionComponent>)
   }
 }
+
+About.contextTypes = {
+  store: PropTypes.object
+};
 
 export default About

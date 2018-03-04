@@ -34,7 +34,7 @@ class Greeting extends Component {
               <h2>web developer</h2>
             </div>
           </div>
-          <div className="image-content hidden-xs-down">
+          <div className="image-content d-none d-sm-block">
             <img alt="I" onLoad={this.onLoad.bind(this)} className={this.state.loaded ? 'loaded' : ''} src="images/opt-foto.jpg"/>
             <img alt="I" onLoad={this.onLoad.bind(this)} className={this.state.loaded ? 'loaded' : ''} src="images/my_photo.png"/>
           </div>

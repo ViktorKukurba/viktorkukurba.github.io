@@ -1,7 +1,13 @@
-.nav {
+header .nav {
   color: rgb(40, 222, 65);
   /*float: right;*/
   /*margin: 1em 0;*/
+  padding: 0;
+}
+
+.nav button.navbar-toggler {
+  background-color: transparent;
+  border: none;
 }
 
 .nav ul {
@@ -12,7 +18,8 @@
   /*display: inline-block;*/
 }
 
-.nav li a {
+.nav .navbar-nav li a.nav-link,
+.nav .navbar-nav li a.nav-link:hover {
   color: rgb(40, 222, 65);
   cursor: pointer;
   text-decoration: none;
@@ -20,16 +27,18 @@
   font-size: large;
 }
 
-.nav li:last-child a {
+.nav li.nav-item:last-child a.nav-link {
   margin-right: 0;
+  padding-right: 0;
 }
 
 .container > .row > header {
-  margin-top: 1rem;
+  margin-top: .5rem;
+  width: 100%;
 }
 
 #nav-icon1, #nav-icon2, #nav-icon3, #nav-icon4 {
-  /*width: 60px;*/
+  width: 50px;
   height: 45px;
   position: relative;
   -webkit-transform: rotate(0deg);
@@ -128,12 +137,11 @@
 
 /*label-block*/
 
-.label-block {
+.navbar-brand.label-block {
   display: inline-block;
-  position: absolute;
+  padding-top: 0;
   height: 50px;
   width: 50px;
-  top: .75rem;
 }
 
 .label-block span {

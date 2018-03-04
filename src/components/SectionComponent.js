@@ -1,4 +1,6 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types';
 import isElementOnView from '../Utils'
 import store from '../reducers/index'
 import SectionActions from '../actions/SectionActions'
@@ -13,7 +15,6 @@ class SectionComponent extends Component {
   /** Creates SectionComponent */
   constructor() {
     super();
-    this.state = { };
     this.timeoutVisible = 0;
   }
 
@@ -24,12 +25,6 @@ class SectionComponent extends Component {
   componentDidMount() {
     /** @type {number} */ var previousPageYOffset = window.pageYOffset;
     /** @type {number} */var timeout;
-
-    store.subscribe(() => {
-      this.setState({
-        'visible': store.getState().sections.active.indexOf(this.props.id) !== -1
-      });
-    });
 
     window.addEventListener('scroll', () => {
       clearTimeout(timeout);
@@ -49,8 +44,8 @@ class SectionComponent extends Component {
   }
 
   /** Handles components properties and state update. */
-  componentDidUpdate(prevProps, prevState) {
-    if (prevState.visible !== this.state.visible && this.state.visible) {
+  componentDidUpdate(prevProps) {
+    if (prevProps.visible !== this.visible()) {
       clearTimeout(this.timeoutVisible);
       this.timeoutVisible = setTimeout(() => {
         window['ga']('send', 'pageview', this.props.id);
@@ -61,23 +56,27 @@ class SectionComponent extends Component {
   };
 
   /**
-   * Renders section component content.
-   * @return {string} JSX string.
-   */
-  renderContent() {
-    return (<div>Section content</div>);
-  };
-
-  /**
    * Renders Section component.
    * @return {string} JSX string.
    */
   render() {
     return (<section ref={(section) => { this.container = section; }}
-        className={(this.state.visible ? 'visible ' : '') + 'app-section'} id={this.props.id}>
-    {this.renderContent()}
+        className={this.visible() + ' app-section'} id={this.props.id}>
+      {this.props.children}
     </section>)
+  }
+
+  visible() {
+    return this.props.activeSections.includes(this.props.id) ? 'visible' : ''
   }
 }
 
-export default SectionComponent
+SectionComponent.contextTypes = {
+  store: PropTypes.object,
+  id: PropTypes.string,
+  activeSections: PropTypes.array
+};
+
+export default connect(state => ({
+  activeSections: state.sections.active
+}))(SectionComponent)

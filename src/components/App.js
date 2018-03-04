@@ -28,13 +28,13 @@ class App extends Component {
           <div className="row">
               <Greeting/>
             <hr/>
-              <About id="about"/>
+              <About/>
             <hr/>
-              <Experience id="experience" />
+              <Experience/>
             <hr/>
-              <Portfolio id="portfolio"/>
+              <Portfolio/>
             <hr/>
-              <Contacts id="contacts"/>
+              <Contacts/>
             <footer>
               <p>All rights received. Viktor Kukurba. 2016.</p>
             </footer>

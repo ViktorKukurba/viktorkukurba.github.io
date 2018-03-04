@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import { connect } from 'react-redux'
 import ShapesActions from '../actions/ShapesActions'
 import '../Shapes.css'
 
@@ -13,13 +14,6 @@ class Shapes extends Component {
   /** Creates Shapes component. */
   constructor() {
     super();
-    var shapesData = store.getState().shapes;
-    this.state = {
-      /** @type {Array} */
-      positions: shapesData.positions,
-      activeShape: shapesData.active
-    };
-
     this.setActiveShape = (shape) => this.setState({
       activeShape: shape
     });
@@ -39,9 +33,9 @@ class Shapes extends Component {
    * @property {Object!}
    * @property {string} defaultProps.shape
    */
-  // static defaultProps = {
-  //   shape: 'triangle'
-  // };
+  static defaultProps = {
+    shape: 'triangle'
+  };
 
   /**
    * Gets transform string value from shape rotation.
@@ -55,13 +49,6 @@ class Shapes extends Component {
 
   /** Bind stores events handlers. */
   componentWillMount() {
-    this.storeUnsubscribe = store.subscribe(() => {
-      let state = store.getState();
-      this.setState({
-        activeShape: state.shapes.active,
-        positions: state.shapes.positions
-      });
-    });
     this.intervalId = setInterval(() =>
         store.dispatch(ShapesActions.rotateRandomShape()), 1e3);
     window.addEventListener('scroll', this.rotateShapes);
@@ -69,7 +56,6 @@ class Shapes extends Component {
 
   /** Unbind stores events handlers. */
   componentWillUnMount() {
-    this.storeUnsubscribe();
     window.removeEventListener('scroll', this.rotateShapes);
     clearInterval(this.intervalId);
   }
@@ -79,7 +65,7 @@ class Shapes extends Component {
    * @return {string} JSX string.
    */
   renderShapes() {
-    return this.state.positions.map((figure, i) => {
+    return this.props.positions.map((figure, i) => {
       let transformVal = {
         "transform": Shapes.getTransformVal(figure.rotate)
       };
@@ -87,7 +73,7 @@ class Shapes extends Component {
           <div className="figure-box col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12"
               key={i}>
             <img alt="figure" style={transformVal}
-                src={'images/figures/' + this.state.activeShape + '_' + i + '.png'}/>
+                src={'images/figures/' + this.props.activeShape + '_' + i + '.png'}/>
           </div>)
     });
   }
@@ -97,9 +83,12 @@ class Shapes extends Component {
    * @return {string} JSX string.
    */
   render() {
-    return (<div className={"figures-wrapper " + this.props.shape }>
+    return (<div className={"figures-wrapper row " + this.props.shape }>
         {this.renderShapes()}</div>)
   }
 }
 
-export default Shapes
+export default connect(state => ({
+  positions: state.shapes.positions,
+  activeShape: state.shapes.active
+}))(Shapes)

@@ -6,7 +6,8 @@
         ["env", {"targets": {"browsers": "> 1%"}}]]
     },
     "test": {
-      "presets": ["env", "react", "babel-preset-react"]
+      "presets": ["react",
+        ["env", {"targets": {"browsers": "> 1%"}}]]
     }
   }
 }

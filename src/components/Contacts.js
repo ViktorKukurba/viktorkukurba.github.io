@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import 'whatwg-fetch'
 
@@ -14,7 +14,7 @@ import '../Contacts.css'
  * @extends SectionComponent
  * @class
  */
-class Contacts extends SectionComponent {
+class Contacts extends Component {
   /** Creates Contacts section. */
   constructor() {
     super();
@@ -154,10 +154,10 @@ class Contacts extends SectionComponent {
    * @override
    * @inheritDoc
    */
-  renderContent() {
-    return (
-          <div className="content row content-box">
-            <div className="contact-box">
+  render() {
+    return (<SectionComponent id="contacts">
+          <div className="content content-box">
+            <div className="row">
               <div className="info col-xl-6 col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <p>{ContactsConstants.CONTACT_MESSAGE}</p>
                 <a href={'mailto:' + ContactsConstants.CONTACT_EMAIL}>{ContactsConstants.CONTACT_EMAIL}</a>
@@ -200,7 +200,8 @@ class Contacts extends SectionComponent {
             </div>
             <div className="clear-fix"></div>
           {this.renderSocial()}
-          </div>)
+          </div>
+    </SectionComponent>)
   }
 }
 
