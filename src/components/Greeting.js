@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import '../Greeting.css'
+import optFoto from '../assets/images/opt-foto.jpg'
+import myPhoto from '../assets/images/my_photo.png'
 
 class Greeting extends Component {
   /** Creates Greeting component. */
@@ -35,8 +37,8 @@ class Greeting extends Component {
             </div>
           </div>
           <div className="image-content d-none d-sm-block">
-            <img alt="I" onLoad={this.onLoad.bind(this)} className={this.state.loaded ? 'loaded' : ''} src="images/opt-foto.jpg"/>
-            <img alt="I" onLoad={this.onLoad.bind(this)} className={this.state.loaded ? 'loaded' : ''} src="images/my_photo.png"/>
+            <img alt="I" onLoad={this.onLoad.bind(this)} className={this.state.loaded ? 'loaded' : ''} src={optFoto}/>
+            <img alt="I" onLoad={this.onLoad.bind(this)} className={this.state.loaded ? 'loaded' : ''} src={myPhoto}/>
           </div>
           <div className="clear-fix"></div>
         </section>

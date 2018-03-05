@@ -7,6 +7,11 @@
     height: 100%
     text-decoration: none
 
+  @each $project in $projects
+    @for $i from 0 through 2
+      .proj-#{$project}-#{$i}
+        content: url("#{$projects-path}/#{$project}-app-#{$i}.png")
+
   img
     max-width: 100%
     transition: margin-left .5s
@@ -61,7 +66,7 @@
       margin: 1px
       //top: calc(50% - 15px)
       color: $primary-color
-      height: calc(100% - 2px);
+      height: calc(100% - 2px)
       background: rgba($panel-color, .3)
       border-radius: 0
       box-shadow: 0 0 20px 10px rgba($panel-color, .3)

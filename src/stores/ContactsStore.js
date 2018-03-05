@@ -10,23 +10,18 @@ class ContactsStore extends EventEmitter {
     this.state = {
       social: [{
         'name': 'upwork',
-        'icon': 'images/icons/upwork.jpg',
         'link': 'https://www.upwork.com/o/profiles/users/_~01ffdcc3a73ddc8d3c/'
       }, {
         'name': 'linkedin',
-        'icon': 'images/icons/linkedin.png',
         'link': 'https://www.linkedin.com/in/viktor-kukurba-32496549'
       }, {
         'name': 'facebook',
-        'icon': 'images/icons/facebook.png',
         'link': 'https://www.facebook.com/viktor.kukurba'
       }, {
         'name': 'github',
-        'icon': 'images/icons/git_hub.png',
         'link': 'https://github.com/ViktorKukurba'
       }, {
         'name': 'stackoverflow',
-        'icon': 'images/icons/stackoverflow.png',
         'link': 'http://stackoverflow.com/users/1940821/viktor-kukurba'
       }]
     }

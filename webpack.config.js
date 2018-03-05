@@ -1,5 +1,8 @@
 const path = require('path');
 const webpack = require('webpack');
+const args = require('yargs').argv;
+
+console.log('Mode: ' + args.mode)
 
 // env
 const buildDirectory = './dist/';
@@ -27,7 +30,7 @@ module.exports = {
     'react/lib/ExecutionEnvironment': true,
     'react/lib/ReactContext': true,
   },
-  devtool: 'inline-source-map',
+  devtool: args.mode === 'production' ? undefined : 'inline-source-map',
   devServer: {
     contentBase: './dist',
     hot: true
@@ -37,21 +40,12 @@ module.exports = {
       test: /\.jsx?$/,
       exclude: /(node_modules|bower_components)/,
       loader: 'babel-loader',
-      query: {
-        plugins: ["transform-class-properties"],
-        presets: ["react",
-          [ "env", {
-            "targets": {
-              browsers: '> 1%'
-            }
-          }]]
-      },
     }, {
       test: /\.css$/,
       loader:'style-loader!css-loader'
     }, {
       test: /\.sass$/,
-      loader: 'style-loader!css-loader!sass-loader'
+      loader: 'style-loader!css-loader!sass-loader',
     },{
       test: /\.(png|jpg|gif)$/,
       use: [

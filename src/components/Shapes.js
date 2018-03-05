@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import ShapesActions from '../actions/ShapesActions'
-import '../Shapes.css'
+import '../Shapes.sass'
 
 import store from '../reducers/index'
 
@@ -70,10 +70,8 @@ class Shapes extends Component {
         "transform": Shapes.getTransformVal(figure.rotate)
       };
       return (
-          <div className="figure-box col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12"
-              key={i}>
-            <img alt="figure" style={transformVal}
-                src={'images/figures/' + this.props.activeShape + '_' + i + '.png'}/>
+          <div className="figure-box col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12" key={i}>
+            <img alt="figure" style={transformVal} className={`shape-${this.props.activeShape}-${i}`}/>
           </div>)
     });
   }

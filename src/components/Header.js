@@ -82,16 +82,13 @@ class Header extends Component {
    */
   getShapes() {
     return ( <div className="label-block navbar-brand">
-    {this.state.shapes.map((shape, i) => {
-          return (
-              <span key={i}
+      {this.state.shapes.map((shape, i) => {
+        return (
+            <span key={i}
                   onClick={() => store.dispatch(ShapesActions.changeShape(shape))}
-                  className={"label-element" + (this.state.activeShape === shape ? ' active' : '') + ' ' + shape}
-                  src={"/images/icons/" + shape + ".png"}></span>
-          )
-        })}
-    </div>
-    );
+                  className={"label-element" + (this.state.activeShape === shape ? ' active' : '') + ' ' + shape}></span>)
+      })}
+    </div>);
   }
 
   /**

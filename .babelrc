@@ -7,7 +7,18 @@
     },
     "test": {
       "presets": ["react",
-        ["env", {"targets": {"browsers": "> 1%"}}]]
+        ["env", {"targets": {"browsers": "> 1%"}}]],
+      "plugins": ["transform-class-properties", "transform-object-rest-spread"]
+    },
+    "development": {
+      "presets": ["react",
+        ["env", {"targets": {"browsers": "> 1%"}}]],
+      "plugins": ["transform-class-properties", "transform-object-rest-spread"]
+    },
+    "production": {
+      "presets": ["react",
+        ["env", {"targets": {"browsers": "> 1%"}}]],
+      "plugins": ["transform-class-properties", "transform-object-rest-spread"]
     }
   }
 }

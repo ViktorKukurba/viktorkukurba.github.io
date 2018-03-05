@@ -7,7 +7,7 @@ import ContactsConstants from '../constants/ContactsConstants'
 import ContactsActions from '../actions/ContactsActions'
 import store from '../reducers/index'
 
-import '../Contacts.css'
+import '../Contacts.sass'
 
 /**
  * Contacts section.
@@ -71,7 +71,7 @@ class Contacts extends Component {
         {this.props.contacts.social.map((soc, i) => {
           return (<a target="_blank" key={i}
                   onClick={() => Contacts.handleSocialClick(soc)}
-                  style={{backgroundImage: 'url(' + soc.icon + ')'}}
+                  className={'icon-' + soc.name}
                   href={soc.link}></a>)
         })}
         </div>

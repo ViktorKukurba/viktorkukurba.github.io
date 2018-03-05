@@ -1,0 +1,263 @@
+@import "vars"
+
+header .nav
+  color: rgb(40, 222, 65)
+  padding: 0
+
+
+.nav button.navbar-toggler 
+  background-color: transparent
+  border: none
+
+.nav ul 
+  list-style: none
+
+.nav .navbar-nav li a.nav-link,
+.nav .navbar-nav li a.nav-link:hover 
+  color: rgb(40, 222, 65)
+  cursor: pointer
+  text-decoration: none
+  margin: 0 1em
+  font-size: large
+
+
+.nav li.nav-item:last-child a.nav-link 
+  margin-right: 0
+  padding-right: 0
+
+
+.container > .row > header 
+  margin-top: .5rem
+  width: 100%
+
+#nav-icon1, #nav-icon2, #nav-icon3, #nav-icon4 
+  width: 50px
+  height: 45px
+  position: relative
+  -webkit-transform: rotate(0deg)
+  -moz-transform: rotate(0deg)
+  -o-transform: rotate(0deg)
+  transform: rotate(0deg)
+  -webkit-transition: .5s ease-in-out
+  -moz-transition: .5s ease-in-out
+  -o-transition: .5s ease-in-out
+  transition: .5s ease-in-out
+  cursor: pointer
+
+
+#nav-icon3:focus 
+  outline: none
+
+
+#nav-icon1 span, #nav-icon3 span, #nav-icon4 span 
+  display: block
+  position: absolute
+  height: 9px
+  width: 100%
+  background: rgb(40, 222, 65)
+  border-radius: 9px
+  opacity: 1
+  left: 0
+  -webkit-transform: rotate(0deg)
+  -moz-transform: rotate(0deg)
+  -o-transform: rotate(0deg)
+  transform: rotate(0deg)
+  -webkit-transition: .25s ease-in-out
+  -moz-transition: .25s ease-in-out
+  -o-transition: .25s ease-in-out
+  transition: .25s ease-in-out
+
+
+/* Icon 3 */
+
+#nav-icon3 span:nth-child(1) 
+  top: 0px
+
+
+#nav-icon3 span:nth-child(2),#nav-icon3 span:nth-child(3) 
+  top: 18px
+
+
+#nav-icon3 span:nth-child(4) 
+  top: 36px
+
+
+#nav-icon3:not(.collapsed) span:nth-child(1) 
+  top: 18px
+  width: 0%
+  left: 50%
+
+
+#nav-icon3:not(.collapsed) span:nth-child(2) 
+  -webkit-transform: rotate(45deg)
+  -moz-transform: rotate(45deg)
+  -o-transform: rotate(45deg)
+  transform: rotate(45deg)
+
+
+#nav-icon3:not(.collapsed) span:nth-child(3) 
+  -webkit-transform: rotate(-45deg)
+  -moz-transform: rotate(-45deg)
+  -o-transform: rotate(-45deg)
+  transform: rotate(-45deg)
+
+
+#nav-icon3:not(.collapsed) span:nth-child(4) 
+  top: 18px
+  width: 0%
+  left: 50%
+
+
+.arrow-up 
+  width: 0
+  height: 0
+  border-left: 5px solid transparent
+  border-right: 5px solid transparent
+  border-bottom: 5px solid black
+
+
+.shape 
+  cursor: pointer
+  margin: 0 1em
+  display: inline-block
+  opacity: .5
+  transition: 1s
+
+
+.shape.active 
+  opacity: 1
+
+
+/*label-block*/
+
+.navbar-brand.label-block 
+  display: inline-block
+  padding-top: 0
+  height: 50px
+  width: 50px
+
+
+.label-block span 
+  position: absolute
+  width: 50px
+  height: 50px
+  cursor: pointer
+  opacity: .5
+  background-size: contain
+  background-repeat: no-repeat
+  transition: 1s
+
+
+.label-block span.sphere 
+  background-image: url("assets/images/icons/sphere_g.png")
+
+
+.label-block span.triangle 
+  background-image: url("assets/images/icons/triangle_g.png")
+
+
+.label-block span.hexagon 
+  background-image: url("assets/images/icons/hexagon_g.png")
+
+
+
+.label-block span.active 
+  opacity: 1
+
+
+
+.label-block:hover 
+  width: 250px
+
+
+.label-block span:nth-child(2) 
+  width: 49px
+  height: 49px
+  left: -1px
+  top: 3.5px
+
+  transition: 1s
+  transform: rotate(30deg)
+  animation-name: moveback1
+  animation-duration: 1s
+  animation-fill-mode: forwards
+
+
+.label-block:hover span:nth-child(2) 
+  animation-name: move1
+  animation-duration: 1s
+  animation-fill-mode: forwards
+
+
+.label-block span:nth-child(3) 
+  width: 42px
+  height: 42px
+  top: 7px
+  left: 4px
+
+  transform: rotate(180deg)
+  transition: 1s
+  animation-name: moveback2
+  animation-duration: 1s
+  animation-fill-mode: forwards
+
+
+.label-block:hover span:nth-child(3) 
+  animation-name: move2
+  animation-duration: 1s
+  animation-fill-mode: forwards
+
+
+@each $shape in $shapes-list
+  .label-element .#{$shape}
+    content: url("#{$icons-path}/#{$shape}.png")
+
+
+/* The animation code */
+@keyframes move1 
+  from 
+    left: -1px
+    transform: rotate(90deg) scale(1)
+  
+  to 
+    left: 60px
+    transform: rotate(360deg) scale(1.1)
+  
+
+
+@keyframes move2 
+  from 
+    left: 9px
+    transform: rotate(180deg)
+    top: 15px
+  
+  to 
+    left: 115px
+    transform: rotate(360deg) scale(1.3)
+    top: 9px
+  
+
+
+@keyframes moveback1 
+  from 
+    left: 60px
+    transform: rotate(360deg) scale(1.1)
+  
+  to 
+    left: -1px
+    top: 3.5px
+    transform: rotate(30deg) scale(1)
+  
+
+
+@keyframes moveback2 
+  from 
+    top: 9px
+    left: 115px
+    transform: rotate(360deg) scale(1.3)
+  
+  to 
+    top: 7px
+    left: 4px
+    transform: rotate(180deg) scale(1)
+  

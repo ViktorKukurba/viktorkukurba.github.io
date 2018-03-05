@@ -116,7 +116,7 @@ class PortfolioProject extends Component {
     return this.props.project.images.map((value, i) => {
       return (
           <img key={i} data-index={this.state.activeIndex} alt="project screen"
-              className={this.getImageClass(i)} src={value}/>
+              className={this.getImageClass(i)}/>
       );
     });
   }
@@ -130,7 +130,8 @@ class PortfolioProject extends Component {
   getImageClass(imgIndex) {
     let activeIndex = this.state.activeIndex;
     let nextDiff = [1, 1 - this.props.project.images.length];
-    return (imgIndex === activeIndex ? 'active' :
+    var project = `proj-${this.props.project.name}-${imgIndex} `
+    return project + (imgIndex === activeIndex ? 'active' :
         nextDiff.indexOf(imgIndex - activeIndex) > -1 ? 'next' : '');
   }
 

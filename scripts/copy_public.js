@@ -3,8 +3,7 @@ var path = require('path');
 
 ncp.limit = 16;
 
-// const publicDist = path.resolve('public/');
-const FOLDERS_FILES_TO_COPY = ['data', 'images'];
+const FOLDERS_FILES_TO_COPY = ['data'];
 
 const errorHandler = function(source) {
   return function (err) {
