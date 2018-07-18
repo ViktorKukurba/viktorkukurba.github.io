@@ -1,3 +1,9 @@
+.technologies {
+  color: rgb(40, 222, 65);
+  display: table;
+  padding-right: 42px;
+}
+
 .technology .bar {
   height: 18px;
   display: inline-block;
@@ -30,7 +36,6 @@
 
 .technology .bar + span {
   vertical-align: text-bottom;
-  /*padding: 0;*/
   line-height: initial;
   position: absolute;
   padding: 0 5px;

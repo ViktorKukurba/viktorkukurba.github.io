@@ -14,7 +14,6 @@
 #greeting img {
   max-width: 100%;
   max-height: 450px;
-  /*float: right;*/
 }
 
 #greeting h1 {
@@ -35,10 +34,8 @@
 }
 
 #greeting .image-content {
-  /*background-image: url("../../images/opt-foto.jpg");*/
   text-align: center;
   display: inline-block;
-  /*z-index: -2;*/
   position: relative;
 }
 

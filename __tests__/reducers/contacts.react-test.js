@@ -1,62 +1,17 @@
 import contacts from '../../src/reducers/contacts'
 import ContactsConstants from '../../src/constants/ContactsConstants'
 
+const SOCIAL_MOCK = {social: ['fb', 'gh']}
+
 describe('Test contacts reducer', () => {
-  it('send message', () => {
-    expect(contacts(undefined, {
-      type: ContactsConstants.SEND_MESSAGE
-    })).toEqual({
-      form: {
-        sending: true
-      }
-    })
+  it('should return the initial state', () => {
+    expect(contacts(undefined, {})).toEqual({});
   });
 
-  it ('send success', () => {
+  it('should handle RETRIEVE_SOCIAL', () => {
     expect(contacts(undefined, {
-      type: ContactsConstants.SEND_SUCCESS
-    })).toEqual({
-      form: {
-        sending: false,
-            alert: {
-          message: ContactsConstants.SUBMIT_SUCCESS,
-              show: true
-        }
-      }
-    })
-  });
-
-  it ('send error', () => {
-    expect(contacts(undefined, {
-      type: ContactsConstants.SEND_ERROR
-    })).toEqual({
-      form: {
-        sending: false,
-        alert: {
-          message: ContactsConstants.SUBMIT_ERROR,
-          show: true
-        }
-      }
-    })
-  });
-
-  it ('close message', () => {
-    expect(contacts(undefined, {
-      type: ContactsConstants.CLOSE_MESSAGE
-    })).toEqual({
-      form: {
-        alert: {
-          show: false
-        },
-        sending: false
-      }
-    })
-  });
-
-  it ('default', () => {
-    expect(contacts(undefined, {
-      type: undefined
-    })).toEqual({});
+      type: ContactsConstants.RETRIEVE_SOCIAL,
+      ...SOCIAL_MOCK
+    })).toEqual(SOCIAL_MOCK)
   });
 });
-

@@ -1,14 +1,9 @@
 import React, {Component} from 'react'
 import {Link} from 'react-scroll'
 import ShapesActions from '../actions/ShapesActions'
-import {
-    Collapse,
-    Navbar,
-    Button,
-    Nav,
-    NavItem } from 'reactstrap';
-
+import { Collapse, Navbar, Button, Nav, NavItem } from 'reactstrap'
 import store from '../reducers/index'
+import '../Header.sass';
 
 
 /**

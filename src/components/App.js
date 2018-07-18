@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import '../App.css';
-import '../Header.sass';
 import Greeting from './Greeting'
 import About from './About'
 import Experience from './Experience'
@@ -39,8 +37,7 @@ class App extends Component {
               <p>All rights received. Viktor Kukurba. 2016.</p>
             </footer>
           </div>
-        </div>
-    );
+        </div>);
   }
 }
 

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 /**
  * About section.
- * @extends SectionComponent
+ * @extends Component
  * @class
  */
 class About extends Component {
@@ -26,7 +26,7 @@ class About extends Component {
     ]
   }
   /**
-   * @override
+   * Renders component
    * @inheritDoc
    */
   render() {

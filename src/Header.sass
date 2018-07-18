@@ -1,34 +1,35 @@
 @import "vars"
 
+.container > .row > header
+  margin-top: .5rem
+  width: 100%
+
 header .nav
   color: rgb(40, 222, 65)
   padding: 0
 
+  button.navbar-toggler
+    background-color: transparent
+    border: none
 
-.nav button.navbar-toggler 
-  background-color: transparent
-  border: none
+  ul
+    list-style: none
 
-.nav ul 
-  list-style: none
+  %link
+    color: rgb(40, 222, 65)
+    cursor: pointer
+    text-decoration: none
+    margin: 0 1em
+    font-size: large
 
-.nav .navbar-nav li a.nav-link,
-.nav .navbar-nav li a.nav-link:hover 
-  color: rgb(40, 222, 65)
-  cursor: pointer
-  text-decoration: none
-  margin: 0 1em
-  font-size: large
+  .navbar-nav li a.nav-link
+    @extend %link
+    &:hover
+      @extend %link
 
-
-.nav li.nav-item:last-child a.nav-link 
-  margin-right: 0
-  padding-right: 0
-
-
-.container > .row > header 
-  margin-top: .5rem
-  width: 100%
+  li.nav-item:last-child a.nav-link
+    margin-right: 0
+    padding-right: 0
 
 #nav-icon1, #nav-icon2, #nav-icon3, #nav-icon4 
   width: 50px
@@ -123,12 +124,8 @@ header .nav
   opacity: .5
   transition: 1s
 
-
-.shape.active 
-  opacity: 1
-
-
-/*label-block*/
+  &.active
+    opacity: 1
 
 .navbar-brand.label-block 
   display: inline-block
@@ -137,80 +134,55 @@ header .nav
   width: 50px
 
 
-.label-block span 
-  position: absolute
-  width: 50px
-  height: 50px
-  cursor: pointer
-  opacity: .5
-  background-size: contain
-  background-repeat: no-repeat
-  transition: 1s
+.label-block
+  span
+    position: absolute
+    width: 50px
+    height: 50px
+    cursor: pointer
+    opacity: .5
+    background-size: contain
+    background-repeat: no-repeat
+    transition: 1s
+    animation-duration: 1s
+    animation-fill-mode: forwards
+
+    &:nth-child(2)
+      width: 49px
+      height: 49px
+      left: -1px
+      top: 3.5px
+      transform: rotate(30deg)
+      animation-name: moveback1
+
+    &:nth-child(3)
+      width: 42px
+      height: 42px
+      top: 7px
+      left: 4px
+      transform: rotate(180deg)
+      animation-name: moveback2
+
+    &.active
+      opacity: 1
+
+  &:hover
+    width: 250px
+
+    span
+      animation-duration: 1s
+      animation-fill-mode: forwards
+      &:nth-child(2)
+        animation-name: move1
+
+      &:nth-child(3)
+        animation-name: move2
 
 
-.label-block span.sphere 
-  background-image: url("assets/images/icons/sphere_g.png")
-
-
-.label-block span.triangle 
-  background-image: url("assets/images/icons/triangle_g.png")
-
-
-.label-block span.hexagon 
-  background-image: url("assets/images/icons/hexagon_g.png")
-
-
-
-.label-block span.active 
-  opacity: 1
-
-
-
-.label-block:hover 
-  width: 250px
-
-
-.label-block span:nth-child(2) 
-  width: 49px
-  height: 49px
-  left: -1px
-  top: 3.5px
-
-  transition: 1s
-  transform: rotate(30deg)
-  animation-name: moveback1
-  animation-duration: 1s
-  animation-fill-mode: forwards
-
-
-.label-block:hover span:nth-child(2) 
-  animation-name: move1
-  animation-duration: 1s
-  animation-fill-mode: forwards
-
-
-.label-block span:nth-child(3) 
-  width: 42px
-  height: 42px
-  top: 7px
-  left: 4px
-
-  transform: rotate(180deg)
-  transition: 1s
-  animation-name: moveback2
-  animation-duration: 1s
-  animation-fill-mode: forwards
-
-
-.label-block:hover span:nth-child(3) 
-  animation-name: move2
-  animation-duration: 1s
-  animation-fill-mode: forwards
-
-
-@each $shape in $shapes-list
-  .label-element .#{$shape}
-    content: url("#{$icons-path}/#{$shape}.png")
+.label-block
+  @each $shape in $shapes-list
+    .label-element.#{$shape}
+      background-image: url("#{$icons-path}/#{$shape}_g.png")
 
 
 /* The animation code */

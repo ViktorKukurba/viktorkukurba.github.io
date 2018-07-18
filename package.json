@@ -9,6 +9,12 @@
     "babel-preset-env": "^1.6.1",
     "bootstrap": "^4.0.0",
     "clean-webpack-plugin": "^0.1.18",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "esdoc": "^1.0.4",
+    "esdoc-ecmascript-proposal-plugin": "^1.0.0",
+    "esdoc-jsx-plugin": "^1.0.0",
+    "esdoc-standard-plugin": "^1.0.0",
     "eslint": "^4.13.0",
     "eslint-config-react-app": "^2.0.1",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
@@ -17,16 +23,20 @@
     "html-webpack-exclude-assets-plugin": "^0.0.6",
     "html-webpack-plugin": "^3.0.4",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^21.2.1",
+    "install": "^0.10.4",
+    "jest": "^22.4.2",
     "jest-css-modules": "*",
     "ncp": "^2.0.0",
     "node-sass": "^4.7.2",
+    "npm": "^5.7.1",
     "prop-types": "^15.6.0",
+    "raf-polyfill": "^1.0.0",
     "react-addons-test-utils": "^15.6.2",
     "react-owl-carousel": "^2.2.0",
+    "react-popper": "0.8.1",
     "react-scripts": "^1.1.1",
     "react-scroll": "^1.7.3",
-    "reactstrap": "^5.0.0-beta.2",
+    "reactstrap": "5.0.0-beta",
     "sass-loader": "^6.0.7",
     "tapable": "^1.0.0",
     "upwork-api": "^1.2.4"
@@ -49,11 +59,26 @@
   },
   "jest": {
     "moduleNameMapper": {
-      "\\.(css|sass)$": "identity-obj-proxy"
+      "\\.(css|sass)$": "identity-obj-proxy",
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__tests__/fileMock.js"
     },
     "transform": {
       ".*": "<rootDir>/node_modules/jest-css-modules"
-    }
+    },
+    "browser": true,
+    "collectCoverageFrom": [
+      "**/src/**/*.{js,jsx}",
+      "!**/node_modules/**",
+      "!**/coverage/**",
+      "!**/dist/**",
+      "!**/build/**",
+      "!**/doc/**"
+    ],
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.jsx?$",
+    "setupTestFrameworkScriptFile": "<rootDir>/src/setupTests.js",
+    "testPathIgnorePatterns": [
+      "fileMock.js"
+    ]
   },
   "scripts": {
     "start_dep": "react-scripts start",
@@ -67,7 +92,7 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "test": "jest --coverage",
+    "test": "jest --coverage --env=jsdom --notify",
     "doc": "esdoc",
     "postinstall": "webpack --progress --mode production -p && node scripts/copy_public.js"
   },

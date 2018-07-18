@@ -1,18 +1,24 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import App from '../../src/components/App';
-import { mount } from 'enzyme';
+import { Provider } from 'react-redux';
+import { shallow, mount } from 'enzyme';
+import store from '../../src/reducers/index';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-});
+describe('App component', () => {
+  var wrapper;
 
-it('Sections count', () => {
-  const wrapper = mount(
+  beforeAll(() => {
+    wrapper = mount(<Provider store={store}>
       <App />
-  );
+    </Provider>)
+  })
 
-  const sections = wrapper.find('.app-section');
-  expect(sections.length).toBe(4);
-});
+  it('renders without crashing', () => {
+    expect(wrapper.length).toBe(1);
+  });
+
+  it('Sections count', () => {
+    const sections = wrapper.find('.app-section');
+    expect(sections.length).toBe(4);
+  });
+})

@@ -11,7 +11,7 @@ import '../Contacts.sass'
 
 /**
  * Contacts section.
- * @extends SectionComponent
+ * @extends Component
  * @class
  */
 class Contacts extends Component {
@@ -34,7 +34,9 @@ class Contacts extends Component {
     }
   }
 
-  /** Binds handlers on contacts store events. */
+  /**
+   * Binds handlers on contacts store events.
+   */
   componentWillMount() {
     store.dispatch(ContactsActions.fetchSocialContacts())
     this.unsubscribeStore = store.subscribe(() => {
@@ -68,14 +70,13 @@ class Contacts extends Component {
   renderSocial() {
     return (
         <div className="social-networks">
-        {this.props.contacts.social.map((soc, i) => {
-          return (<a target="_blank" key={i}
-                  onClick={() => Contacts.handleSocialClick(soc)}
-                  className={'icon-' + soc.name}
-                  href={soc.link}></a>)
-        })}
-        </div>
-    )
+          {this.props.contacts.social.map((soc, i) => {
+            return (<a target="_blank" key={i}
+                       onClick={() => Contacts.handleSocialClick(soc)}
+                       className={'icon-' + soc.name}
+                       href={soc.link}></a>)
+          })}
+        </div>)
   }
 
   /**
@@ -135,6 +136,9 @@ class Contacts extends Component {
     this.setState({alert: {...alert, show: false}})
   }
 
+  /**
+   * Shows success status message.
+   */
   showSuccess() {
     var alert = this.state.alert
     this.setState({
@@ -150,10 +154,7 @@ class Contacts extends Component {
     }, 3e3);
   }
 
-  /**
-   * @override
-   * @inheritDoc
-   */
+  /** Renders component. */
   render() {
     return (<SectionComponent id="contacts">
           <div className="content content-box">

@@ -14,7 +14,7 @@ coverage
 npm-debug.log
 
 #documentation
-doc
+doc/
 dist
 
 public/images
