@@ -6,23 +6,22 @@
 class ExperienceStore {
   /** Creates experience store. */
   constructor() {
-    console.log('ExperienceStore')
     /** @type {Array<Object>} */
     this.technologies = [{
-      fullName: "Javascript",
-      shortName: "js",
+      fullName: "Frontend",
+      shortName: "fe",
       val: "88",
-      details: "Jquery,YUI, Angular JS, D3, Knockout JS"
+      details: "Vue, Angular 2+, React, Jquery, YUI, Angular JS, D3, Knockout JS, Bootstrap, less, SASS"
     }, {
-      fullName: "HTML/CSS",
-      shortName: "html",
-      val: "85",
-      details: "Bootstrap, less, SASS, HTML5, CSS3"
+      fullName: "Backend",
+      shortName: "be",
+      val: "80",
+      details: "Python, PHP, Node, ASP.NET"
     }, {
-      fullName: "ASP.NET/C#",
-      shortName: "asp",
+      fullName: "Wordpress",
+      shortName: "wp",
       val: "70",
-      details: "ASP.NET MVC, LINQ, SQL"
+      details: "Custom SPA theme"
     }]
   }
 

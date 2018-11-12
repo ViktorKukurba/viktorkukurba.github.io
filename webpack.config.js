@@ -39,7 +39,13 @@ module.exports = {
     rules: [{
       test: /\.jsx?$/,
       exclude: /(node_modules|bower_components)/,
-      loader: 'babel-loader',
+      use: {
+        loader: 'babel-loader',
+        options: {
+          presets: ['@babel/env'],
+          plugins: ['@babel/plugin-proposal-object-rest-spread']
+        }
+      }
     }, {
       test: /\.css$/,
       loader:'style-loader!css-loader'
@@ -60,5 +66,10 @@ module.exports = {
       ]
     }],
   },
-  plugins: [HtmlWebpackPluginConfig, new HtmlWebpackExcludeAssetsPlugin(), new CleanWebpackPlugin()],
+  plugins: [HtmlWebpackPluginConfig, new HtmlWebpackExcludeAssetsPlugin(), new CleanWebpackPlugin(),
+    new webpack.ProvidePlugin({
+    $: 'jquery',
+    jQuery: 'jquery',
+    'window.jQuery': 'jquery'
+})],
 };

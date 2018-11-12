@@ -8,7 +8,8 @@ import PortfolioActions from '../actions/PortfolioActions'
 import SectionComponent from './SectionComponent'
 import store from '../reducers/index'
 import '../Portfolio.sass'
-import 'owl.carousel/dist/assets/owl.carousel.min.css'
+import 'owl.carousel/dist/assets/owl.carousel.min.css';
+// import 'owl.carousel/dist/assets/owl.theme.default.css';
 
 const CAROUSEL_OPTIONS = {
   responsive: {
@@ -45,6 +46,7 @@ class Portfolio extends Component {
    */
   renderProjects() {
     return this.props.projects.length && (this.props.projects.map((project,i) => {
+        // return <div className="item" key={i}><h4>3</h4></div>
         return (<PortfolioProject key={i} index={i} project={project}/>)
       }));
   }
@@ -54,12 +56,17 @@ class Portfolio extends Component {
    * @return {string} JSX string.
    */
   render() {
-    return (<SectionComponent id="portfolio">
+    // console.log('ttt', projects);
+    return this.props.projects.length && (<SectionComponent id="portfolio">
       <div className="portfolio component">
         <header><h4>PORTFOLIO. MY LATEST WORKS</h4></header>
         <div className="projects dimmed">
           <OwlCarousel {...CAROUSEL_OPTIONS} className="owl-theme">
             {this.renderProjects()}
+            {/* {<PortfolioProject project={this.props.projects[0]}/>} */}
+            {/* {(this.props.projects.map((project,i) => {
+        return <PortfolioProject key={i} index={i} project={project}/>
+      }))} */}
           </OwlCarousel>
         </div>
         <div className="clear-fix"></div>
@@ -151,9 +158,8 @@ class PortfolioProject extends Component {
    */
   render() {
     let project = this.props.project;
-    // console.log('project', project)
     return (
-        <div className="project">
+        <div className="project item">
           <a href={project.link} target="_blank"
               onClick={this.projectClickHandler.bind(this)} className="content">
             <div className="images-container">

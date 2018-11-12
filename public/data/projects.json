@@ -8,7 +8,7 @@
 }, {
   "name": "lidikart",
   "info": "gallery site for artist studio LidikART",
-  "technologies": "Angular 1.x, jQuery JS, Bootstrap 3, LESS, PHP.",
+  "technologies": "Angular 6, Bootstrap 4, SASS, WP REST API.",
   "images": ["images/opt_lidik_art_app.png", "images/opt_lidik_art_app_2.png",
     "images/opt_lidik_art_app_3.png"],
   "link": "https://lidikart.com.ua/en"
@@ -22,7 +22,7 @@
 }, {
   "name": "eis",
   "info": "work in Europe countries",
-  "technologies": "Angular 5.2, Bootstrap 4, PHP.",
+  "technologies": "Angular 5, Bootstrap 4, WP REST API.",
   "images": ["images/eis_app.png", "images/eis_app_1.png", "images/eis_app_2.png"],
   "link": "https://eis.org.ua"
 }]

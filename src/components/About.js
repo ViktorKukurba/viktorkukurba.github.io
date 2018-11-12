@@ -12,17 +12,16 @@ class About extends Component {
   constructor() {
     super();
     /** @type {Array<string>} */
-    this.aboutStatements = ['I am web developer with Master degree in ' +
-    'Social Informatics in National University Lviv Polytechnic ' +
-    'and 6 years of Web development.',
-      'I have experience in both UI and server side development. ' +
-      'Worked with Microsoft technologies ASP.NET, ASP.NET MVC, ADO.NET, WebAPI using C#.' +
-      ' In UI development used JQuery libraries, Angular 1.x & 2+, VueJS, ReactJS, KnockoutJS, YUI, Phonegap/cordova,' +
-      ' Grunt, Bower, Webpack, Jasmine, CSS3, LESS, Bootstrap. ' +
-      'Also have some expirience with Wordpress, desktop apps based on WinForms ' +
-      'and WPF, MatLab, LaTex, C++, Java, Python.',
-      'I like to meet new people and take part in new project with interesting challenges' +
-      ' or help with extending or fixing existing.'
+    this.aboutStatements = [`I working as frontend developer for more than 6 years of comercial development.
+      I have experience with modern UI frameworks Vue, Angular, React, and still I'm interested in improving my skills in it.
+      I've started programming with server side development using Microsoft technologies ASP.NET, ASP.NET MVC, ADO.NET, WebAPI using C#. 
+      Also have faced server side on Python Django, PHP, WordPress. 
+      That gives me knowladge and understanding how server side should be developed and how it works, 
+      but still my strong side is Frontend.
+      In UI development used JQuery libraries, Angular 1.x, KnockoutJS, YUI, Phonegap/cordova, 
+      Grunt, Bower, Webpack, Jasmine, CSS3, LESS, Bootstrap.
+      I graduated Master degree in Social Informatics at National University Lviv Polytechnic.
+      I like to meet new people and take part in new project with interesting challenges or help with extending or fixing existing.`
     ]
   }
   /**

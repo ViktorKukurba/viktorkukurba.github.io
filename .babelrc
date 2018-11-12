@@ -1,24 +1,24 @@
 {
-  "plugins": ["transform-class-properties", "transform-object-rest-spread"],
+  "plugins": ["@babel/plugin-proposal-class-properties", "@babel/plugin-proposal-object-rest-spread"],
   "env": {
     "start": {
-      "presets": ["react",
-        ["env", {"targets": {"browsers": "> 1%"}}]]
+      "presets": ["@babel/react",
+        ["@babel/env", {"targets": {"browsers": "> 1%"}}]]
     },
     "test": {
-      "presets": ["react",
-        ["env", {"targets": {"browsers": "> 1%"}}]],
-      "plugins": ["transform-class-properties", "transform-object-rest-spread"]
+      "presets": ["@babel/react",
+        ["@babel/env", {"targets": {"browsers": "> 1%"}}]],
+      "plugins": ["@babel/plugin-proposal-class-properties", "@babel/plugin-proposal-object-rest-spread"]
     },
     "development": {
-      "presets": ["react",
-        ["env", {"targets": {"browsers": "> 1%"}}]],
-      "plugins": ["transform-class-properties", "transform-object-rest-spread"]
+      "presets": ["@babel/react",
+        ["@babel/env", {"targets": {"browsers": "> 1%"}}]],
+      "plugins": ["@babel/plugin-proposal-class-properties", "@babel/plugin-proposal-object-rest-spread"]
     },
     "production": {
-      "presets": ["react",
-        ["env", {"targets": {"browsers": "> 1%"}}]],
-      "plugins": ["transform-class-properties", "transform-object-rest-spread"]
+      "presets": ["@babel/react",
+        ["@babel/env", {"targets": {"browsers": "> 1%"}}]],
+      "plugins": ["@babel/plugin-proposal-class-properties", "@babel/plugin-proposal-object-rest-spread"]
     }
   }
 }

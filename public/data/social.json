@@ -18,4 +18,12 @@
   "name": "stackoverflow",
   "icon": "images/icons/stackoverflow.png",
   "link": "http://stackoverflow.com/users/1940821/viktor-kukurba"
+}, {
+  "name": "youtube",
+  "icon": "images/icons/youtube.png",
+  "link": "https://www.youtube.com/channel/UC7cKGplF9q-mQ98cQksF-oQ/featured"
+}, {
+  "name": "medium",
+  "icon": "images/icons/medium.png",
+  "link": "https://medium.com/@viktor.kukurba/"
 }]

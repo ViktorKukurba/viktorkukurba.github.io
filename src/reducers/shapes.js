@@ -39,7 +39,7 @@ const shapes = (state = {count: 1}, action ) => {
 
 /** Rotates random shape. */
 function rotateShapeRandomly(index, capacity = 1, state) {
-  var rotation = (val = 20) => {
+  var rotation = (val = 10) => {
     return Math.random() * val * capacity
   };
 
@@ -49,7 +49,7 @@ function rotateShapeRandomly(index, capacity = 1, state) {
     x: rotation(),
     y: rotation(),
     z: rotation(),
-    a: rotation(10)
+    a: rotation(2)
   };
 
   return item;

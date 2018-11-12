@@ -23,6 +23,12 @@ class ContactsStore extends EventEmitter {
       }, {
         'name': 'stackoverflow',
         'link': 'http://stackoverflow.com/users/1940821/viktor-kukurba'
+      },{
+        'name': 'youtube',
+        'link': 'https://www.youtube.com/channel/UC7cKGplF9q-mQ98cQksF-oQ/featured'
+      }, {
+        'name': 'medium',
+        'link': 'https://medium.com/@viktor.kukurba/'
       }]
     }
   }

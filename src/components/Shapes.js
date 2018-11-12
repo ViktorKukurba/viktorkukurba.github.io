@@ -43,6 +43,7 @@ class Shapes extends Component {
    * @return {string}
    */
   static getTransformVal(rotate) {
+    console.log('rrrr', rotate);
     return `rotate3d(${rotate.x}, ${rotate.y}, ${rotate.z}, ${rotate.a}deg)
     translate(-50%, -50%)`;
   }

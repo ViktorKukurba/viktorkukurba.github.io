@@ -20,21 +20,21 @@ class FiguresStore extends EventsEmitter {
   /** Rotates random shape. */
   rotateShapeRandomly(index, capacity = 1) {
     index = index || Math.floor(Math.random() * (this.shapesCount - 1));
-    var rotation =(val = 20) => {
+    var rotation = (val = 1) => {
       return Math.random() * val * capacity
     };
     this.shapesPosition[index].rotate = {
       x: rotation(),
       y: rotation(),
       z: rotation(),
-      a: rotation(30)
+      a: rotation()
     };
   }
 
   /** Rotate all shapes. */
   rotateAllShapes(capacity) {
     for (var i = 0; i < this.shapesCount; i++) {
-      this.rotateShapeRandomly(i, capacity);
+      // this.rotateShapeRandomly(i, capacity);
     }
   }
 

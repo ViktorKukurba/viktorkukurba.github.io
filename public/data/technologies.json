@@ -1,16 +1,16 @@
 [{
-  "fullName": "Javascript",
-  "name": "js",
+  "fullName": "Frontend",
+  "name": "fe",
   "val": "88",
-  "details": "Jquery, YUI, Angular 1.x & 2+, D3, KnockoutJS, VueJS, ReactJS"
+  "details": "Vue, Angular 2+, React, Jquery, YUI, Angular JS, D3, Knockout JS, Bootstrap, less, SASS"
 }, {
-  "fullName": "HTML/CSS",
-  "name": "html",
-  "val": "85",
-  "details": "Bootstrap, less, SASS, HTML5, CSS3"
+  "fullName": "Backend",
+  "name": "be",
+  "val": "80",
+  "details": "Python, PHP, Node, ASP.NET"
 }, {
-  "fullName": "ASP.NET/C#",
-  "name": "asp",
+  "fullName": "Wordpress",
+  "name": "wp",
   "val": "70",
-  "details": "ASP.NET MVC, LINQ, SQL"
+  "details": "Custom SPA theme"
 }]
