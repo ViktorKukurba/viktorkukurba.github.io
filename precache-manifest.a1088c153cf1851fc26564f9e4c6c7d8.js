@@ -1,7 +1,7 @@
 self.__precacheManifest = [
   {
-    "revision": "efcc4870c3718399dd50664995ac477d",
-    "url": "/static/media/vkukurba-app-1.efcc4870.png"
+    "revision": "7b45bfc0586320a02717d3e8653b8c23",
+    "url": "/static/media/vkukurba-app-0.7b45bfc0.png"
   },
   {
     "revision": "0d0dbab327a2212066b7",
@@ -44,8 +44,8 @@ self.__precacheManifest = [
     "url": "/static/media/eis-app-2.6858ec68.png"
   },
   {
-    "revision": "7b45bfc0586320a02717d3e8653b8c23",
-    "url": "/static/media/vkukurba-app-0.7b45bfc0.png"
+    "revision": "efcc4870c3718399dd50664995ac477d",
+    "url": "/static/media/vkukurba-app-1.efcc4870.png"
   },
   {
     "revision": "0d0dbab327a2212066b7",
@@ -60,12 +60,12 @@ self.__precacheManifest = [
     "url": "/static/media/lidikart-app-1.d066f6d1.png"
   },
   {
-    "revision": "dc7465c402ee053878676cf158a6812a",
-    "url": "/static/media/fredra-app-0.dc7465c4.png"
-  },
-  {
     "revision": "13aae8d60dbd3380a1e3d9ae6333b66a",
     "url": "/static/media/lidikart-app-2.13aae8d6.png"
+  },
+  {
+    "revision": "dc7465c402ee053878676cf158a6812a",
+    "url": "/static/media/fredra-app-0.dc7465c4.png"
   },
   {
     "revision": "bd165ef404fd051253ab0671353dea84",
@@ -76,12 +76,12 @@ self.__precacheManifest = [
     "url": "/static/media/eis-app-0.86ef091e.png"
   },
   {
-    "revision": "2975bed10c3cbafe732e3d2a2dce5ea6",
-    "url": "/static/media/sphere_0.2975bed1.png"
-  },
-  {
     "revision": "0593b98b50bfd276e27e22e275c8ead1",
     "url": "/static/media/sphere_1.0593b98b.png"
+  },
+  {
+    "revision": "2975bed10c3cbafe732e3d2a2dce5ea6",
+    "url": "/static/media/sphere_0.2975bed1.png"
   },
   {
     "revision": "2975bed10c3cbafe732e3d2a2dce5ea6",
