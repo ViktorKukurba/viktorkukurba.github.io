@@ -1,6 +1,19 @@
 {
-  "main.css": "static/css/main.80fac7fb.css",
-  "main.css.map": "static/css/main.80fac7fb.css.map",
-  "main.js": "static/js/main.eaf213d8.js",
-  "main.js.map": "static/js/main.eaf213d8.js.map"
+  "main.css": "/static/css/main.678d1a45.chunk.css",
+  "main.js": "/static/js/main.0d0dbab3.chunk.js",
+  "main.js.map": "/static/js/main.0d0dbab3.chunk.js.map",
+  "static/css/1.025bbaf0.chunk.css": "/static/css/1.025bbaf0.chunk.css",
+  "static/js/1.c97682b0.chunk.js": "/static/js/1.c97682b0.chunk.js",
+  "static/js/1.c97682b0.chunk.js.map": "/static/js/1.c97682b0.chunk.js.map",
+  "runtime~main.js": "/static/js/runtime~main.229c360f.js",
+  "runtime~main.js.map": "/static/js/runtime~main.229c360f.js.map",
+  "static/media/Shapes.sass": "/static/media/sphere_4.6d4c9896.png",
+  "static/media/opt-foto.jpg": "/static/media/opt-foto.f3b7d89d.jpg",
+  "static/media/Portfolio.sass": "/static/media/eis-app-0.86ef091e.png",
+  "static/media/my_photo.png": "/static/media/my_photo.5475ff3a.png",
+  "static/css/main.678d1a45.chunk.css.map": "/static/css/main.678d1a45.chunk.css.map",
+  "static/css/1.025bbaf0.chunk.css.map": "/static/css/1.025bbaf0.chunk.css.map",
+  "index.html": "/index.html",
+  "precache-manifest.364cd46f5815675394fad228f140aec5.js": "/precache-manifest.364cd46f5815675394fad228f140aec5.js",
+  "service-worker.js": "/service-worker.js"
 }
