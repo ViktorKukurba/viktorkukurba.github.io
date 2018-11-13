@@ -15,9 +15,7 @@ class Experience extends Component {
       HEADER: {
         MAIN: 'My knowledge level in software development',
         SUB: 'based on web technologies AJAX, REST, SOAP, JSON'
-      },
-      FOOTER: 'Also have expireance with Python, Java, Wordpress, PHP, ' +
-      'MatLab, LaTex'
+      }
     };
   }
 
@@ -51,9 +49,6 @@ class Experience extends Component {
             <div className="technologies dimmed">
             {this.renderTechnologies()}
             </div>
-            <footer>
-              <h5>{this.TEXT.FOOTER}</h5>
-            </footer>
             <div className="clear-fix"></div>
           </div>
         </SectionComponent>

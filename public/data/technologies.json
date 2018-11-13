@@ -2,7 +2,7 @@
   "fullName": "Frontend",
   "name": "fe",
   "val": "88",
-  "details": "Vue, Angular 2+, React, Jquery, YUI, Angular JS, D3, Knockout JS, Bootstrap, less, SASS"
+  "details": "Vue, Angular 2+, React, Jquery, YUI, Angular JS, D3, Knockout JS, Bootstrap, ElementUI, less, SASS"
 }, {
   "fullName": "Backend",
   "name": "be",

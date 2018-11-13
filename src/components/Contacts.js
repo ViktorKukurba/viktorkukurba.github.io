@@ -161,7 +161,7 @@ class Contacts extends Component {
             <div className="row">
               <div className="info col-xl-6 col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <p>{ContactsConstants.CONTACT_MESSAGE}</p>
-                <a href={'mailto:' + ContactsConstants.CONTACT_EMAIL}>{ContactsConstants.CONTACT_EMAIL}</a>
+                <a className="position-absolute-md" href={'mailto:' + ContactsConstants.CONTACT_EMAIL}>{ContactsConstants.CONTACT_EMAIL}</a>
               </div>
               <form onSubmit={this.handleSubmit.bind(this)} ref="contactForm"
                   className="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-xs-12">

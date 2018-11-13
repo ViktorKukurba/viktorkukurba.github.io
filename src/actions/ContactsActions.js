@@ -17,7 +17,7 @@ var ContactsActions = {
    * @return {Function} dispatch function.
    */
   fetchSocialContacts() {
-    return (dispatch) => fetch('/data/social.json').then(response => {
+    return (dispatch) => fetch('data/social.json').then(response => {
       response.json().then(social => {
         dispatch({
           type: ContactsConstants.RETRIEVE_SOCIAL,

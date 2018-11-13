@@ -1,6 +1,6 @@
 {
   "name": "personal_web",
-  "homepage": "https://viktorkukurba.github.io",
+  "homepage": "https://viktorkukurba.github.io/personal_web/",
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
@@ -84,9 +84,8 @@
     ]
   },
   "scripts": {
-    "start_dep": "react-scripts start",
-    "start_2": "webpack-dev-server",
-    "start": "node server.js",
+    "start": "react-scripts start",
+    "start:node": "node server.js",
     "start:dev": "webpack-dev-server --mode development --hot --inline",
     "start:prod": "webpack-dev-server --mode production --hot --inline",
     "build": "react-scripts build",
@@ -97,8 +96,7 @@
     "deploy": "gh-pages -d build",
     "test": "jest --coverage --env=jsdom --notify",
     "doc": "esdoc",
-    "postinstall": "webpack --progress --mode production -p && node scripts/copy_public.js",
-    "homepage": "https://viktor.kukurba.github.io/personal_web",
+    "postinstall": "webpack --progress --mode production -p && node scripts/copy_public.js"
   },
   "engines": {
     "node": "9.3.0",

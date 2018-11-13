@@ -78,14 +78,9 @@
 
       &.owl-next
         right: 0
-        border-right: solid $primary-color 1px
-        margin-right: 0
-
 
       &.owl-prev
         left: 0
-        border-left: solid $primary-color 1px
-        margin-left: 0
 
       &:hover
         background: rgba($panel-color, .5) !important
@@ -96,15 +91,13 @@
         border-width: 0 3px 3px 0
         display: inline-block
         padding: 1em
-        top: calc(50% - .5em)
-        position: relative
 
         &.right
           transform: rotate(-45deg)
           -webkit-transform: rotate(-45deg)
-          right: 1em
+          margin-right: 1em
 
         &.left
           transform: rotate(135deg)
           -webkit-transform: rotate(135deg)
-          left: 1em
+          margin-left: 1em
