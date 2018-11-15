@@ -30,7 +30,7 @@ class About extends Component {
    */
   render() {
     return (<SectionComponent id="about">
-      <div className="info content-box">
+      <div className="info content-box text-justify">
         {this.aboutStatements.map((statement, i) => {
           return (<p key={i}>{statement}</p>)
         })}

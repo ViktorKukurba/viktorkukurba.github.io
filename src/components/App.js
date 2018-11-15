@@ -6,6 +6,7 @@ import Portfolio from './Portfolio'
 import Contacts from './Contacts'
 import Shapes from './Shapes'
 import Header from './Header'
+import KnowledgeSharing from './KnowledgeSharing'
 
 /**
  * Application class.
@@ -31,6 +32,8 @@ class App extends Component {
               <Experience/>
             <hr/>
               <Portfolio/>
+            <hr/>
+              <KnowledgeSharing/>
             <hr/>
               <Contacts/>
             <footer>

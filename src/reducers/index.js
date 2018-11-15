@@ -7,6 +7,7 @@ import contacts from './contacts'
 import experience from './experience'
 import portfolio from './portfolio'
 import sections from './sections'
+import youtube from './youtube'
 
 const rootReducer = combineReducers({
   header,
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
   contacts,
   experience,
   portfolio,
-  sections
+  sections,
+  youtube
 });
 
 const initialState = {
