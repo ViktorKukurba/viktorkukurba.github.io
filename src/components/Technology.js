@@ -5,7 +5,7 @@ import isElementOnView from '../Utils'
 import ExperienceConstants from '../constants/ExperienceConstants'
 import store from '../reducers/index'
 
-import '../Technology.css'
+import '../styles/Technology.sass'
 
 /**
  * Technology component.

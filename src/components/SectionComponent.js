@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import isElementOnView from '../Utils'
 import store from '../reducers/index'
 import SectionActions from '../actions/SectionActions'
-import '../Section.css'
+import '../styles/Section.sass'
 
 /**
  * Class representing page section component.

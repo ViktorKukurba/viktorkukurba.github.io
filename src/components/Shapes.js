@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import ShapesActions from '../actions/ShapesActions'
-import '../Shapes.sass'
+import '../styles/Shapes.sass'
 
 import store from '../reducers/index'
 

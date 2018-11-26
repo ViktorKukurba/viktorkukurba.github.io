@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import store from '../reducers/index';
-import YoutubeActions from '../actions/YoutubeActions'
+import YoutubeActions from '../actions/YoutubeActions';
+import { getShortText } from '../Utils';
 
 import '../styles/YoutubePlayer.sass'
 
@@ -14,7 +15,7 @@ class YoutubePlayer extends Component {
         if (this.props.data.selected) {
             const url = `http://www.youtube.com/embed/${this.props.data.selected.snippet.resourceId.videoId}`;
             return <div className="youtube-player">
-                <h6>{this.props.data.playlist.snippet.title}</h6>
+                <h5>{this.props.data.playlist.snippet.title}</h5>
                 <div className="row">
                     <div className="col-12 col-md-9">
                         <div className="videoWrapper">
@@ -38,17 +39,9 @@ class YoutubePlayer extends Component {
                 <img src={item.snippet.thumbnails.default.url}></img>   
                 <span className="title">{item.snippet.title}</span>
                 <br/>
-                <span className="small">{this.subDescription(item)}</span>
+                <span className="small">{getShortText(item.snippet.description)}</span>
                 </div>})}
             </div>
-    }
-    
-    subDescription(item) {
-        const description = item.snippet.description;
-        if (description.length > 150) {
-            return `${description.substr(0, 150)}...`;
-        }
-        return description;
     }
 }
 

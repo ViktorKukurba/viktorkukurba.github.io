@@ -22,9 +22,8 @@ class App extends Component {
           <div className="row">
             <Shapes />
             <Header />
-            <hr/>
           </div>
-          <div className="row">
+          <div className="row app-content">
               <Greeting/>
             <hr/>
               <About/>

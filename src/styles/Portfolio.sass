@@ -1,4 +1,5 @@
-@import "vars"
+@import "../vars"
+@import "themes"
 
 #portfolio .projects
   display: flex
@@ -14,7 +15,9 @@
     height: 200px
 
   .content
-    border: $primary-color solid 1px
+    @include themify()
+      border: themed('primary-color') solid 1px
+
     display: inline-block
     height: 100%
     text-decoration: none
@@ -52,11 +55,13 @@
 
   .info
     text-align: center
-    color: white
     padding: 1em
+    @include themify()
+      color: themed('text-color')
 
     label
-      color: $primary-color
+      @include themify()
+        color: themed('primary-color')
 
 .owl-carousel
   .owl-dots
@@ -69,12 +74,13 @@
       position: absolute
       top: 0
       margin: 1px
-      color: $primary-color
       height: calc(100% - 2px)
-      background: rgba($panel-color, .3) !important
       border-radius: 0
-      box-shadow: 0 0 20px 10px rgba($panel-color, .3)
       outline: none
+      @include themify()
+        color: themed('primary-color')
+        background: rgba(themed('panel-color'), .3) !important
+        box-shadow: 0 0 20px 10px rgba(themed('panel-color'), .3)
 
       &.owl-next
         right: 0
@@ -83,12 +89,16 @@
         left: 0
 
       &:hover
-        background: rgba($panel-color, .5) !important
-        box-shadow: 0 0 20px 15px rgba($panel-color, .5)
+        @include themify()
+          background: rgba(themed('panel-color'), .5) !important
+          box-shadow: 0 0 20px 15px rgba(themed('panel-color'), .5)
 
       i
-        border: solid $primary-color
+        @include themify()
+          border-color: themed('primary-color')
+  
         border-width: 0 3px 3px 0
+        border-style: solid
         display: inline-block
         padding: 1em
 

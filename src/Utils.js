@@ -9,3 +9,16 @@ export default function isElementOnView(element) {
   return top >= window.pageYOffset &&
       element.offsetHeight + top <= window.pageYOffset + window.innerHeight;
 }
+
+export function getTextFromHtml(html) {
+  const div = document.createElement('DIV');
+  div.innerHTML = html;
+  return div.textContent;
+}
+
+export function getShortText(text, len = 150) {
+  if (text.length > len) {
+      return `${text.substr(0, len)}...`;
+  }
+  return text;
+}

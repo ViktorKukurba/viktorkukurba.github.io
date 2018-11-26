@@ -25,7 +25,7 @@ const initialState = {
     active: 'triangle',
     count: 6
   },
-  header: ['about', 'experience', 'portfolio', 'contacts'],
+  header: ['about', 'experience', 'portfolio', 'knowledge-sharing', 'contacts'],
   contacts: {
     social: []
   },

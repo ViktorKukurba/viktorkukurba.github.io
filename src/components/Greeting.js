@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
-import '../Greeting.css'
-import optFoto from '../assets/images/opt-foto.jpg'
-import myPhoto from '../assets/images/my_photo.png'
+import '../styles/Greeting.sass'
+import myPhoto from '../assets/images/my_photo.png';
 
 class Greeting extends Component {
   /** Creates Greeting component. */
   constructor() {
     super();
     this.state = {
-      loaded: false
+      loaded: false,
     };
   }
 
@@ -25,24 +24,31 @@ class Greeting extends Component {
    */
   render() {
     return (
-        <section id="greeting" className="app-content">
-          <div className="text-content">
-            <div className="title">
-              <h1>hi, I’m
+        <section id="greeting" className="app-content row">
+          <div className="text-content py-4 col-12 col-md-6">
+            <div className={"title animate-text " + (this.state.loaded ? 'show' : '')}>
+              <h1 className="py-2">{this.spanifyText('hi, I’m')}
                 <br/>
-              Viktor
+                {this.spanifyText('Viktor')}
                 <br/>
-              Kukurba</h1>
-              <h2>web developer</h2>
+                {this.spanifyText('Kukurba')}</h1>
+              <h2>{this.spanifyText('web developer')}</h2>
             </div>
           </div>
-          <div className="image-content d-none d-sm-block">
-            <img alt="I" onLoad={this.onLoad.bind(this)} className={this.state.loaded ? 'loaded' : ''} src={optFoto}/>
+          <div className="image-content d-none d-sm-block col-md-6">
+            {/* <img alt="I" onLoad={this.onLoad.bind(this)} className={this.state.loaded ? 'loaded' : ''} src={optFoto}/> */}
             <img alt="I" onLoad={this.onLoad.bind(this)} className={this.state.loaded ? 'loaded' : ''} src={myPhoto}/>
+            <div className="img-shadow"></div>
           </div>
           <div className="clear-fix"></div>
         </section>
     )
+  }
+
+  spanifyText(text) {
+    return Array.from(text).map((l, i) => {
+      return <span key={i}>{l}</span>
+    })
   }
 }
 

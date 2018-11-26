@@ -1,18 +1,23 @@
 @import '../vars.sass'
+@import 'themes'
 
 #knowledge-sharing
     .content
         padding: 1em
-        border: 1px solid $primary-color
+        
         margin-top: -1px
+        @include themify()
+            border: 1px solid themed('primary-color')
     .nav-tabs
         .nav-link
             background-color: transparent
             color: white
-            border-color: transparent transparent $primary-color
             cursor: pointer
             text-transform: capitalize
+            @include themify()
+                border-color: transparent transparent themed('primary-color')
 
             &.active
-                color: $primary-color
-                border-color: $primary-color $primary-color $background-color
+                @include themify()
+                    color: themed('primary-color')
+                    border-color: themed('primary-color') themed('primary-color') themed('background-color')

@@ -1,0 +1,24 @@
+@import 'themes'
+
+.app-section > header > h5,
+.app-section > .component > header > h5,
+.app-section > .component > footer > h5,
+.app-section > footer > h5
+  @include themify()
+    color: themed('text-color')
+  text-align: center
+
+.app-section > header > h4
+.app-section > .component > header > h4
+.app-section > footer > h4
+  @include themify()
+    color: themed('text-color')
+  text-align: center
+  margin-top: 0
+  text-transform: uppercase
+
+.app-section
+  padding: 4em 0
+  // margin: 4em 0
+  width: 100%
+  z-index: 1

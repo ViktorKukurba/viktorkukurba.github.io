@@ -7,7 +7,7 @@ import OwlCarousel from 'react-owl-carousel';
 import PortfolioActions from '../actions/PortfolioActions'
 import SectionComponent from './SectionComponent'
 import store from '../reducers/index'
-import '../Portfolio.sass'
+import '../styles/Portfolio.sass'
 import 'owl.carousel/dist/assets/owl.carousel.min.css';
 
 const CAROUSEL_OPTIONS = {

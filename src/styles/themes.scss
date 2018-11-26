@@ -1,0 +1,72 @@
+$themes: (
+    blue: (
+        'background-color-0': rgba(92, 219, 149, 0),
+        'primary-color-0': rgba(8, 53, 107, 0),
+        'panel-color': rgb(55, 150, 131),
+        'primary-color': rgba(8, 53, 107, 1),
+        'background-color': rgba(92, 219, 149, 1),
+        'text-color': white
+    ),
+    gray: (
+        'background-color-0': rgba(112, 122, 132, 0),
+        'primary-color-0': rgba(40, 222, 65, 0),
+        'panel-color': rgb(51, 59, 80),
+        'primary-color': rgba(40, 222, 65, 1),
+        'background-color': rgba(112, 122, 132, 1),
+        'text-color': white
+    ),
+    violet: (
+      'background-color-0': rgba(101,52,255, 0),
+      'primary-color-0': rgba(187,196,239, 0),
+      'panel-color': rgb(98,188,250),
+      'primary-color': rgba(187,196,239, 1),
+      'background-color': rgba(101,52,255, 1),
+      'text-color': rgb(252,205,211)
+    ),
+    purple: (
+      'background-color-0': rgba(12, 0, 50, 0),
+      'background-color': rgba(12, 0, 50, 1),
+      'primary-color-0': rgba(25, 0, 97, 0),      
+      'primary-color': rgba(25, 0, 97, 1),
+      'panel-color': rgb(40, 40, 40),
+      'text-color': white
+    ),
+    elegant: (
+      'background-color-0': rgba(237, 199, 183, 0),
+      'background-color': rgba(237, 199, 183, 1),
+      'primary-color-0': rgba(18, 60, 105, 0),      
+      'primary-color': rgba(18, 60, 105, 1),
+      'panel-color': rgb(186, 178, 181),
+      'text-color': rgb(172, 59, 97)
+    ),
+    corporate: (
+      'background-color-0': rgba(136, 189, 188, 0),
+      'background-color': rgba(136, 189, 188, 1),
+      'primary-color-0': rgba(17, 45, 50, 0),      
+      'primary-color': rgba(17, 45, 50, 1),
+      'panel-color': rgb(37, 78, 88),
+      'text-color': rgb(186, 178, 181)
+    )
+);
+
+@mixin themify($themes: $themes) {
+  @each $theme, $map in $themes {
+
+    .theme-#{$theme} & {
+      $theme-map: () !global;
+      @each $key, $submap in $map {
+        $value: map-get(map-get($themes, $theme), '#{$key}');
+        $theme-map: map-merge($theme-map, ($key: $value)) !global;
+      }
+
+      @content;
+      $theme-map: null !global;
+    }
+
+  }
+}
+
+
+@function themed($key) {
+  @return map-get($theme-map, $key);
+}

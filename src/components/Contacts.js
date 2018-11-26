@@ -7,7 +7,7 @@ import ContactsConstants from '../constants/ContactsConstants'
 import ContactsActions from '../actions/ContactsActions'
 import store from '../reducers/index'
 
-import '../Contacts.sass'
+import '../styles/Contacts.sass'
 
 /**
  * Contacts section.

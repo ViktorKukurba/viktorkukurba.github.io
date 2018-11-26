@@ -15,7 +15,7 @@ class HeaderStore extends EventEmitter {
     super();
     this.state = {
       shapes: ['sphere', 'hexagon', 'triangle'],
-      links: ['about', 'experience', 'portfolio', 'contacts']
+      links: ['about', 'experience', 'portfolio', 'knowledge-sharing', 'contacts']
     };
 
     this.state.activeShape = this.state.shapes[
