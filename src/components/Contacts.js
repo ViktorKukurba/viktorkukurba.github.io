@@ -88,7 +88,7 @@ class Contacts extends Component {
     var headers = new Headers();
     headers.append("Content-Type", "application/json");
     this.setState({sending: true})
-    fetch('/send-email.php', {
+    fetch('/send-message', {
       method: 'POST',
       body: JSON.stringify(this.state.sendData),
       headers: headers

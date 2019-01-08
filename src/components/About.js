@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import SectionComponent from './SectionComponent'
-import PropTypes from 'prop-types'
+import SectionComponent from './SectionComponent';
+import PropTypes from 'prop-types';
+
+import pdf from '../assets/cv_viktor_kukurba.pdf';
 
 /**
  * About section.
@@ -12,16 +14,14 @@ class About extends Component {
   constructor() {
     super();
     /** @type {Array<string>} */
-    this.aboutStatements = [`I've been working as frontend developer for more than 6 years of comercial development.
-      I have experience with modern UI frameworks Vue, Angular, React, and still I'm interested in improving my skills in it.
-      I've started programming with server side development using Microsoft technologies ASP.NET, ASP.NET MVC, ADO.NET, WebAPI using C#. 
-      Also have faced server side on Python Django, Node, PHP, WordPress. 
-      That gives me knowladge and understanding how server side should be developed and how it works, 
-      but still my strong side is Frontend.
-      In UI development I've also used JQuery libraries, Angular 1.x, KnockoutJS, YUI, Phonegap/cordova, 
-      Grunt, Bower, Webpack, Jasmine, CSS3, LESS, Bootstrap.
-      I graduated Master degree in Social Informatics at National University Lviv Polytechnic.
-      I like to meet new people and take part in new project with interesting challenges or help with extending or fixing existing.`
+    this.aboutStatements = [`I've been working as a frontend developer for more than 6 years of comercial development.
+      During this time had an experience with modern UI frameworks Vue, Angular, React, and still I'm interested in improving my skills in it`,
+      `In UI development I've also used JQuery libraries, Angular 1.x, KnockoutJS, YUI, Phonegap/cordova, 
+      Grunt, Bower, Webpack, Jasmine, CSS3, LESS, Bootstrap.`,
+      `I've started programming with server side development using Microsoft technologies ASP.NET, ASP.NET MVC, ADO.NET, WebAPI using C#. 
+      Also have faced with server side developed with Python Django, Node, PHP, WordPress.`,
+      `I graduated Master degree in Social Informatics at National University Lviv Polytechnic.`,
+      `I like to meet new people and take part in new project with interesting challenges or help with extending or fixing existing.`
     ]
   }
   /**
@@ -34,6 +34,7 @@ class About extends Component {
         {this.aboutStatements.map((statement, i) => {
           return (<p key={i}>{statement}</p>)
         })}
+        Check details in my <a style={{color: 'white'}} target="blank" href={pdf}>CV</a>
       </div>
     </SectionComponent>)
   }

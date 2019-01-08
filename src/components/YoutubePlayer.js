@@ -13,7 +13,7 @@ class YoutubePlayer extends Component {
     }
     render() {
         if (this.props.data.selected) {
-            const url = `http://www.youtube.com/embed/${this.props.data.selected.snippet.resourceId.videoId}`;
+            const url = `https://www.youtube.com/embed/${this.props.data.selected.snippet.resourceId.videoId}`;
             return <div className="youtube-player">
                 <h5>{this.props.data.playlist.snippet.title}</h5>
                 <div className="row">

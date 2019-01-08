@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../styles/Greeting.sass'
 import myPhoto from '../assets/images/my_photo.png';
+import pdf from '../assets/cv_viktor_kukurba.pdf';
 
 class Greeting extends Component {
   /** Creates Greeting component. */
@@ -32,7 +33,7 @@ class Greeting extends Component {
                 {this.spanifyText('Viktor')}
                 <br/>
                 {this.spanifyText('Kukurba')}</h1>
-              <h2>{this.spanifyText('web developer')}</h2>
+              <h2>{this.spanifyText('web developer')} <a target="blank" href={pdf}>CV</a></h2>
             </div>
           </div>
           <div className="image-content d-none d-sm-block col-md-6">
