@@ -1,7 +1,9 @@
 import {combineReducers, createStore, applyMiddleware} from 'redux'
+import { connectRouter } from 'connected-react-router'
+import { createBrowserHistory } from 'history'
+import { routerMiddleware } from 'connected-react-router'
 import thunk from 'redux-thunk'
 import thunkMiddleware from 'redux-thunk'
-import header from './header'
 import shapes from './shapes'
 import contacts from './contacts'
 import experience from './experience'
@@ -9,14 +11,17 @@ import portfolio from './portfolio'
 import sections from './sections'
 import youtube from './youtube'
 
+export const history = createBrowserHistory();
+
+
 const rootReducer = combineReducers({
-  header,
   shapes,
   contacts,
   experience,
   portfolio,
   sections,
-  youtube
+  youtube,
+  router: connectRouter(history),
 });
 
 const initialState = {
@@ -25,7 +30,6 @@ const initialState = {
     active: 'triangle',
     count: 6
   },
-  header: ['about', 'experience', 'portfolio', 'knowledge-sharing', 'contacts'],
   contacts: {
     social: []
   },
@@ -44,7 +48,7 @@ const initialState = {
 const store = createStore(
     rootReducer,
     initialState,
-    applyMiddleware(thunk, thunkMiddleware)
+    applyMiddleware(thunk, thunkMiddleware, routerMiddleware(history))
 );
 
 export default store;

@@ -1,5 +1,6 @@
 @import "../vars"
 @import "themes"
+@import "../breakpoints.sass"
 
 #contacts .content
   .info
@@ -53,7 +54,7 @@
 .alert-wrapper.hidden 
   max-height: 0
 
-@media all and (max-width: 575px) 
+@include media-breakpoint-down(sm)
   #contacts .content form > .row > div:nth-child(1) 
     padding-right: 15px
     padding-bottom: 15px

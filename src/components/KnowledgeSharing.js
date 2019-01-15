@@ -23,7 +23,7 @@ class KnowledgeSharing extends Component {
 
     render() {
         return <SectionComponent id="knowledge-sharing">
-            <div className="knowledge-sharing component">
+            <div className="knowledge-sharing h-100 h-auto-sm">
                 <header><h4>Knowledge Sharing</h4></header>
                 <ul className="nav nav-tabs">
                     {Object.keys(tabs).map(tab => {
@@ -32,7 +32,7 @@ class KnowledgeSharing extends Component {
                     </li>
                     })}
                 </ul>
-                <div className="content">
+                <div className="content h-100">
                     {<this.tab/>}
                 </div>
             </div>

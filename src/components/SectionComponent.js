@@ -60,8 +60,7 @@ class SectionComponent extends Component {
    * @return {string} JSX string.
    */
   render() {
-    return (<section ref={(section) => { this.container = section; }}
-        className={this.visible() + ' app-section'} id={this.props.id}>
+    return (<section className="app-section w-100 h-100" ref={(section) => { this.container = section; }} id={this.props.id}>
       {this.props.children}
     </section>)
   }

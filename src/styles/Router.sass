@@ -1,0 +1,54 @@
+.pages-enter
+  transform: translate(100%)
+.pages-enter.pages-enter-active
+  transform: translate(0%)
+  transition: transform 500ms ease-in-out
+.pages-exit
+  transform: translate(0%)
+.pages-exit.pages-exit-active
+  transform: translate(-100%)
+  transition: transform 500ms ease-in-out
+
+$moves: [(name: 'back', enter: 100%, exit: -100%)]
+
+@each $move in $moves
+    $name: map-get($move, 'name')
+    $enter: map-get($move, 'enter')
+    $exit: map-get($move, 'exit')
+    .page-#{$name}-move-enter
+        transform: translate($enter)
+    .page-#{$name}-move-enter.page-#{$name}-move-enter-active
+        transform: translate(0%)
+        transition: transform 500ms ease-in-out
+    .page-#{$name}-move-exit
+        transform: translate(0%)
+    .page-#{$name}-move-exit.page-#{$name}-move-exit-active
+        transform: translate($exit)
+        transition: transform 500ms ease-in-out
+
+.page-forward-move-enter
+  transform: translate(-100%)
+.page-forward-move-enter.page-forward-move-enter-active
+  transform: translate(0%)
+  transition: transform 500ms ease-in-out
+.page-forward-move-exit
+  transform: translate(0%)
+.page-forward-move-exit.page-forward-move-exit-active,
+.page-forward-move-enter.page-forward-move-enter-active + .page-back-move-exit.page-back-move-exit-active
+  transform: translate(100%)
+  transition: transform 500ms ease-in-out
+
+
+.page-back-move-enter.page-back-move-enter-active + .page-forward-move-exit.page-forward-move-exit-active
+  transform: translate(-100%)
+  transition: transform 500ms ease-in-out
+// page-back-move-enter page-back-move-enter-active
+// page-back-move-exit page-back-move-exit-active
+// page-forward-move-enter page-forward-move-enter-active
+// page-back-move-exit page-back-move-exit-active
+
+
+.pages-container
+  position: relative
+  > *
+    position: absolute

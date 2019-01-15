@@ -23,7 +23,7 @@ const CAROUSEL_OPTIONS = {
     }
   },
   navText: ['<i class="left"/>', '<i class="right"/>'],
-  margin: 9,
+  margin: 10,
   nav: true,
   loop: true,
   autoplay: true
@@ -39,14 +39,26 @@ class Portfolio extends Component {
     store.dispatch(PortfolioActions.fetchProjects())
   }
 
+  componentWillUnmount() {
+    this.owl && this.owl.destory()
+  }
+
   /**
    * Renders projects.
    * @return {Array} JSX string.
    */
   renderProjects() {
-    return this.props.projects.length && (this.props.projects.map((project,i) => {
-        return (<PortfolioProject key={i} index={i} project={project}/>)
-      }));
+    return (<OwlCarousel ref={owl => {
+      if (owl) {
+         owl.$ele.data('owl.carousel').onResize()
+         this.owl = owl
+      }
+    }}
+      {...CAROUSEL_OPTIONS} className="owl-theme">
+      {this.props.projects.map((project,i) => {
+          return (<PortfolioProject key={i} index={i} project={project}/>)
+      })}
+      </OwlCarousel>)
   }
 
   /**
@@ -54,13 +66,11 @@ class Portfolio extends Component {
    * @return {string} JSX string.
    */
   render() {
-    return this.props.projects.length && (<SectionComponent id="portfolio">
+    return (<SectionComponent id="portfolio">
       <div className="portfolio component">
         <header><h4>PORTFOLIO. MY LATEST WORKS</h4></header>
         <div className="projects dimmed">
-          <OwlCarousel {...CAROUSEL_OPTIONS} className="owl-theme">
-            {this.renderProjects()}
-          </OwlCarousel>
+          {this.props.projects.length > 0 && this.renderProjects()}
         </div>
         <div className="clear-fix"></div>
       </div>

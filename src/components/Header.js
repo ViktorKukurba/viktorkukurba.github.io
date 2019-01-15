@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
-import {Link} from 'react-scroll'
+// import {Link} from 'react-scroll'
+import { NavLink, withRouter } from 'react-router-dom'
 import { debounce } from "debounce";
 import { Collapse, Navbar, Button, Nav, NavItem } from 'reactstrap'
 
@@ -53,7 +54,7 @@ class Header extends Component {
   }
 
   get themeTitle() {
-    return `App theme: ${this.state.theme}`;
+    return `theme: ${this.state.theme}`;
   }
 
   /**
@@ -61,12 +62,12 @@ class Header extends Component {
    * @return {string} JSX string
    */
   getNavItems() {
-    return this.props.links.map(function(item, i) {
+    return this.props.links.map(function({path, title}, i) {
       return (
           <NavItem className="nav-item" key={i}>
-            <Link className="nav-link" to={item} spy={true} smooth={true} offset={-100} duration={500}>
-              {item.replace('-', ' ')}
-            </Link>
+            <NavLink activeClassName='active' exact className="nav-link" to={path}>
+              {title}
+            </NavLink>
           </NavItem>
       )
     });
@@ -99,12 +100,12 @@ class Header extends Component {
    * @return {string} JSX string.
    */
   render() {
-    return (<header className={this.state.top ? 'top' : ''}>
-      <div className="container pt-2">
+    return (<header className={(this.state.top ? 'top' : '')}>
+      <div className="container pt-2 shadowed">
         <div className="row justify-content-between">
           {this.getShapes()}
-          <Navbar expand="md" className="nav navbar-light justify-content-end">
-            <Button onClick={this.toggle} className={"navbar-toggler hidden-md-up float-xs-right" +  (this.state.isOpen ? "" : " collapsed")}
+          <Navbar expand="lg" className="nav navbar-light justify-content-end">
+            <Button onClick={this.toggle} className={"navbar-toggler hidden-lg-up float-xs-right" +  (this.state.isOpen ? "" : " collapsed")}
                     id="nav-icon3" type="button" data-toggle="collapse"
                     data-target="#navbarResponsive" aria-controls="navbarResponsive"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -143,8 +144,7 @@ class Header extends Component {
   }
 }
 
-export default connect(state => ({
+export default withRouter(connect(state => ({
   shapes: state.shapes.types,
-  links: state.header,
   activeShape: state.shapes.active,
-}))(Header)
+}))(Header))

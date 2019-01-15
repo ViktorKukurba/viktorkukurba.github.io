@@ -17,7 +17,7 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: ['@babel/polyfill', './src/index.js'],
   resolve: {
     extensions: ['.js', '.jsx'],
   },
@@ -33,7 +33,8 @@ module.exports = {
   devtool: args.mode === 'production' ? undefined : 'inline-source-map',
   devServer: {
     contentBase: './dist',
-    hot: true
+    hot: true,
+    historyApiFallback: true
   },
   module: {
     rules: [{
@@ -53,7 +54,7 @@ module.exports = {
       test: /\.sass$/,
       loader: 'style-loader!css-loader!sass-loader',
     },{
-      test: /\.(png|jpg|gif)$/,
+      test: /\.(png|jpg|gif|pdf)$/,
       use: [
         {
           loader: 'file-loader',

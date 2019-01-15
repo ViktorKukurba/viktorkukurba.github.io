@@ -21,7 +21,7 @@ class Technology extends Component {
       width: 0
     };
 
-    this.scrollHandler_ = this.show.bind(this);
+    // this.scrollHandler_ = this.show.bind(this);
   }
 
   static propTypes = {
@@ -30,26 +30,27 @@ class Technology extends Component {
 
   /** Binds scroll event listener. */
   componentDidMount() {
-    window.addEventListener('scroll', this.scrollHandler_);
-    this.unsubscribeStore = store.subscribe(() => {
-      let name = this.props.info.name;
-      let tech = store.getState().experience.technologies.find((item) => {
-        return item.name === name;
-      });
-      if (tech) {
-        this.setState({
-          shown: tech.shown,
-          width: tech.shown ? (tech.val + '%') : 0
-        });
-        tech.shown && this.unsubscribeStore();
-      }
-    });
+    setTimeout(() => this.setState({width: `${this.props.info.val}%`}));
+    // window.addEventListener('scroll', this.scrollHandler_);
+    // this.unsubscribeStore = store.subscribe(() => {
+    //   let name = this.props.info.name;
+    //   let tech = store.getState().experience.technologies.find((item) => {
+    //     return item.name === name;
+    //   });
+    //   if (tech) {
+    //     this.setState({
+    //       shown: tech.shown,
+    //       width: tech.shown ? (tech.val + '%') : 0
+    //     });
+    //     tech.shown && this.unsubscribeStore();
+    //   }
+    // });
   }
 
   /** Uninds scroll event listener. */
   componentWillUnmount() {
-    this.unsubscribeStore();
-    window.removeEventListener('scroll', this.scrollHandler_);
+    // this.unsubscribeStore();
+    // window.removeEventListener('scroll', this.scrollHandler_);
   }
 
   /** Shows technology if visible. */

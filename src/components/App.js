@@ -1,12 +1,10 @@
-import React, { Component } from 'react';
-import Greeting from './Greeting'
-import About from './About'
-import Experience from './Experience'
-import Portfolio from './Portfolio'
-import Contacts from './Contacts'
+import React, { Component } from 'react'
+
 import Shapes from './Shapes'
 import Header from './Header'
-import KnowledgeSharing from './KnowledgeSharing'
+import Router, {links} from './Router'
+
+import '../styles/App.sass'
 
 /**
  * Application class.
@@ -14,31 +12,22 @@ import KnowledgeSharing from './KnowledgeSharing'
  * @class
  */
 class App extends Component {
-
   /** Renders App. */
   render() {
     return (
         <div className="container">
-          <div className="row">
-            <Shapes />
-            <Header />
+          <div className="row position-fixed w-100 m-0 h-100 p-0">
+            <div className="container">
+              <Shapes />
+            </div>
           </div>
-          <div className="row app-content">
-              <Greeting/>
-            <hr/>
-              <About/>
-            <hr/>
-              <Experience/>
-            <hr/>
-              <Portfolio/>
-            <hr/>
-              <KnowledgeSharing/>
-            <hr/>
-              <Contacts/>
-            <footer>
-              <p>All rights received. Viktor Kukurba. 2016.</p>
-            </footer>
-          </div>
+          <Header links={links} />
+          <main className="row app-content">
+            <Router/>
+          </main>
+          <footer className="shadowed">
+              <p>All rights received. Viktor Kukurba. {(new Date).getFullYear()}.</p>
+          </footer>
         </div>);
   }
 }

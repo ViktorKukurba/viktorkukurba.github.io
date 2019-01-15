@@ -40,7 +40,7 @@ class Contacts extends Component {
   componentWillMount() {
     store.dispatch(ContactsActions.fetchSocialContacts())
     this.unsubscribeStore = store.subscribe(() => {
-      this.setState(store.getState().contacts.form);
+      this.setState(this.props.contacts.form);
     });
   }
 

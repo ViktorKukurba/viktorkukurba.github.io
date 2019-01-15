@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import SectionComponent from './SectionComponent'
 import '../styles/Greeting.sass'
 import myPhoto from '../assets/images/my_photo.png';
 import pdf from '../assets/cv_viktor_kukurba.pdf';
@@ -25,7 +26,7 @@ class Greeting extends Component {
    */
   render() {
     return (
-        <section id="greeting" className="app-content row">
+      <SectionComponent id="greeting">
           <div className="text-content py-4 col-12 col-md-6">
             <div className={"title animate-text " + (this.state.loaded ? 'show' : '')}>
               <h1 className="py-2">{this.spanifyText('hi, I’m')}
@@ -42,7 +43,7 @@ class Greeting extends Component {
             <div className="img-shadow"></div>
           </div>
           <div className="clear-fix"></div>
-        </section>
+          </SectionComponent>
     )
   }
 

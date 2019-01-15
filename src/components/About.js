@@ -15,7 +15,7 @@ class About extends Component {
     super();
     /** @type {Array<string>} */
     this.aboutStatements = [`I've been working as a frontend developer for more than 6 years of comercial development.
-      During this time had an experience with modern UI frameworks Vue, Angular, React, and still I'm interested in improving my skills in it`,
+      During this time had an experience with modern UI frameworks Vue, Angular, React, and still I'm interested in improving my skills in it.`,
       `In UI development I've also used JQuery libraries, Angular 1.x, KnockoutJS, YUI, Phonegap/cordova, 
       Grunt, Bower, Webpack, Jasmine, CSS3, LESS, Bootstrap.`,
       `I've started programming with server side development using Microsoft technologies ASP.NET, ASP.NET MVC, ADO.NET, WebAPI using C#. 

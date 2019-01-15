@@ -1,10 +1,16 @@
+@import '../node_modules/bootstrap/scss/functions'
+@import '../node_modules/bootstrap/scss/variables'
+@import '../node_modules/bootstrap/scss/mixins/breakpoints'
+
 @import "vars"
 @import "styles/themes"
+@import "styles/scrollbar"
 
 html
   font-family: 'Montserrat', sans-serif
   font-family: 'Roboto', sans-serif
   font-family: 'Noto Sans', sans-serif
+  height: 100%
 
 body
   margin: 0
@@ -17,6 +23,9 @@ body
   @include themify($themes)
     background: themed('background-color')
   transition: 1s
+  min-height: 100%
+  > .container
+    min-height: 100vh
 
 .wrapper
   max-width: 1200px
@@ -34,6 +43,34 @@ h3
   @include themify($themes)
     color: themed('primary-color')
 
+.container
+  display: flex
+  flex-direction: column
+
+  > .position-fixed
+    left: 0
+
+  > .row
+    position: relative
+
+.container > footer
+  @include themify()
+    background: themed('panel-color')
+    color: themed('white')
+  padding: .1em
+  text-align: center
+  width: 100%
+  margin-top: auto
+
+.container > footer p
+  margin: 1em
+
+.app-content
+  .main
+    flex: auto
+    margin: 0
+    max-width: 100%
+
 .content-box
   width: 50%
   margin: 0 auto
@@ -41,14 +78,6 @@ h3
   @include themify($themes)
     background: themed('panel-color')
     color: themed('text-color')
-
-.app-content
-  margin-top: 50px
-
-
-@media only screen and (max-width: 992px)
-  .content-box
-    width: 80%
 
 .dimmed
   @include themify($themes)
@@ -58,13 +87,19 @@ h3
 .clear-fix
   clear: both
 
-.container > .row > footer
+.shadowed
   @include themify()
-    background: themed('panel-color')
-    color: themed('white')
-  padding: .1em
-  text-align: center
-  width: 100%
+    box-shadow: 0px 0px 15px 10px themed('panel-color')
 
-.container > .row > footer p
-  margin: 1em
+@include media-breakpoint-down(lg)
+  .content-box
+    width: 80%
+    
+@include media-breakpoint-down(sm)
+  .content-box
+    padding: 1em
+    width: 90%
+  .h-auto-sm
+    height: auto !important
+  .container > footer p
+    margin: 0

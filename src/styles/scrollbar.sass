@@ -1,0 +1,15 @@
+@include media-breakpoint-up(lg)
+  ::-webkit-scrollbar-track
+    border-radius: 10px
+    @include themify()
+      background: themed('background-color')
+
+  ::-webkit-scrollbar
+    width: 10px
+    @include themify($themes)
+      background-color: opacify(themed('background-color-0'), .6)
+
+  ::-webkit-scrollbar-thumb
+    border-radius: 10px
+    @include themify($themes)
+      background-color: themed('panel-color')

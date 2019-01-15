@@ -4,7 +4,7 @@ import { getTextFromHtml, getShortText } from '../Utils';
 
 import '../styles/MediumFeed.sass';
 
-class MediumFeeed extends Component {
+class MediumFeed extends Component {
     state = {
         stories: [],
         feed: {}
@@ -22,7 +22,7 @@ class MediumFeeed extends Component {
     }
 
     render() {
-        return <div>
+        return <div className="medium-feed">
             <h5>{this.state.feed.title}</h5>
             {this.renderStories()}
         </div>
@@ -39,4 +39,4 @@ class MediumFeeed extends Component {
     }
 }
 
-export default MediumFeeed;
+export default MediumFeed;

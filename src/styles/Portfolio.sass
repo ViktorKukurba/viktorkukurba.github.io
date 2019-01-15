@@ -1,18 +1,19 @@
 @import "../vars"
 @import "themes"
 
-#portfolio .projects
-  display: flex
-  margin-bottom: 2em
-  overflow: hidden
-  flex-wrap: wrap
-  align-items: stretch
-
-#portfolio .project
-  .images-container
-    position: relative
+#portfolio .portfolio
+  max-width: 100%
+  .projects
+    display: flex
+    margin-bottom: 2em
     overflow: hidden
-    height: 200px
+    flex-wrap: wrap
+    align-items: stretch
+    .project
+      .images-container
+        position: relative
+        overflow: hidden
+        height: 200px
 
   .content
     @include themify()
