@@ -1,7 +1,7 @@
 {
   "name": "personal_web",
   "homepage": "https://viktorkukurba.github.io",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.1.0",
@@ -100,11 +100,12 @@
     "build:prod": "webpack --mode production -p",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
+    "deploy:prod": "npm run build:prod && node scripts/copy_public.js",
     "deploy": "gh-pages -d build",
     "test": "jest --coverage --env=jsdom --notify",
     "doc": "esdoc",
     "postinstall2": "webpack --progress --mode production -p && node scripts/copy_public.js",
-    "postinstall": "npm run build"
+    "postinstall1": "npm run build"
   },
   "engines": {
     "node": "10.14.2",
