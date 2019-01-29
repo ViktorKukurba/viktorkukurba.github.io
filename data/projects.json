@@ -1,0 +1,40 @@
+[{
+  "name": "vkukurba",
+  "info": "my personal webapplication",
+  "technologies": "HTML/CSS, SASS, React JS, jQuery JS, Bootstrap 4.",
+  "images": ["images/opt_my_web_app.png", "images/opt_my_web_app_2.png",
+    "images/opt_my_web_app_3.png"],
+  "link": "/"
+}, {
+  "name": "lidikart",
+  "info": "gallery site for artist studio LidikART",
+  "technologies": "Angular 6, Bootstrap 4, SASS, WP REST API.",
+  "images": ["images/opt_lidik_art_app.png", "images/opt_lidik_art_app_2.png",
+    "images/opt_lidik_art_app_3.png"],
+  "link": "https://lidikart.com.ua/en"
+}, {
+  "name": "fredra",
+  "info": "info site for social organization fredra.61",
+  "technologies": "Angular 1.x, jQuery JS, Bootstrap 3, WP REST API.",
+  "images": ["images/opt_fredra_61_app.png", "images/opt_fredra_61_app_2.png",
+    "images/opt_fredra_61_app_3.png"],
+  "link": "https://fredra.org/en"
+}, {
+  "name": "eis",
+  "info": "work in Europe countries",
+  "technologies": "Angular 5, Bootstrap 4, WP REST API.",
+  "images": ["images/eis_app.png", "images/eis_app_1.png", "images/eis_app_2.png"],
+  "link": "https://eis.org.ua"
+}, {
+  "name": "xtexter",
+  "info": "Simple post messaging app",
+  "technologies": "Angular 7, Angular Material, PWA",
+  "images": ["images/opt_xtexter_app.png", "images/opt_xtexter_app_2.png", "images/opt_xtexter_app_3.png"],
+  "link": "https://xtexter.herokuapp.com"
+}, {
+  "name": "xtexter-api",
+  "info": "API for posts CRUD, websocket",
+  "technologies": "NodeJs, Express, Socket.IO, Wep-push, MongoDB, Swagger",
+  "images": ["images/opt_xtexter_app.png", "images/opt_xtexter_app_2.png", "images/opt_xtexter_app_3.png"],
+  "link": "https://xtexter-api.herokuapp.com"
+}]
